@@ -1,0 +1,23 @@
+**/.DS_Store
+
+# auxiliary files when compiling LaTeX 
+tex/*.aux
+tex/*.bbl
+tex/*.bcf
+tex/*.blg
+tex/*.fdb_latexmk
+tex/*.fls
+tex/*.log
+tex/*.out
+tex/*.run.xml
+tex/*.synctex.gz
+tex/*.toc
+tex/*.idx
+tex/*.ind
+tex/*.ilg
+
+# Jupyter Book
+/book
+
+# Jupyter Notebook
+**/.ipynb_checkpoints

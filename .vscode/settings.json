@@ -1,0 +1,39 @@
+{
+    "latex-workshop.latex.tools": [
+        {
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "biber",
+            "command": "biber",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "xelatex -> biber -> xelatex*2",
+            "tools": [
+                "xelatex",
+                "biber",
+                "xelatex",
+                "xelatex"
+            ]
+        }
+    ],
+    "grammarly.selectors": [
+        {
+            "language": "latex",
+            "scheme": "file",
+            "pattern": "tex/graph-theory.tex"
+        }
+    ]
+}
