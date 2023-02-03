@@ -52,6 +52,7 @@ We claim the loop invariants are
 - ➀ $P$ has $j$ vertices assuming that we are to execute the $j$-th iteration,
 - ➁ $P$ has no duplicated vertices, i.e., $P$ is a path, and
 - ➂ edge $e$ is incident with $v$.
+
 (Maintenance) Suppose we are in the $j$-th iteration. After line 9, $P$ remains a path. Because $\deg(v) \geq 2$, there exists an edge $f$ other than $e$ that is incident with $v$. Hence, line 10 works correctly.  After executing line 12, we find that the number of vertices in $P$ is increased by one, i.e., $j+1$, $P$ is still a path and $e$ is incident with $v$.
 
 (Termination) We can complete at most $n-1$ iterations since $P$ can hold at most as many vertices as there are in $G$. Upon termination, we find $v$ is in $P$ and $e$ is incident with $v$. By removing from $P$ all vertices and edges before $v$ and then append to it edge $e$ and vertex $v$, we will obtain a cycle from $v$ to $v$.
