@@ -154,6 +154,11 @@ const thebe_selector_output = ".output, .cell_output"
      1.4. Cycles
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Shortest%20Paths%20and%20Dijkstra%27s%20Algorithm.html">
+     1.5. Shortest Paths and Dijkstra’s Algorithm
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -353,7 +358,27 @@ title="Print to PDF"
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="paths-and-connection">
-<h1><span class="section-number">1.3. </span>Paths and Connection<a class="headerlink" href="#paths-and-connection" title="Permalink to this headline">#</a></h1>
+<span id="index-0"></span><h1><span class="section-number">1.3. </span>Paths and Connection<a class="headerlink" href="#paths-and-connection" title="Permalink to this headline">#</a></h1>
+<p>A <strong>walk</strong> in a graph is a sequence of edges <span class="math notranslate nohighlight">\(e_1 \cdots e_k\)</span> joining a <em>nonempty</em> sequence of vertices <span class="math notranslate nohighlight">\(v_0 v_1 \cdots v_k\)</span>, which is denoted by</p>
+<div class="math notranslate nohighlight" id="equation-eq-3">
+<span class="eqno">(1.3)<a class="headerlink" href="#equation-eq-3" title="Permalink to this equation">#</a></span>\[\begin{align}
+v_0 e_1 v_1 \cdots e_k v_k
+\end{align}\]</div>
+<p id="index-1">with each edge written after one of its end and followed by its other end. Note that though the sequence of vertices in a walk is required to be nonempty, the sequence of edges may be empty. And in that case, the walk contains only one vertex, say <span class="math notranslate nohighlight">\(v_0\)</span>, and it is called the <strong>trivial walk</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The term <strong>sequence</strong> in mathematics often means an infinite sequence, which is essentially a function defined on <span class="math notranslate nohighlight">\(\N^\ast\)</span>. However, in graph theory, we usually refer to sequence as a <strong>finite</strong> list of ordered elements.</p>
+</div>
+<span class="target" id="index-2"></span><span class="target" id="index-3"></span><span class="target" id="index-4"></span><span class="target" id="index-5"></span><p id="index-6">We call a walk <span class="math notranslate nohighlight">\(W\)</span> from <span class="math notranslate nohighlight">\(v_0\)</span> to <span class="math notranslate nohighlight">\(v_k\)</span> a <span class="math notranslate nohighlight">\((v_0, v_k)\)</span>-walk. The vertices <span class="math notranslate nohighlight">\(v_0\)</span> and <span class="math notranslate nohighlight">\(v_k\)</span> are referred to as the <strong>origin</strong> and the <strong>terminus</strong> of that walk, respectively.</p>
+<p>It should be emphasized that neither the edges nor the vertices in a walk are necessarily distinct. However, if all edges of walk <span class="math notranslate nohighlight">\(W\)</span> are distinct, we call <span class="math notranslate nohighlight">\(W\)</span> a <strong>trail</strong>. And if all vertices in <span class="math notranslate nohighlight">\(W\)</span> are distinct, it is then called a <strong>path</strong>. Of course, all edges in a path are also distinct since the vertices are.</p>
+<p>Two vertices are said to be <strong>connected</strong> if there exists a path joining them. Otherwise, they are <strong>disconnected</strong>.</p>
+<p>The length of a path <span class="math notranslate nohighlight">\(P\)</span>, written as <span class="math notranslate nohighlight">\(\abs{P}\)</span>, is defined as the number of edges along it. Note that the length of a trivial path is zero since there are no edges.</p>
+<p>If <span class="math notranslate nohighlight">\(G\)</span> is a simple graph, then we may write a walk simply as a sequence of vertices since there is one and only one edge joining each pair of consecutive vertices in the walk. For example, we write the <span class="math notranslate nohighlight">\((v_0, v_k)\)</span>-walk in <a class="reference internal" href="#equation-eq-3">(1.3)</a> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+v_0 v_1 \cdots v_k
+\end{align*}\]</div>
+<p>with edges dropped.</p>
 <div class="proof proposition admonition" id="proposition-0">
 <p class="admonition-title"><span class="caption-number">Proposition 1.3 </span></p>
 <div class="proposition-content section" id="proof-content">
