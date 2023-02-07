@@ -109,6 +109,11 @@ And {eq}`eq:5` is proved.
 ````
 ## A First Attempt
 
+Starting from an initial set $S^{(0)} = \{u_0\}$ containing just the source, we want to enlarge this set in a way that a shortest path from $u_0$ to any vertex within the set is known. Given $S^{(j-1)}$, in each iteration $j$, we find optimal vertices $u^\ast \in S^{(j-1)}$ and $v^\ast \in V \setminus S^{(j-1)}$ in the sense that equation {eq}`eq:5` is satisfied. In doing so, we are guaranteed to find a shortest path from $u_0$ to $V \setminus S^{(j-1)}$ with the terminus $v^\ast$. Then we extend the set $S^{(j-1)}$ to $S^{(j)}$ by adding $v^\ast$.
+
+Based on this idea, we propose our first attempt to find shortest paths in the following algorithm ({prf:ref}`alg:4`).
+
+
 ````{prf:algorithm} A First Attempt to Find the Shortest Paths
 :label: alg:4
 ```{image} /alg-snippets/2e3cd4c67a48aeadecc12d65ea64e787d2747149aadb76a7649eaaf12011d5ea.png
