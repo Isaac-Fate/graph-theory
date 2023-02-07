@@ -356,8 +356,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-first-attempt">
+   1.5.1. A First Attempt
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dijkstra-s-algorithm">
-   1.5.1. Dijkstra’s Algorithm
+   1.5.2. Dijkstra’s Algorithm
   </a>
  </li>
 </ul>
@@ -380,8 +385,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-first-attempt">
+   1.5.1. A First Attempt
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dijkstra-s-algorithm">
-   1.5.1. Dijkstra’s Algorithm
+   1.5.2. Dijkstra’s Algorithm
   </a>
  </li>
 </ul>
@@ -408,22 +418,37 @@ title="Print to PDF"
 \[\begin{split}\begin{align*}
 d(u,v) :=
 \begin{cases}
-\min \set{\abs{P}}{\text{$P$ is a $(u, v)$ path}} ,
+\min \set{\abs{P}}{\text{$P$ is a $(u, v)$-path}} ,
 &amp;\text{if $u$ and $v$ are connected} \\
 \infty,
 &amp;\text{if $u$ and $v$ are disconnected}
 \end{cases}\end{align*}\end{split}\]</div>
+<p>Given a proper subset <span class="math notranslate nohighlight">\(S\)</span> of <span class="math notranslate nohighlight">\(V\)</span> and a source <span class="math notranslate nohighlight">\(u_0 \in S\)</span> in it, it is natural to define the distance from <span class="math notranslate nohighlight">\(u_0\)</span> to the complement <span class="math notranslate nohighlight">\(S^\complement\)</span> as the minimum distance from <span class="math notranslate nohighlight">\(u_0\)</span> to every <span class="math notranslate nohighlight">\(v \in S^\complement\)</span>, that is,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+d(u_0, S^\complement) := \min_{v \in S^\complement} d(u_0, v)
+\end{align*}\]</div>
+<p>Of course, if <span class="math notranslate nohighlight">\(d(u_0, S^\complement) = \infty\)</span>, then there are no paths from <span class="math notranslate nohighlight">\(u_0\)</span> to any vertex in <span class="math notranslate nohighlight">\(S^\complement\)</span>, in other words, <span class="math notranslate nohighlight">\(u_0\)</span> is disconnected from <span class="math notranslate nohighlight">\(S^\complement\)</span>. Suppose <span class="math notranslate nohighlight">\(d(u_0, S^\complement)\)</span> is a finite number, which means there exists a path <span class="math notranslate nohighlight">\(P = u_0 \cdots u v\)</span> from <span class="math notranslate nohighlight">\(u_0\)</span> to some vertex <span class="math notranslate nohighlight">\(v \in S^\complement\)</span>. The following are some simple observations about this path <span class="math notranslate nohighlight">\(P\)</span>:</p>
+<ul class="simple">
+<li><p>➀ <span class="math notranslate nohighlight">\(P\)</span> is a shortest <span class="math notranslate nohighlight">\((u_0, v)\)</span>-path,</p></li>
+<li><p>➁ <span class="math notranslate nohighlight">\(u \in S\)</span> and the <span class="math notranslate nohighlight">\((u_0, u)\)</span>-section, <span class="math notranslate nohighlight">\(u_0 \cdots u\)</span>, is a shortest <span class="math notranslate nohighlight">\((u_0, u)\)</span>-path, and</p></li>
+<li><p>➂ we have the equation</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-eq-9">
+<span class="eqno">(1.4)<a class="headerlink" href="#equation-eq-9" title="Permalink to this equation">#</a></span>\[\begin{align}
+d(u_0, S^\complement) = d(u_0, u) + w(uv)
+\end{align}\]</div>
+<p>Equation <a class="reference internal" href="#equation-eq-9">(1.4)</a> motivates us to state the following proposition, which is the central idea of Dijkstra’s algorithm.</p>
 <div class="proof proposition admonition" id="pro:2">
 <p class="admonition-title"><span class="caption-number">Proposition 1.6 </span></p>
 <div class="proposition-content section" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(G = (V, E)\)</span> be a simple graph. Let <span class="math notranslate nohighlight">\(S \subseteq V\)</span> be a subset of vertices and <span class="math notranslate nohighlight">\(u_0 \in S\)</span> a point in it. We have</p>
 <div class="math notranslate nohighlight" id="equation-eq-5">
-<span class="eqno">(1.4)<a class="headerlink" href="#equation-eq-5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<span class="eqno">(1.5)<a class="headerlink" href="#equation-eq-5" title="Permalink to this equation">#</a></span>\[\begin{align}
 d(u_0, S^\complement)
-= \min_{u \in S, v \in S^\complement}(
+= \min_{u \in S, v \in S^\complement}\{
 d(u_0, u) + w(u v)
-)
-\end{align}\]</div>
+\}\end{align}\]</div>
 </div>
 </div><div class="proof admonition" id="proof">
 <p>Proof. First, note that the set</p>
@@ -432,13 +457,13 @@ d(u_0, u) + w(u v)
 <p>is a finite set (possibly containing infinite numbers). Hence, it does have a minimum.</p>
 <p>Assume there exist <span class="math notranslate nohighlight">\(u^\ast \in S\)</span> and <span class="math notranslate nohighlight">\(v^\ast \in S^\complement\)</span> such that</p>
 <div class="math notranslate nohighlight" id="equation-eq-4">
-<span class="eqno">(1.5)<a class="headerlink" href="#equation-eq-4" title="Permalink to this equation">#</a></span>\[\begin{align}
+<span class="eqno">(1.6)<a class="headerlink" href="#equation-eq-4" title="Permalink to this equation">#</a></span>\[\begin{align}
 d(u_0, S^\complement)
 &gt; d(u_0, u^\ast) + w(u^\ast v^\ast)
 \end{align}\]</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Note that <a class="reference internal" href="#equation-eq-4">(1.5)</a> implicitly implies that <span class="math notranslate nohighlight">\(u_0\)</span> and <span class="math notranslate nohighlight">\(u^\ast\)</span> are connected and <span class="math notranslate nohighlight">\(u^\ast\)</span> and <span class="math notranslate nohighlight">\(v^\ast\)</span> are connected since the right-hand side of <a class="reference internal" href="#equation-eq-4">(1.5)</a> is a finite number.</p>
+<p>Note that <a class="reference internal" href="#equation-eq-4">(1.6)</a> implicitly implies that <span class="math notranslate nohighlight">\(u_0\)</span> and <span class="math notranslate nohighlight">\(u^\ast\)</span> are connected and <span class="math notranslate nohighlight">\(u^\ast\)</span> and <span class="math notranslate nohighlight">\(v^\ast\)</span> are connected since the right-hand side of <a class="reference internal" href="#equation-eq-4">(1.6)</a> is a finite number.</p>
 </div>
 <p>Then there exists a <span class="math notranslate nohighlight">\((u_0, u^\ast)\)</span>-path <span class="math notranslate nohighlight">\(P\)</span> such that <span class="math notranslate nohighlight">\(\abs{P} = d(u_0, u^\ast)\)</span>. Note that <span class="math notranslate nohighlight">\(P v^\ast\)</span> forms a path since all vertices in <span class="math notranslate nohighlight">\(P\)</span> are in <span class="math notranslate nohighlight">\(S\)</span> while <span class="math notranslate nohighlight">\(v^\ast\)</span> is in the complement <span class="math notranslate nohighlight">\(S^\ast\)</span>. But <span class="math notranslate nohighlight">\(P v^\ast\)</span> is a path from <span class="math notranslate nohighlight">\(u_0\)</span> to <span class="math notranslate nohighlight">\(S^\complement\)</span> with length <span class="math notranslate nohighlight">\(d(u_0, u^\ast) + w(u^\ast v^\ast)\)</span>, which is less than <span class="math notranslate nohighlight">\(d(u_0, S^\complement)\)</span> by assumption. Therefore, this leads to a contradiction. We have</p>
 <div class="math notranslate nohighlight">
@@ -446,39 +471,47 @@ d(u_0, S^\complement)
 d(u_0, S^\complement)
 \leq d(u_0, u) + w(u v)
 \quad\forall u \in S \;\forall v \in S^\complement\end{align*}\]</div>
-<p>And <a class="reference internal" href="#equation-eq-5">(1.4)</a> is proved.</p>
+<p>And <a class="reference internal" href="#equation-eq-5">(1.5)</a> is proved.</p>
 </div>
+<div class="section" id="a-first-attempt">
+<h2><span class="section-number">1.5.1. </span>A First Attempt<a class="headerlink" href="#a-first-attempt" title="Permalink to this headline">#</a></h2>
+<div class="proof algorithm admonition" id="alg:4">
+<p class="admonition-title"><span class="caption-number">Algorithm 1.3 </span> (A First Attempt to Find the Shortest Paths)</p>
+<div class="algorithm-content section" id="proof-content">
+<img alt="A First Attempt to Find the Shortest Paths" class="align-center" src="../_images/2e3cd4c67a48aeadecc12d65ea64e787d2747149aadb76a7649eaaf12011d5ea.png" />
+</div>
+</div></div>
 <div class="section" id="dijkstra-s-algorithm">
-<h2><span class="section-number">1.5.1. </span>Dijkstra’s Algorithm<a class="headerlink" href="#dijkstra-s-algorithm" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.5.2. </span>Dijkstra’s Algorithm<a class="headerlink" href="#dijkstra-s-algorithm" title="Permalink to this headline">#</a></h2>
 <div class="proof algorithm admonition" id="alg:3">
-<p class="admonition-title"><span class="caption-number">Algorithm 1.3 </span> (Dijkstra’s Algorithm)</p>
+<p class="admonition-title"><span class="caption-number">Algorithm 1.4 </span> (Dijkstra’s Algorithm)</p>
 <div class="algorithm-content section" id="proof-content">
 <img alt="Dijkstra's Algorithm" class="align-center" src="../_images/8a334f74f59c4cb150182d8a0c1761c13287f02a3575febcbe6fe8db9e35cca4.png" />
 </div>
 </div><p>Given a vertex <span class="math notranslate nohighlight">\(v\)</span>, its predecessor is given by <span class="math notranslate nohighlight">\(\Pi[v]\)</span>. And the predecessor of <span class="math notranslate nohighlight">\(\Pi[v]\)</span> is <span class="math notranslate nohighlight">\(\Pi[ \Pi[v] ]\)</span>, and so forth. We can keep accessing the predecessors until hopefully stops at the source <span class="math notranslate nohighlight">\(u_0\)</span>. In this case, we have recovered a path from <span class="math notranslate nohighlight">\(u_0\)</span> to <span class="math notranslate nohighlight">\(v\)</span>, <span class="math notranslate nohighlight">\(u_0 \cdots \Pi[v] v\)</span>. To make our proof concise, we call this procedure <em>recovering a <span class="math notranslate nohighlight">\((u_0, v)\)</span>-path using <span class="math notranslate nohighlight">\(\Pi\)</span></em>.</p>
 <div class="proof admonition" id="proof">
 <p>Proof. Note that there is an early return in line 22. Hence, we may not complete all <span class="math notranslate nohighlight">\(n-1\)</span> iterations of the for loop (lines 7-23). Suppose we can complete <span class="math notranslate nohighlight">\(k\)</span> iterations.</p>
-<p>(Loop Invariants) Upon completion of the <span class="math notranslate nohighlight">\(j\)</span>-th iteration, we claim that</p>
+<p><strong>Loop Invariants:</strong> Upon completion of the <span class="math notranslate nohighlight">\(j\)</span>-th iteration, we claim that</p>
 <ul class="simple">
 <li><p>➀ <span class="math notranslate nohighlight">\(D[u] = d(u_0, u) \quad \forall u \in S^{(j)}\)</span>,</p></li>
 <li><p>➁ <span class="math notranslate nohighlight">\(D[v] = \min_{u \in S^{(j-1)}} \{ d(u_0, u) + w(u v) \} \quad \forall v \in V \setminus S^{(j)}\)</span>,</p></li>
 <li><p>➂ we can recover a <span class="math notranslate nohighlight">\((u_0, u)\)</span>-path using <span class="math notranslate nohighlight">\(\Pi\)</span> for every <span class="math notranslate nohighlight">\(u \in S^{(j)}\)</span>, and</p></li>
 <li><p>➃ <span class="math notranslate nohighlight">\(S^{(j)} = S^{(j-1)} \uplus u^{(j)}\)</span>.</p></li>
 </ul>
-<p>(Maintenance) Assuming all loop invariants hold for <span class="math notranslate nohighlight">\(j-1\)</span>. We now consider the <span class="math notranslate nohighlight">\(j\)</span>-th iteration. In the inner loop (lines 10-20), by referring to loop invariant 2, we note that the procedure from line 11 to line 15 ensures that</p>
+<p><strong>Maintenance:</strong> Assuming all loop invariants hold for <span class="math notranslate nohighlight">\(j-1\)</span>. We now consider the <span class="math notranslate nohighlight">\(j\)</span>-th iteration. In the inner loop (lines 10-20), by referring to loop invariant 2, we note that the procedure from line 11 to line 15 ensures that</p>
 <div class="math notranslate nohighlight" id="equation-eq-6">
-<span class="eqno">(1.6)<a class="headerlink" href="#equation-eq-6" title="Permalink to this equation">#</a></span>\[\begin{align}
+<span class="eqno">(1.7)<a class="headerlink" href="#equation-eq-6" title="Permalink to this equation">#</a></span>\[\begin{align}
 D[v] = \min\left\{\min_{u \in S^{(j-2)}}\{ d(u_0, u) + w(u v) \},
 D[u^{(j-1)}] + w(u^{(j-1)} v)
 \right\}\quad\forall v \in V \setminus S^{(j-1)}\end{align}\]</div>
-<p>after this inner loop is completed. But invariant 1 implies that <span class="math notranslate nohighlight">\(D[u^{(j-1)}] = d(u_0, u^{(j-1)})\)</span>. Moreover, we have <span class="math notranslate nohighlight">\(S^{(j-1)} = S^{(j-2)} \uplus u^{(j-1)}\)</span> by invariant 4. Hence, <a class="reference internal" href="#equation-eq-6">(1.6)</a> reduces to</p>
+<p>after this inner loop is completed. But invariant 1 implies that <span class="math notranslate nohighlight">\(D[u^{(j-1)}] = d(u_0, u^{(j-1)})\)</span>. Moreover, we have <span class="math notranslate nohighlight">\(S^{(j-1)} = S^{(j-2)} \uplus u^{(j-1)}\)</span> by invariant 4. Hence, <a class="reference internal" href="#equation-eq-6">(1.7)</a> reduces to</p>
 <div class="math notranslate nohighlight" id="equation-eq-7">
-<span class="eqno">(1.7)<a class="headerlink" href="#equation-eq-7" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{multline}
+<span class="eqno">(1.8)<a class="headerlink" href="#equation-eq-7" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{multline}
 D[v] = \min\left\{\min_{u \in S^{(j-2)}}\{ d(u_0, u) + w(u v) \},
 d(u_0, u^{(j-1)}) + w(u^{(j-1)} v)
 \right\}\\
 = \min_{u \in S^{(j-1)}}\{ d(u_0, u) + w(u v) \}\quad\forall v \in V \setminus S^{(j-1)}\end{multline}\end{split}\]</div>
-<p>Note that invariant 2 for iteration <span class="math notranslate nohighlight">\(j\)</span> follows directly from <a class="reference internal" href="#equation-eq-7">(1.7)</a> because <span class="math notranslate nohighlight">\(V \setminus S^{(j)} \subseteq V \setminus S^{(j-1)}\)</span> by line 25 if line 25 is reachable in the current iteration. If line 25 is not reachable, which means the algorithm terminates at line 22, then there is nothing to prove for this iteration.</p>
+<p>Note that invariant 2 for iteration <span class="math notranslate nohighlight">\(j\)</span> follows directly from <a class="reference internal" href="#equation-eq-7">(1.8)</a> because <span class="math notranslate nohighlight">\(V \setminus S^{(j)} \subseteq V \setminus S^{(j-1)}\)</span> by line 25 if line 25 is reachable in the current iteration. If line 25 is not reachable, which means the algorithm terminates at line 22, then there is nothing to prove for this iteration.</p>
 <p>The purpose of lines 16-19 is that upon completion of lines 10-20, we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{align*}
@@ -489,7 +522,7 @@ d^\ast = \min_{v \in V \setminus S^{(j-1)}}\min_{u \in S^{(j-1)}}\{ d(u_0, u) + 
 d^\ast = d(u_0, V \setminus S^{(j-1)})
 \end{align*}\]</div>
 <p>We are now at the end of line 20. There are two cases.</p>
-<p>(Case 1: Early Return) If <span class="math notranslate nohighlight">\(v^\ast\)</span> is none, then <span class="math notranslate nohighlight">\(d^\ast = \infty\)</span> or equivalently <span class="math notranslate nohighlight">\(d(u_0, V \setminus S^{(j-1)}) = \infty\)</span>. This means that <span class="math notranslate nohighlight">\(u_0\)</span> is disconnected from <span class="math notranslate nohighlight">\(V \setminus S^{(j-1)}\)</span>. Since no shortest paths are to be discovered, the algorithm needs to terminate. Recall we assume we can only complete <span class="math notranslate nohighlight">\(k\)</span> iterations. Therefore, the current iteration must be <span class="math notranslate nohighlight">\(k+1\)</span> for we are exiting the algorithm. No loop invariants need to be proved since this iteration is not completed.</p>
+<p>(Case 1: Early Return) If <span class="math notranslate nohighlight">\(d^\ast = \infty\)</span> or equivalently <span class="math notranslate nohighlight">\(d(u_0, V \setminus S^{(j-1)}) = \infty\)</span>, then it means that <span class="math notranslate nohighlight">\(u_0\)</span> is disconnected from <span class="math notranslate nohighlight">\(V \setminus S^{(j-1)}\)</span>. Since no shortest paths are to be discovered, the algorithm needs to terminate. Recall we assume we can only complete <span class="math notranslate nohighlight">\(k\)</span> iterations. Therefore, the current iteration must be <span class="math notranslate nohighlight">\(k+1\)</span> for we are exiting the algorithm. No loop invariants need to be proved since this iteration is not completed.</p>
 <p>(Case 2) On the other hand, we now suppose <span class="math notranslate nohighlight">\(v^\ast\)</span> is some vertex at the end of line 20. Let <span class="math notranslate nohighlight">\(u^{(j)} = v^\ast\)</span>(line 24). Then invariant 4 for iteration <span class="math notranslate nohighlight">\(j\)</span> is proved immediately by line 25.</p>
 <p>We now prove invariant 3 for <span class="math notranslate nohighlight">\(j\)</span>. Note that the predecessor of <span class="math notranslate nohighlight">\(u^{(j)}\)</span> is <span class="math notranslate nohighlight">\(u^{(j-1)}\)</span>, i.e., <span class="math notranslate nohighlight">\(\Pi[u^{(j)}] = u^{(j-1)}\)</span> by line 14. We then recover a <span class="math notranslate nohighlight">\((u_0, u^{(j-1)})\)</span>-path, say <span class="math notranslate nohighlight">\(P\)</span>, using <span class="math notranslate nohighlight">\(\Pi\)</span>(invariant 3 for <span class="math notranslate nohighlight">\(j-1\)</span>). Note that <span class="math notranslate nohighlight">\(P u^{(j)}\)</span> is a <span class="math notranslate nohighlight">\((u_0, u^{(j)})\)</span>-path, and it can be recovered using <span class="math notranslate nohighlight">\(\Pi\)</span> since <span class="math notranslate nohighlight">\(\Pi[u^{(j)}] = u^{(j-1)}\)</span> and <span class="math notranslate nohighlight">\(P\)</span> itself is recovered using <span class="math notranslate nohighlight">\(\Pi\)</span>. This proves invariant 3 of iteration <span class="math notranslate nohighlight">\(j\)</span>.</p>
 <p>Furthermore, by recalling <span class="math notranslate nohighlight">\(u^{(j)} = v^\ast\)</span> and <span class="math notranslate nohighlight">\(d^\ast = d(u_0, V \setminus S^{(j-1)})\)</span>, we note that <span class="math notranslate nohighlight">\(P u^{(j)}\)</span> is a shortest path from <span class="math notranslate nohighlight">\(u_0\)</span> to <span class="math notranslate nohighlight">\(u^{(j)}\)</span> since its length is <span class="math notranslate nohighlight">\(d(u_0, V \setminus S^{(j-1)})\)</span>. In other words, it is also a shortest path from <span class="math notranslate nohighlight">\(u_0\)</span> to <span class="math notranslate nohighlight">\(V \setminus S^{(j-1)}\)</span>. Therefore, we can write</p>
@@ -498,11 +531,11 @@ d^\ast = d(u_0, V \setminus S^{(j-1)})
 d(u_0, u^{(j)}) = d^\ast = D[v^\ast]\end{align*}\]</div>
 <p>where the last equality follows from line 18. Replacing <span class="math notranslate nohighlight">\(v^\ast\)</span> with <span class="math notranslate nohighlight">\(u^{(j)}\)</span>, equivalently we have</p>
 <div class="math notranslate nohighlight" id="equation-eq-8">
-<span class="eqno">(1.8)<a class="headerlink" href="#equation-eq-8" title="Permalink to this equation">#</a></span>\[\begin{align}
+<span class="eqno">(1.9)<a class="headerlink" href="#equation-eq-8" title="Permalink to this equation">#</a></span>\[\begin{align}
 D[u^{(j)}] = d(u_0, u^{(j)})
 \end{align}\]</div>
-<p>This equation <a class="reference internal" href="#equation-eq-8">(1.8)</a> along with invariant 1 for <span class="math notranslate nohighlight">\(j-1\)</span> implies that invariant 1 also holds for <span class="math notranslate nohighlight">\(j\)</span>. Note that we have shown that all loop invariants are preserved when the current iteration (iteration <span class="math notranslate nohighlight">\(j\)</span>) is completed.</p>
-<p>(Termination) As the algorithm terminates, there are <span class="math notranslate nohighlight">\(k+1\)</span> vertices in <span class="math notranslate nohighlight">\(S^{(k)}\)</span>. And the vertices outside <span class="math notranslate nohighlight">\(S^{(k)}\)</span> are not reachable from the source <span class="math notranslate nohighlight">\(u_0\)</span>. For each <span class="math notranslate nohighlight">\(u \in S^{(k)}\)</span>, we have <span class="math notranslate nohighlight">\(D[u] = d(u_0, u)\)</span>(invariant 1), that is, <span class="math notranslate nohighlight">\(D[u]\)</span> stores the length of a shortest path from <span class="math notranslate nohighlight">\(u_0\)</span> to <span class="math notranslate nohighlight">\(u\)</span>, as desired. And by invariant 3, we can recover a shortest <span class="math notranslate nohighlight">\((u_0, u)\)</span>-path using <span class="math notranslate nohighlight">\(\Pi\)</span>. This completes the proof.</p>
+<p>This equation <a class="reference internal" href="#equation-eq-8">(1.9)</a> along with invariant 1 for <span class="math notranslate nohighlight">\(j-1\)</span> implies that invariant 1 also holds for <span class="math notranslate nohighlight">\(j\)</span>. Note that we have shown that all loop invariants are preserved when the current iteration (iteration <span class="math notranslate nohighlight">\(j\)</span>) is completed.</p>
+<p><strong>Termination:</strong> As the algorithm terminates, there are <span class="math notranslate nohighlight">\(k+1\)</span> vertices in <span class="math notranslate nohighlight">\(S^{(k)}\)</span>. And the vertices outside <span class="math notranslate nohighlight">\(S^{(k)}\)</span> are not reachable from the source <span class="math notranslate nohighlight">\(u_0\)</span>. For each <span class="math notranslate nohighlight">\(u \in S^{(k)}\)</span>, we have <span class="math notranslate nohighlight">\(D[u] = d(u_0, u)\)</span>(invariant 1), that is, <span class="math notranslate nohighlight">\(D[u]\)</span> stores the length of a shortest path from <span class="math notranslate nohighlight">\(u_0\)</span> to <span class="math notranslate nohighlight">\(u\)</span>, as desired. And by invariant 3, we can recover a shortest <span class="math notranslate nohighlight">\((u_0, u)\)</span>-path using <span class="math notranslate nohighlight">\(\Pi\)</span>. This completes the proof.</p>
 </div>
 </div>
 </div>
