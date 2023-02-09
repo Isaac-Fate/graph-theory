@@ -359,7 +359,18 @@ title="Print to PDF"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="cycles">
 <h1><span class="section-number">1.4. </span>Cycles<a class="headerlink" href="#cycles" title="Permalink to this headline">#</a></h1>
-<p>One simple yet useful observation of a particular longest path in a graph is that all the neighbors of the terminus must occur along the path. To be specific, if <span class="math notranslate nohighlight">\(P = v_0 e_1 v_1 \cdots e_k v_k\)</span> is one of the longest paths in <span class="math notranslate nohighlight">\(G\)</span> then <span class="math notranslate nohighlight">\(P\)</span> must contain all vertices in <span class="math notranslate nohighlight">\(N(v_k)\)</span>. To prove this, we assume <span class="math notranslate nohighlight">\(P\)</span> does not contain <span class="math notranslate nohighlight">\(v_{k+1} \in N(v_k)\)</span>. (Suppose <span class="math notranslate nohighlight">\(\psi(e_{k+1}) = v_k v_{k+1}\)</span>.) Then the path <span class="math notranslate nohighlight">\(P + e_{k+1}v_{k+1}\)</span> is clearly longer than <span class="math notranslate nohighlight">\(P\)</span>, which leads to a contradiction. <a class="reference internal" href="#fig-1"><span class="std std-numref">Fig. 1.2</span></a> depicts such an example. Note that if <span class="math notranslate nohighlight">\(8\)</span> were a neighbor of <span class="math notranslate nohighlight">\(7\)</span>, then path <span class="math notranslate nohighlight">\(12345678\)</span> would be longer.</p>
+<p>One simple yet useful observation of a particular longest path
+in a graph is that all the neighbors of the terminus must
+occur along the path. To be specific,
+if <span class="math notranslate nohighlight">\(P = v_0 e_1 v_1 \cdots e_k v_k\)</span> is one of the longest paths in <span class="math notranslate nohighlight">\(G\)</span>
+then <span class="math notranslate nohighlight">\(P\)</span> must contain all vertices in <span class="math notranslate nohighlight">\(N(v_k)\)</span>.
+To prove this, we assume <span class="math notranslate nohighlight">\(P\)</span> does not contain <span class="math notranslate nohighlight">\(v_{k+1} \in N(v_k)\)</span>.
+(Suppose <span class="math notranslate nohighlight">\(\psi(e_{k+1}) = v_k v_{k+1}\)</span>.)
+Then the path <span class="math notranslate nohighlight">\(P + e_{k+1}v_{k+1}\)</span> is clearly longer than <span class="math notranslate nohighlight">\(P\)</span>,
+which leads to a contradiction.
+<a class="reference internal" href="#fig-1"><span class="std std-numref">Fig. 1.2</span></a> depicts such an example.
+Note that if <span class="math notranslate nohighlight">\(8\)</span> were a neighbor of <span class="math notranslate nohighlight">\(7\)</span>,
+then path <span class="math notranslate nohighlight">\(12345678\)</span> would be longer.</p>
 <div class="figure align-default" id="fig-1">
 <img alt="../_images/g-001.png" src="../_images/g-001.png" />
 <p class="caption"><span class="caption-number">Fig. 1.2 </span><span class="caption-text">Path <span class="math notranslate nohighlight">\(1234567\)</span> is one of the longest paths.</span><a class="headerlink" href="#fig-1" title="Permalink to this image">#</a></p>
@@ -385,15 +396,91 @@ title="Print to PDF"
 </div>
 </div><div class="proof admonition" id="proof">
 <p>Proof. We need to show that <a class="reference internal" href="#alg:2">Algorithm 1.2</a> works correctly.</p>
-<p>(initialization) Firstly, note that line 7 is possible since <span class="math notranslate nohighlight">\(v_0\)</span> has no loops and <span class="math notranslate nohighlight">\(\deg(v_0) \geq 2\)</span>.</p>
+<p><strong>Initialization:</strong> Firstly, note that line 7 is possible
+since <span class="math notranslate nohighlight">\(v_0\)</span> has no loops and <span class="math notranslate nohighlight">\(\deg(v_0) \geq 2\)</span>.</p>
 <p>We claim the loop invariants are</p>
 <ul class="simple">
-<li><p>➀ <span class="math notranslate nohighlight">\(P\)</span> has <span class="math notranslate nohighlight">\(j\)</span> vertices assuming that we are to execute the <span class="math notranslate nohighlight">\(j\)</span>-th iteration,</p></li>
+<li><p>➀ <span class="math notranslate nohighlight">\(P\)</span> has <span class="math notranslate nohighlight">\(j\)</span> vertices assuming that
+we are to execute the <span class="math notranslate nohighlight">\(j\)</span>-th iteration,</p></li>
 <li><p>➁ <span class="math notranslate nohighlight">\(P\)</span> has no duplicated vertices, i.e., <span class="math notranslate nohighlight">\(P\)</span> is a path, and</p></li>
 <li><p>➂ edge <span class="math notranslate nohighlight">\(e\)</span> is incident with <span class="math notranslate nohighlight">\(v\)</span>.</p></li>
 </ul>
-<p>(Maintenance) Suppose we are in the <span class="math notranslate nohighlight">\(j\)</span>-th iteration. After line 9, <span class="math notranslate nohighlight">\(P\)</span> remains a path. Because <span class="math notranslate nohighlight">\(\deg(v) \geq 2\)</span>, there exists an edge <span class="math notranslate nohighlight">\(f\)</span> other than <span class="math notranslate nohighlight">\(e\)</span> that is incident with <span class="math notranslate nohighlight">\(v\)</span>. Hence, line 10 works correctly.  After executing line 12, we find that the number of vertices in <span class="math notranslate nohighlight">\(P\)</span> is increased by one, i.e., <span class="math notranslate nohighlight">\(j+1\)</span>, <span class="math notranslate nohighlight">\(P\)</span> is still a path and <span class="math notranslate nohighlight">\(e\)</span> is incident with <span class="math notranslate nohighlight">\(v\)</span>.</p>
-<p>(Termination) We can complete at most <span class="math notranslate nohighlight">\(n-1\)</span> iterations since <span class="math notranslate nohighlight">\(P\)</span> can hold at most as many vertices as there are in <span class="math notranslate nohighlight">\(G\)</span>. Upon termination, we find <span class="math notranslate nohighlight">\(v\)</span> is in <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(e\)</span> is incident with <span class="math notranslate nohighlight">\(v\)</span>. By removing from <span class="math notranslate nohighlight">\(P\)</span> all vertices and edges before <span class="math notranslate nohighlight">\(v\)</span> and then append to it edge <span class="math notranslate nohighlight">\(e\)</span> and vertex <span class="math notranslate nohighlight">\(v\)</span>, we will obtain a cycle from <span class="math notranslate nohighlight">\(v\)</span> to <span class="math notranslate nohighlight">\(v\)</span>.</p>
+<p><strong>Maintenance:</strong> Suppose we are in the <span class="math notranslate nohighlight">\(j\)</span>-th iteration.
+After line 9, <span class="math notranslate nohighlight">\(P\)</span> remains a path. Because <span class="math notranslate nohighlight">\(\deg(v) \geq 2\)</span>,
+there exists an edge <span class="math notranslate nohighlight">\(f\)</span> other than <span class="math notranslate nohighlight">\(e\)</span> that is incident with <span class="math notranslate nohighlight">\(v\)</span>.
+Hence, line 10 works correctly.
+After executing line 12, we find that the number of vertices in <span class="math notranslate nohighlight">\(P\)</span> is increased by one, i.e., <span class="math notranslate nohighlight">\(j+1\)</span>,
+<span class="math notranslate nohighlight">\(P\)</span> is still a path and <span class="math notranslate nohighlight">\(e\)</span> is incident with <span class="math notranslate nohighlight">\(v\)</span>.</p>
+<p><strong>Termination:</strong> We can complete at most <span class="math notranslate nohighlight">\(n-1\)</span> iterations
+since <span class="math notranslate nohighlight">\(P\)</span> can hold at most as many vertices as there are in <span class="math notranslate nohighlight">\(G\)</span>.
+Upon termination,
+we find <span class="math notranslate nohighlight">\(v\)</span> is in <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(e\)</span> is incident with <span class="math notranslate nohighlight">\(v\)</span>.
+By removing from <span class="math notranslate nohighlight">\(P\)</span> all vertices and edges before <span class="math notranslate nohighlight">\(v\)</span>
+and then append to it edge <span class="math notranslate nohighlight">\(e\)</span> and vertex <span class="math notranslate nohighlight">\(v\)</span>,
+we will obtain a cycle from <span class="math notranslate nohighlight">\(v\)</span> to itself.</p>
+</div>
+<div class="proof theorem admonition" id="thm:1">
+<p class="admonition-title"><span class="caption-number">Theorem 1.1 </span></p>
+<div class="theorem-content section" id="proof-content">
+<p>TODO</p>
+</div>
+</div><p id="index-0">The <strong>girth</strong> of a graph is defined as
+the length of its shortest cycle.
+We say the girth of <span class="math notranslate nohighlight">\(G\)</span> is infinity if it contains no cycles.
+Apparently, if <span class="math notranslate nohighlight">\(G\)</span> has girth 1, then it contains a loop.
+If it has girth 2, then there must be a parallel edge.
+But it has no loops.
+And if the girth of <span class="math notranslate nohighlight">\(G\)</span> is greater than or equal to 3,
+then it must be a simple graph.</p>
+<div class="proof proposition admonition" id="pro:3">
+<p class="admonition-title"><span class="caption-number">Proposition 1.6 </span></p>
+<div class="proposition-content section" id="proof-content">
+<p>A <span class="math notranslate nohighlight">\(k\)</span>-regular graph with girth 4 has at least <span class="math notranslate nohighlight">\(2k\)</span> vertices.
+Moreover, if it has exactly  <span class="math notranslate nohighlight">\(2k\)</span> vertices,
+then it must be <span class="math notranslate nohighlight">\(K_{k,k}\)</span>, i.e.,
+a complete bipartite graph with both sides of
+the bipartition having the same size <span class="math notranslate nohighlight">\(k\)</span>.
+Conversely, <span class="math notranslate nohighlight">\(K_{k,k}\)</span> is a <span class="math notranslate nohighlight">\(k\)</span>-regular graph with girth 4.</p>
+</div>
+</div><p><a class="reference internal" href="#fig-3"><span class="std std-numref">Fig. 1.3</span></a> depicts several <span class="math notranslate nohighlight">\(K_{k,k}\)</span> graphs.</p>
+<div class="figure align-default" id="fig-3">
+<img alt="../_images/g-003.png" src="../_images/g-003.png" />
+<p class="caption"><span class="caption-number">Fig. 1.3 </span><span class="caption-text">(a) <span class="math notranslate nohighlight">\(K_{2,2}\)</span>. (b) <span class="math notranslate nohighlight">\(K_{3,3}\)</span>. (c)  <span class="math notranslate nohighlight">\(K_{5,5}\)</span>.
+(d)  <span class="math notranslate nohighlight">\(K_{10,10}\)</span>.</span><a class="headerlink" href="#fig-3" title="Permalink to this image">#</a></p>
+</div>
+<div class="proof admonition" id="proof">
+<p>Proof. Take a pair of incident vertices <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span> in <span class="math notranslate nohighlight">\(G\)</span>.
+We have <span class="math notranslate nohighlight">\(N(u) \cap N(v) = \emptyset\)</span>.
+Otherwise, a triangle would appear.
+Because the degrees of <span class="math notranslate nohighlight">\(u\)</span> and  <span class="math notranslate nohighlight">\(v\)</span> are both <span class="math notranslate nohighlight">\(k\)</span>,
+equivalently, the sizes of their neighbors are <span class="math notranslate nohighlight">\(k\)</span>,
+<span class="math notranslate nohighlight">\(G\)</span> must has at least <span class="math notranslate nohighlight">\(2k\)</span> vertices
+having these two disjoint sets <span class="math notranslate nohighlight">\(N(u)\)</span> and <span class="math notranslate nohighlight">\(N(v)\)</span>.</p>
+<p>Suppose <span class="math notranslate nohighlight">\(\abs{V} = 2k\)</span>.
+Pick a pair of incident vertices <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span> as before.
+From the previous proof, we know
+<span class="math notranslate nohighlight">\(\abs{N(u)} = \abs{N(v)} = k\)</span> and they are disjoint.
+Since  <span class="math notranslate nohighlight">\(G\)</span> now only has  <span class="math notranslate nohighlight">\(2k\)</span> vertices,
+<span class="math notranslate nohighlight">\(V\)</span> is composed of
+these two neighbor sets, i.e., <span class="math notranslate nohighlight">\(V = N(u) \uplus N(v)\)</span>.
+Observe that each pair of vertices in  <span class="math notranslate nohighlight">\(N(u)\)</span>
+cannot be joined with each other for
+there are no triangles.
+The same conclusion also holds for <span class="math notranslate nohighlight">\(N(v)\)</span>.
+Therefore, every vertex in
+<span class="math notranslate nohighlight">\(N(u)\)</span> is joined with every vertex in <span class="math notranslate nohighlight">\(N(v)\)</span>
+because the degree of every vertex is <span class="math notranslate nohighlight">\(k\)</span>.
+This shows that <span class="math notranslate nohighlight">\(G\)</span> is  <span class="math notranslate nohighlight">\(K_{k,k}\)</span>.</p>
+<p>We also need to show <span class="math notranslate nohighlight">\(K_{k,k}\)</span> is a <span class="math notranslate nohighlight">\(k\)</span>-regular graph with girth 4.
+Clearly, it is <span class="math notranslate nohighlight">\(k\)</span>-regular.
+It contains no cycles with length 1 or 3 by <a class="reference internal" href="#thm:1">Theorem 1.1</a>.
+Of course, it does have any parallel edges,
+hence no 2-cycles.
+And we can easily find a 4-cycle in it.
+For example, if we suppose
+<span class="math notranslate nohighlight">\(X=\{x_1,\ldots,x_k\}\)</span> and <span class="math notranslate nohighlight">\(Y=\{y_1,\ldots,y_k\}\)</span>
+form a bipartition of <span class="math notranslate nohighlight">\(K_{k,k}\)</span>, then
+<span class="math notranslate nohighlight">\(x_1 y_1 x_2 y_2 x_1\)</span> is a 4-cycle.</p>
 </div>
 </div>
 
