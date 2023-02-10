@@ -19,5 +19,6 @@ tex/*.ilg
 # Jupyter Book
 /book
 
-# Jupyter Notebook
+# Python and Jupyter Notebook
+**/__pycache__/
 **/.ipynb_checkpoints

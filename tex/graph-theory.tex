@@ -150,7 +150,7 @@ with edges dropped.
 
 %------------------------------
 
-\begin{proposition}
+\begin{proposition} \label{pro:1}
     If there is a $(u, v)$-walk in $G$, then there is also a $(u, v)$-path in $G$.
 \end{proposition}
 
@@ -209,16 +209,27 @@ then path $12345678$ would be longer.
 
 %------------------------------
 
-\begin{proposition}
-    If $\delta(G) \geq 2$, then we can find a cycle starting from each vertex of $G$.
+\begin{proposition} \label{pro:5}
+    If $G$ is a simple graph with $\delta(G) \geq 2$, 
+	then there exists a cycle of length 
+	at least $\delta(G)+1$.
 \end{proposition}
 
 \begin{proof}
-    The conclusion is trivial if $G$ has a loop. Now, we assume that $G$ contains no loops. 
-    \begin{note}
-        Note that there are cases where $G$ has no paths if we allow it to have loops. For example, if every vertex of $G$ is incident with just exactly one loop, then $G$ still satisfies the hypothesis. But there are no paths in $G$.
-    \end{note}
-    \noindent Let $P = v_0 e_1 v_1 \cdots e_{k-1} v_{k-1} e_k v_k$ be one of the longest paths in $G$. Since $\deg(v_k) \geq 2$ and $v_k$ has no loops, $v_k$ has a neighbor, say $u$, other than $v_{k-1}$. As noted before, $u$ must occur in $P$. Therefore, there exists a cycle from $u$ to $u$.
+	Let $P = u \cdots v$ 
+	be a longest path in $G$.
+	As noted before, all the neighbors of 
+	the terminus $ v $,
+	denoted by $v_1, \ldots, v_{\delta(G)}$
+	arranged by their original order in $P$,
+	must occur along the path $P$.
+	Note that the $(v_1, v)$-section,
+	denoted by $Q$,
+	is of length $\delta(G)$.
+	Notice also that $Q v_1$ is a cycle 
+	since $v_1$ is incident with $v$.
+	And it is of length $\delta(G) + 1$.
+	This completes the proof.
 \end{proof}
 
 In fact, we have an algorithm to find a cycle without knowing the longest path in $G$.
@@ -568,6 +579,134 @@ Given a vertex $v$, its predecessor is given by $\Pi[v]$. And the predecessor of
     \noindent\textbf{Termination:} As the algorithm terminates, there are $k+1$ vertices in $S^{(k)}$. And the vertices outside $S^{(k)}$ are not reachable from the source $u_0$. For each $u \in S^{(k)}$, we have $D[u] = d(u_0, u)$ (invariant 1), that is, $D[u]$ stores the length of a shortest path from $u_0$ to $u$, as desired. And by invariant 3, we can recover a shortest $(u_0, u)$-path using $\Pi$. This completes the proof.
 \end{proof}
 
+%==============================
+
+\chapter{Trees}
+
+%------------------------------
+
+\section{Definition of Trees}
+
+We call a graph \textbf{acyclic}\index{acyclic graphs}
+if it contains no cycles.
+A \textbf{tree}\index{tree} is a connected acyclic graph.
+A tree is clearly a simple graph for there cannot be any loops (1-cycles)
+or parallel edges (2-cycles).
+
+If a tree is nontrivial, then the degree of every vertex
+must greater than or equal to 1 since a tree is connected.
+Moreover, there always exists at least one vertex with degree 1.
+If this is not the case, then we end up with a graph with 
+$\delta \geq 2$. 
+But this further implies that there exists a cycle
+in the graph by Proposition~\ref{pro:5}, 
+contradicting the definition of a tree.
+
+%------------------------------
+
+
+\begin{theorem} \label{thm:2}
+    In a tree $T$, any two distinct vertices are connected by 
+	a \textbf{unique} path.
+\end{theorem}
+
+\begin{proof}
+    Assume there are two distinct $(u,v)$-paths, 
+	$P_1$ and  $P_2$ (regraded as path graphs). 
+	Then there exists at least one distinct edge 
+	in these two, say $e=xy$.
+	Without loss of generality,
+	we may assume  $e \in V(P_1)$.
+	
+
+	Consider the graph $P_1 \cup P_2 - e$.
+	We claim that it contains a $(x,y)$-path.
+	To see this, we note that there exist a $(x,u)$-path 
+	and a $(v,y)$-path in  $P_1$,
+	and also a  $(u,v)$-path in $P_2$.
+	By concatenating all these three paths, 
+	we will obtain a $(x,y)$-walk (not necessarily a path).
+	But by Proposition~\ref{pro:1}, 
+	we can always extract a $(x,y)$-path from it, say $P_3$.
+
+	Now, we have two distinct paths from $x$ to $y$ in $T$. 
+	One is $xy$ and the other is  $P_3$, 
+	which contradicts the hypothesis.
+\end{proof}
+
+%------------------------------
+
+The graph in Figure~\ref{fig:4} is certainly not a tree.
+But any two distinct vertices are indeed connected by 
+a unique path.
+Therefore, for the converse of Theorem~\ref{thm:2} to hold, 
+we need to exclude the cases where graphs contain loops.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.5]{figures/g-004.png}
+    \caption{It will become a tree if the loops are removed.}
+    \label{fig:4}
+\end{figure}
+
+\begin{theorem} \label{thm:3}
+    If graph $T$ is loopless and 
+	there exists one and only one path 
+	connecting each pair of distinct vertices,
+	then $T$ is a tree.
+\end{theorem}
+
+\begin{proof}
+    First, note that $T$ is connected.
+	Assume, on the contrary, 
+	there exists a cycle $C$ in  $G$.
+	Let  $e$ be an edge in  $C$.
+	Since  $T$ is assumed loopless, 
+	the two ends of  $e$ must be distinct, say  $x$ and $y$.
+
+	Note that there exists a $(x,y)$-path in  $C - e$,
+	which is different from the path $xy$. 
+	(In fact, this path is $C-e$ itself.) 
+	This leads to a contradiction.
+\end{proof}
+
+%------------------------------
+
+\begin{theorem} \label{thm:4}
+    Let $T$ be a tree. Then we have 
+	\begin{align}
+		\abs{E} = \abs{V} - 1
+		\label{eq:10}
+	\end{align}
+\end{theorem}
+
+\begin{proof}
+	We shall prove by induction on the order $\abs{V}$.
+
+	\noindent\textbf{Base Case:} If $\abs{V} = 1$, 
+	then $T$ is a trivial graph without any edges, 
+	and hence \eqref{eq:10} holds.
+
+	\noindent\textbf{Inductive Step:} Assume this theorem 
+	holds for any trees with order $k$.
+	Suppose now $\abs{V(T)} = k+1$.
+	Pick a vertex $v$ with $\deg(v) = 1$, and then remove it from $T$.
+	This is always possible as we have noted.
+	Observe that  $T - v$ remains a tree.
+	And by removing $v$, 
+	we only remove a single edge from  $T$ since  $\deg(v) = 1$.
+	Therefore, $\abs{E(T-v)} = \abs{E(T)} - 1$.
+	But by the induction hypothesis, 
+	we know $\abs{E(T-v)} = \abs{V(T-v)} - 1 = k - 1$. 
+	It then follows that 
+	 \begin{align*}
+		 \abs{E(T)} = \abs{E(T-v)} + 1 
+		 = k-1+1
+		 = (k+1)-1 
+		 = \abs{V(T)} - 1
+	\end{align*}
+	This completes the proof.
+\end{proof}
 
 %==============================
 
