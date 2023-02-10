@@ -161,6 +161,23 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Trees/index.html">
+   2. Trees
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Trees/Definition%20of%20Trees.html">
+     2.1. Definition of Trees
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -375,18 +392,28 @@ then path <span class="math notranslate nohighlight">\(12345678\)</span> would b
 <img alt="../_images/g-001.png" src="../_images/g-001.png" />
 <p class="caption"><span class="caption-number">Fig. 1.2 </span><span class="caption-text">Path <span class="math notranslate nohighlight">\(1234567\)</span> is one of the longest paths.</span><a class="headerlink" href="#fig-1" title="Permalink to this image">#</a></p>
 </div>
-<div class="proof proposition admonition" id="proposition-0">
+<div class="proof proposition admonition" id="pro:5">
 <p class="admonition-title"><span class="caption-number">Proposition 1.5 </span></p>
 <div class="proposition-content section" id="proof-content">
-<p>If <span class="math notranslate nohighlight">\(\delta(G) \geq 2\)</span>, then we can find a cycle starting from each vertex of <span class="math notranslate nohighlight">\(G\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(G\)</span> is a simple graph with <span class="math notranslate nohighlight">\(\delta(G) \geq 2\)</span>,
+then there exists a cycle of length
+at least <span class="math notranslate nohighlight">\(\delta(G)+1\)</span>.</p>
 </div>
 </div><div class="proof admonition" id="proof">
-<p>Proof. The conclusion is trivial if <span class="math notranslate nohighlight">\(G\)</span> has a loop. Now, we assume that <span class="math notranslate nohighlight">\(G\)</span> contains no loops.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Note that there are cases where <span class="math notranslate nohighlight">\(G\)</span> has no paths if we allow it to have loops. For example, if every vertex of <span class="math notranslate nohighlight">\(G\)</span> is incident with just exactly one loop, then <span class="math notranslate nohighlight">\(G\)</span> still satisfies the hypothesis. But there are no paths in <span class="math notranslate nohighlight">\(G\)</span>.</p>
-</div>
-<p>Let <span class="math notranslate nohighlight">\(P = v_0 e_1 v_1 \cdots e_{k-1} v_{k-1} e_k v_k\)</span> be one of the longest paths in <span class="math notranslate nohighlight">\(G\)</span>. Since <span class="math notranslate nohighlight">\(\deg(v_k) \geq 2\)</span> and <span class="math notranslate nohighlight">\(v_k\)</span> has no loops, <span class="math notranslate nohighlight">\(v_k\)</span> has a neighbor, say <span class="math notranslate nohighlight">\(u\)</span>, other than <span class="math notranslate nohighlight">\(v_{k-1}\)</span>. As noted before, <span class="math notranslate nohighlight">\(u\)</span> must occur in <span class="math notranslate nohighlight">\(P\)</span>. Therefore, there exists a cycle from <span class="math notranslate nohighlight">\(u\)</span> to <span class="math notranslate nohighlight">\(u\)</span>.</p>
+<p>Proof. Let <span class="math notranslate nohighlight">\(P = u \cdots v\)</span>
+be a longest path in <span class="math notranslate nohighlight">\(G\)</span>.
+As noted before, all the neighbors of
+the terminus <span class="math notranslate nohighlight">\( v \)</span>,
+denoted by <span class="math notranslate nohighlight">\(v_1, \ldots, v_{\delta(G)}\)</span>
+arranged by their original order in <span class="math notranslate nohighlight">\(P\)</span>,
+must occur along the path <span class="math notranslate nohighlight">\(P\)</span>.
+Note that the <span class="math notranslate nohighlight">\((v_1, v)\)</span>-section,
+denoted by <span class="math notranslate nohighlight">\(Q\)</span>,
+is of length <span class="math notranslate nohighlight">\(\delta(G)\)</span>.
+Notice also that <span class="math notranslate nohighlight">\(Q v_1\)</span> is a cycle
+since <span class="math notranslate nohighlight">\(v_1\)</span> is incident with <span class="math notranslate nohighlight">\(v\)</span>.
+And it is of length <span class="math notranslate nohighlight">\(\delta(G) + 1\)</span>.
+This completes the proof.</p>
 </div>
 <p>In fact, we have an algorithm to find a cycle without knowing the longest path in <span class="math notranslate nohighlight">\(G\)</span>.</p>
 <div class="proof algorithm admonition" id="alg:2">

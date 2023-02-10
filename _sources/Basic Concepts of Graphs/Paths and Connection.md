@@ -59,6 +59,7 @@ with edges dropped.
 
 
 ````{prf:proposition}
+:label: pro:1
 
 If there is a $(u, v)$-walk in $G$, then there is also a $(u, v)$-path in $G$.
 

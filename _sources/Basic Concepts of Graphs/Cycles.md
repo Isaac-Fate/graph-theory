@@ -23,22 +23,30 @@ Path $1234567$ is one of the longest paths.
 ```
 
 ````{prf:proposition}
+:label: pro:5
 
-If $\delta(G) \geq 2$, then we can find a cycle starting from each vertex of $G$.
+If $G$ is a simple graph with $\delta(G) \geq 2$,
+then there exists a cycle of length
+at least $\delta(G)+1$.
 
 ````
 
 ````{prf:proof}
 
-The conclusion is trivial if $G$ has a loop. Now, we assume that $G$ contains no loops.
-
-:::{note}
-
-Note that there are cases where $G$ has no paths if we allow it to have loops. For example, if every vertex of $G$ is incident with just exactly one loop, then $G$ still satisfies the hypothesis. But there are no paths in $G$.
-
-:::
-
-Let $P = v_0 e_1 v_1 \cdots e_{k-1} v_{k-1} e_k v_k$ be one of the longest paths in $G$. Since $\deg(v_k) \geq 2$ and $v_k$ has no loops, $v_k$ has a neighbor, say $u$, other than $v_{k-1}$. As noted before, $u$ must occur in $P$. Therefore, there exists a cycle from $u$ to $u$.
+Let $P = u \cdots v$
+be a longest path in $G$.
+As noted before, all the neighbors of
+the terminus $ v $,
+denoted by $v_1, \ldots, v_{\delta(G)}$
+arranged by their original order in $P$,
+must occur along the path $P$.
+Note that the $(v_1, v)$-section,
+denoted by $Q$,
+is of length $\delta(G)$.
+Notice also that $Q v_1$ is a cycle
+since $v_1$ is incident with $v$.
+And it is of length $\delta(G) + 1$.
+This completes the proof.
 
 ````
 

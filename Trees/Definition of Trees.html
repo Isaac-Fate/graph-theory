@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1.2. Vertex Degrees &#8212; Graph Theory</title>
+    <title>2.1. Definition of Trees &#8212; Graph Theory</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,11 +52,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"C": "\\mathbb{C}", "FF": "\\mathbb{F}", "N": "\\mathbb{N}", "Ns": "\\mathbb{N^\\ast}", "Q": "\\mathbb{Q}", "R": "\\mathbb{R}", "Span": ["\\mathop{\\mathrm{span}}"], "Z": "\\mathbb{Z}", "abs": ["\\left\\lvert #1 \\right\\rvert", 1], "argmax": ["\\mathop{\\mathrm{arg \\, max}}"], "argmin": ["\\mathop{\\mathrm{arg \\, min}}"], "bmat": ["\\left[\\begin{array}"], "brk": ["\\left( #1 \\right)", 1], "col": ["\\mathop{\\mathrm{col}}"], "d": ["\\mathrm{d}"], "emat": ["\\end{array}\\right]"], "floor": ["\\lfloor#1\\rfloor", 1], "im": ["\\mathop{\\mathrm{im}}"], "ind": ["\\mathbb{1}"], "ker": ["\\mathop{\\mathrm{ker}}"], "lowint": ["\\underline{\\int}"], "norm": ["\\left\\lVert #1 \\right\\rVert", 1], "odv": ["\\frac{\\mathrm{d} #1s}{\\mathrm{d} #2}", 2], "odvs": ["\\frac{\\mathrm{d}}{\\mathrm{d} #2} #1", 2], "row": ["\\mathop{\\mathrm{row}}"], "set": ["\\left\\{ #1 \\middle| #2 \\right\\}", 2], "upint": ["\\overline{\\int}"], "v": ["\\mathbf{#1}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.3. Paths and Connection" href="Paths%20and%20Connection.html" />
-    <link rel="prev" title="1.1. Isomorphism" href="Isomorphism.html" />
+    <link rel="next" title="References" href="../references.html" />
+    <link rel="prev" title="2. Trees" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -122,55 +124,55 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="index.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Basic%20Concepts%20of%20Graphs/index.html">
    1. Basic Concepts of Graphs
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="Isomorphism.html">
-     1.1. Isomorphism
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     1.2. Vertex Degrees
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Paths%20and%20Connection.html">
-     1.3. Paths and Connection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Cycles.html">
-     1.4. Cycles
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Shortest%20Paths%20and%20Dijkstra%27s%20Algorithm.html">
-     1.5. Shortest Paths and Dijkstra’s Algorithm
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Trees/index.html">
-   2. Trees
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Trees/Definition%20of%20Trees.html">
+    <a class="reference internal" href="../Basic%20Concepts%20of%20Graphs/Isomorphism.html">
+     1.1. Isomorphism
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Basic%20Concepts%20of%20Graphs/Vertex%20Degrees.html">
+     1.2. Vertex Degrees
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Basic%20Concepts%20of%20Graphs/Paths%20and%20Connection.html">
+     1.3. Paths and Connection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Basic%20Concepts%20of%20Graphs/Cycles.html">
+     1.4. Cycles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Basic%20Concepts%20of%20Graphs/Shortest%20Paths%20and%20Dijkstra%27s%20Algorithm.html">
+     1.5. Shortest Paths and Dijkstra’s Algorithm
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   2. Trees
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      2.1. Definition of Trees
     </a>
    </li>
@@ -283,7 +285,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/Isaac-Fate/graph-theory/issues/new?title=Issue%20on%20page%20%2FBasic Concepts of Graphs/Vertex Degrees.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/Isaac-Fate/graph-theory/issues/new?title=Issue%20on%20page%20%2FTrees/Definition of Trees.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -311,7 +313,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/Basic Concepts of Graphs/Vertex Degrees.md"
+        <a href="../_sources/Trees/Definition of Trees.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -360,7 +362,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Vertex Degrees</h1>
+                <h1>Definition of Trees</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -372,8 +374,109 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="vertex-degrees">
-<h1><span class="section-number">1.2. </span>Vertex Degrees<a class="headerlink" href="#vertex-degrees" title="Permalink to this headline">#</a></h1>
+  <span class="target" id="index-0"></span><div class="tex2jax_ignore mathjax_ignore section" id="definition-of-trees">
+<span id="index-1"></span><h1><span class="section-number">2.1. </span>Definition of Trees<a class="headerlink" href="#definition-of-trees" title="Permalink to this headline">#</a></h1>
+<p>We call a graph <strong>acyclic</strong>
+if it contains no cycles.
+A <strong>tree</strong> is a connected acyclic graph.
+A tree is clearly a simple graph for there cannot be any loops (1-cycles)
+or parallel edges (2-cycles).</p>
+<p>If a tree is nontrivial, then the degree of every vertex
+must greater than or equal to 1 since a tree is connected.
+Moreover, there always exists at least one vertex with degree 1.
+If this is not the case, then we end up with a graph with
+<span class="math notranslate nohighlight">\(\delta \geq 2\)</span>.
+But this further implies that there exists a cycle
+in the graph by <a class="reference internal" href="../Basic%20Concepts%20of%20Graphs/Cycles.html#pro:5">Proposition 1.5</a>,
+contradicting the definition of a tree.</p>
+<div class="proof theorem admonition" id="thm:2">
+<p class="admonition-title"><span class="caption-number">Theorem 2.1 </span></p>
+<div class="theorem-content section" id="proof-content">
+<p>In a tree <span class="math notranslate nohighlight">\(T\)</span>, any two distinct vertices are connected by
+a <strong>unique</strong> path.</p>
+</div>
+</div><div class="proof admonition" id="proof">
+<p>Proof. Assume there are two distinct <span class="math notranslate nohighlight">\((u,v)\)</span>-paths,
+<span class="math notranslate nohighlight">\(P_1\)</span> and  <span class="math notranslate nohighlight">\(P_2\)</span>(regraded as path graphs).
+Then there exists at least one distinct edge
+in these two, say <span class="math notranslate nohighlight">\(e=xy\)</span>.
+Without loss of generality,
+we may assume  <span class="math notranslate nohighlight">\(e \in V(P_1)\)</span>.</p>
+<p>Consider the graph <span class="math notranslate nohighlight">\(P_1 \cup P_2 - e\)</span>.
+We claim that it contains a <span class="math notranslate nohighlight">\((x,y)\)</span>-path.
+To see this, we note that there exist a <span class="math notranslate nohighlight">\((x,u)\)</span>-path
+and a <span class="math notranslate nohighlight">\((v,y)\)</span>-path in  <span class="math notranslate nohighlight">\(P_1\)</span>,
+and also a  <span class="math notranslate nohighlight">\((u,v)\)</span>-path in <span class="math notranslate nohighlight">\(P_2\)</span>.
+By concatenating all these three paths,
+we will obtain a <span class="math notranslate nohighlight">\((x,y)\)</span>-walk (not necessarily a path).
+But by <a class="reference internal" href="../Basic%20Concepts%20of%20Graphs/Paths%20and%20Connection.html#pro:1">Proposition 1.3</a>,
+we can always extract a <span class="math notranslate nohighlight">\((x,y)\)</span>-path from it, say <span class="math notranslate nohighlight">\(P_3\)</span>.</p>
+<p>Now, we have two distinct paths from <span class="math notranslate nohighlight">\(x\)</span> to <span class="math notranslate nohighlight">\(y\)</span> in <span class="math notranslate nohighlight">\(T\)</span>.
+One is <span class="math notranslate nohighlight">\(xy\)</span> and the other is  <span class="math notranslate nohighlight">\(P_3\)</span>,
+which contradicts the hypothesis.</p>
+</div>
+<p>The graph in <a class="reference internal" href="#fig-4"><span class="std std-numref">Fig. 2.1</span></a> is certainly not a tree.
+But any two distinct vertices are indeed connected by
+a unique path.
+Therefore, for the converse of <a class="reference internal" href="#thm:2">Theorem 2.1</a> to hold,
+we need to exclude the cases where graphs contain loops.</p>
+<div class="figure align-default" id="fig-4">
+<img alt="../_images/g-004.png" src="../_images/g-004.png" />
+<p class="caption"><span class="caption-number">Fig. 2.1 </span><span class="caption-text">It will become a tree if the loops are removed.</span><a class="headerlink" href="#fig-4" title="Permalink to this image">#</a></p>
+</div>
+<div class="proof theorem admonition" id="thm:3">
+<p class="admonition-title"><span class="caption-number">Theorem 2.2 </span></p>
+<div class="theorem-content section" id="proof-content">
+<p>If graph <span class="math notranslate nohighlight">\(T\)</span> is loopless and
+there exists one and only one path
+connecting each pair of distinct vertices,
+then <span class="math notranslate nohighlight">\(T\)</span> is a tree.</p>
+</div>
+</div><div class="proof admonition" id="proof">
+<p>Proof. First, note that <span class="math notranslate nohighlight">\(T\)</span> is connected.
+Assume, on the contrary,
+there exists a cycle <span class="math notranslate nohighlight">\(C\)</span> in  <span class="math notranslate nohighlight">\(G\)</span>.
+Let  <span class="math notranslate nohighlight">\(e\)</span> be an edge in  <span class="math notranslate nohighlight">\(C\)</span>.
+Since  <span class="math notranslate nohighlight">\(T\)</span> is assumed loopless,
+the two ends of  <span class="math notranslate nohighlight">\(e\)</span> must be distinct, say  <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>Note that there exists a <span class="math notranslate nohighlight">\((x,y)\)</span>-path in  <span class="math notranslate nohighlight">\(C - e\)</span>,
+which is different from the path <span class="math notranslate nohighlight">\(xy\)</span>.
+(In fact, this path is <span class="math notranslate nohighlight">\(C-e\)</span> itself.)
+This leads to a contradiction.</p>
+</div>
+<div class="proof theorem admonition" id="thm:4">
+<p class="admonition-title"><span class="caption-number">Theorem 2.3 </span></p>
+<div class="theorem-content section" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(T\)</span> be a tree. Then we have</p>
+<div class="math notranslate nohighlight" id="equation-eq-10">
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-eq-10" title="Permalink to this equation">#</a></span>\[\begin{align}\abs{E} = \abs{V} - 1
+\end{align}\]</div>
+</div>
+</div><div class="proof admonition" id="proof">
+<p>Proof. We shall prove by induction on the order <span class="math notranslate nohighlight">\(\abs{V}\)</span>.</p>
+<p><strong>Base Case:</strong> If <span class="math notranslate nohighlight">\(\abs{V} = 1\)</span>,
+then <span class="math notranslate nohighlight">\(T\)</span> is a trivial graph without any edges,
+and hence <a class="reference internal" href="#equation-eq-10">(2.1)</a> holds.</p>
+<p><strong>Inductive Step:</strong> Assume this theorem
+holds for any trees with order <span class="math notranslate nohighlight">\(k\)</span>.
+Suppose now <span class="math notranslate nohighlight">\(\abs{V(T)} = k+1\)</span>.
+Pick a vertex <span class="math notranslate nohighlight">\(v\)</span> with <span class="math notranslate nohighlight">\(\deg(v) = 1\)</span>, and then remove it from <span class="math notranslate nohighlight">\(T\)</span>.
+This is always possible as we have noted.
+Observe that  <span class="math notranslate nohighlight">\(T - v\)</span> remains a tree.
+And by removing <span class="math notranslate nohighlight">\(v\)</span>,
+we only remove a single edge from  <span class="math notranslate nohighlight">\(T\)</span> since  <span class="math notranslate nohighlight">\(\deg(v) = 1\)</span>.
+Therefore, <span class="math notranslate nohighlight">\(\abs{E(T-v)} = \abs{E(T)} - 1\)</span>.
+But by the induction hypothesis,
+we know <span class="math notranslate nohighlight">\(\abs{E(T-v)} = \abs{V(T-v)} - 1 = k - 1\)</span>.
+It then follows that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}\abs{E(T)} = \abs{E(T-v)} + 1
+= k-1+1
+= (k+1)-1
+= \abs{V(T)} - 1
+\end{align*}\]</div>
+<p>This completes the proof.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -389,7 +492,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./Basic Concepts of Graphs"
+            path: "./Trees"
         },
         predefinedOutput: true
     }
@@ -403,17 +506,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Isomorphism.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1.1. </span>Isomorphism</p>
+            <p class="prev-next-title"><span class="section-number">2. </span>Trees</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Paths%20and%20Connection.html" title="next page">
+    <a class='right-next' id="next-link" href="../references.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.3. </span>Paths and Connection</p>
+        <p class="prev-next-title">References</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
