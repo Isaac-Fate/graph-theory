@@ -43,8 +43,12 @@ must occur along the path $P$.
 Note that the $(v_1, v)$-section,
 denoted by $Q$,
 is of length $\delta(G)$.
-Notice also that $Q v_1$ is a cycle
-since $v_1$ is incident with $v$.
+Because $\deg(v) \geq 2$,
+$v$ has at least two neighbors.
+In other words,
+the section $Q$ is different from the edge
+connecting $v$ and $v_1$.
+Hence, $Q v_1$ forms a cycle.
 And it is of length $\delta(G) + 1$.
 This completes the proof.
 
