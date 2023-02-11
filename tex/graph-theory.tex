@@ -150,7 +150,7 @@ with edges dropped.
 
 %------------------------------
 
-\begin{proposition} \label{pro:1}
+\begin{proposition} \label{pro:7}
     If there is a $(u, v)$-walk in $G$, then there is also a $(u, v)$-path in $G$.
 \end{proposition}
 
@@ -183,6 +183,102 @@ This can be proved easily using the following algorithm (Algorithm~\ref{alg:1}).
 
 %------------------------------
 
+Imagine removing one edge from the original graph $G$.
+Then we can obtain at most one more component 
+by cutting in half one of $G$'s components.
+See Figure~\ref{fig:5}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.5]{figures/g-005.png}
+    \caption{
+		The graph $G$ has 2 components.
+		If we remove edge $56$, 
+		then $G-56$ still has 2 components.
+		But if we remove edge $24$, then 
+		the remaining graph $G-24$ has 3 components.
+	}
+    \label{fig:5}
+\end{figure}
+
+\begin{proposition}\label{pro:6}
+    If $e \in E$, then we have 
+	\begin{align}
+		\omega(G) \leq \omega(G-e)
+		\leq \omega(G) + 1 
+		\label{eq:11}
+	\end{align}
+\end{proposition}
+
+Inequalities \eqref{eq:11} describe this idea in a compact way.
+The first inequality $\omega(G) \leq \omega(G-e)$
+says the number of components may increase by cutting an edge.
+While the second inequality says this number will be increased 
+by at most one.
+
+\begin{proof}
+	If $e$ is a loop, then the conclusion is trivial. 
+	We assume $e = uv$ is not a loop, i.e., 
+	$u$ and  $v$ are distinct,
+	in the rest of the proof. 
+	Suppose that the components of $G$
+	are  $G[V_1], \ldots, G[V_\omega]$.
+	Without loss of generality, 
+	we may also assume that $u, v \in V_1$.
+
+	(Case 1) Suppose that there exists a $(u,v)$-path in $G-e$,
+	then $u$ is still connected to $v$ in $G-e$,
+	i.e., $u \sim v$ in $G-e$.
+	Pick an arbitrary vertex $x \in V_1$.
+	Suppose that $x$ is originally connected to $u$ 
+	by a path $P$ containing $e$,
+	then $P$ is of the form 
+	\begin{align*}
+	    P = x \cdots v e u
+	\end{align*}
+	Hence, $x$ must be connected to $v$ in $G-e$,
+	i.e., $x \sim v$, 
+	since the $(x,v)$-section 
+	in $P$ does not involve  $e$.
+	But $x \sim v$. 
+	By the transitivity, we have $x \sim u$. 
+	Therefore, 
+	\begin{align*}
+		x \sim u 
+		\quad \forall x \in V_1
+	\end{align*}
+	This means $V_1$ remains a equivalent class in  $G-e$.
+	In this case,  $\omega(G-e) = \omega(G)$.
+
+	(Case 2) We now consider the case where 
+	$u$ is disconnected from  $v$ in $G-e$.
+	For any vertex $x \in V_1$,
+	if $x$ is disconnected from $u$ in  $G-e$, 
+	then $x$ must be originally connected to $u$ in $G$ 
+	by a path containing edge $e$.
+	Applying a similar argument as before,
+	we conclude that $x \sim v$ in $G-e$.
+	Therefore, for every  $x \in V_1$, 
+	in graph $G-e$, we have either 
+	\begin{enumerate}
+		\item $x \sim u$, or 
+		\item $x \sim v$
+	\end{enumerate}
+	But $x$ cannot be connected to both  $u$ and  $v$
+	since  $u$ and  $v$ are 
+	assumed disconnected from each other.
+	It then follows that  $V_1$ can be partitioned into
+	two equivalent classed, $[u]$ and  $[v]$, that is, 
+	\begin{align*}
+		V_1 = [u] \uplus [v]
+	\end{align*}
+	Therefore, $G-e$ has one more component than that of $G$, 
+	and hence  $\omega(G-e) = \omega(G) + 1$.
+\end{proof}
+
+
+%------------------------------
+
 \section{Cycles}
 
 %------------------------------
@@ -202,7 +298,7 @@ then path $12345678$ would be longer.
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[scale=0.7]{figures/g-001.png}
+    \includegraphics[scale=0.5]{figures/g-001.png}
     \caption{Path $1234567$ is one of the longest paths.}
     \label{fig:1}
 \end{figure}
@@ -226,8 +322,12 @@ then path $12345678$ would be longer.
 	Note that the $(v_1, v)$-section,
 	denoted by $Q$,
 	is of length $\delta(G)$.
-	Notice also that $Q v_1$ is a cycle 
-	since $v_1$ is incident with $v$.
+	Because $\deg(v) \geq 2$, 
+	$v$ has at least two neighbors. 
+	In other words,
+	the section $Q$ is different from the edge 
+	connecting $v$ and $v_1$.
+	Hence, $Q v_1$ forms a cycle.
 	And it is of length $\delta(G) + 1$.
 	This completes the proof.
 \end{proof}
@@ -593,14 +693,34 @@ A \textbf{tree}\index{tree} is a connected acyclic graph.
 A tree is clearly a simple graph for there cannot be any loops (1-cycles)
 or parallel edges (2-cycles).
 
-If a tree is nontrivial, then the degree of every vertex
+If a tree $T$ is nontrivial, then the degree of every vertex
 must greater than or equal to 1 since a tree is connected.
-Moreover, there always exists at least one vertex with degree 1.
+Moreover, there always exists at least one vertex with degree 1,
+that is,
+\begin{align*}
+    \delta(T) = 1
+\end{align*}
 If this is not the case, then we end up with a graph with 
 $\delta \geq 2$. 
 But this further implies that there exists a cycle
 in the graph by Proposition~\ref{pro:5}, 
 contradicting the definition of a tree.
+
+If the reader has a background of computer science,
+then the tree data structure one might be familiar with
+is actually what we call a \textbf{rooted tree}\index{rooted tree}
+with one vertex called the \textbf{root}\index{root of a tree} 
+with special treatment.
+However, the tree we defined here is an unrooted tree, 
+or \textbf{free tree}\index{free tree},
+since we often do not specify the root vertex.
+
+A tree \textbf{leaf}\index{leaf} is a vertex if degree 1. 
+Note that it is possible that the degree of the tree root is 1
+if it is specified.
+But we often do not call it a leaf.
+Hence, in a rooted tree, a leaf is a non-root vertex of degree 1.
+Clearly, a nontrivial tree always has a leaf.
 
 %------------------------------
 
@@ -626,7 +746,7 @@ contradicting the definition of a tree.
 	and also a  $(u,v)$-path in $P_2$.
 	By concatenating all these three paths, 
 	we will obtain a $(x,y)$-walk (not necessarily a path).
-	But by Proposition~\ref{pro:1}, 
+	But by Proposition~\ref{pro:7}, 
 	we can always extract a $(x,y)$-path from it, say $P_3$.
 
 	Now, we have two distinct paths from $x$ to $y$ in $T$. 
@@ -690,7 +810,7 @@ we need to exclude the cases where graphs contain loops.
 	\noindent\textbf{Inductive Step:} Assume this theorem 
 	holds for any trees with order $k$.
 	Suppose now $\abs{V(T)} = k+1$.
-	Pick a vertex $v$ with $\deg(v) = 1$, and then remove it from $T$.
+	Pick a leaf $v$, and then remove it from $T$.
 	This is always possible as we have noted.
 	Observe that  $T - v$ remains a tree.
 	And by removing $v$, 
