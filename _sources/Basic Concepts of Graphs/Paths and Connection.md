@@ -59,7 +59,7 @@ with edges dropped.
 
 
 ````{prf:proposition}
-:label: pro:1
+:label: pro:7
 
 If there is a $(u, v)$-walk in $G$, then there is also a $(u, v)$-path in $G$.
 
@@ -85,5 +85,119 @@ The number $(v_i, v_j)$-walks of length $k$ in $G$ is the $(i,j)$-th entry of th
 ````{prf:proof}
 
 TODO
+
+````
+
+Imagine removing one edge from the original graph $G$.
+Then we can obtain at most one more component
+by cutting in half one of $G$'s components.
+See {numref}`fig:5`.
+
+
+```{figure} /figures/g-005.png
+---
+name: fig:5
+---
+
+The graph $G$ has 2 components.
+If we remove edge $56$,
+then $G-56$ still has 2 components.
+But if we remove edge $24$, then
+the remaining graph $G-24$ has 3 components.
+
+
+```
+
+````{prf:proposition}
+:label: pro:6
+
+If $e \in E$, then we have
+
+```{math}
+:label: eq:11
+\begin{align}\omega(G) \leq\omega(G-e)
+\leq\omega(G) + 1
+\end{align}
+```
+
+````
+
+Inequalities {eq}`eq:11` describe this idea in a compact way.
+The first inequality $\omega(G) \leq \omega(G-e)$
+says the number of components may increase by cutting an edge.
+While the second inequality says this number will be increased
+by at most one.
+
+
+````{prf:proof}
+
+If $e$ is a loop, then the conclusion is trivial.
+We assume $e = uv$ is not a loop, i.e.,
+$u$ and  $v$ are distinct,
+in the rest of the proof.
+Suppose that the components of $G$
+are  $G[V_1], \ldots, G[V_\omega]$.
+Without loss of generality,
+we may also assume that $u, v \in V_1$.
+
+(Case 1) Suppose that there exists a $(u,v)$-path in $G-e$,
+then $u$ is still connected to $v$ in $G-e$,
+i.e., $u \sim v$ in $G-e$.
+Pick an arbitrary vertex $x \in V_1$.
+Suppose that $x$ is originally connected to $u$
+by a path $P$ containing $e$,
+then $P$ is of the form
+
+```{math}
+\begin{align*}
+P = x \cdots v e u
+\end{align*}
+```
+
+Hence, $x$ must be connected to $v$ in $G-e$,
+i.e., $x \sim v$,
+since the $(x,v)$-section
+in $P$ does not involve  $e$.
+But $x \sim v$.
+By the transitivity, we have $x \sim u$.
+Therefore,
+
+```{math}
+\begin{align*}
+x \sim u
+\quad\forall x \in V_1
+\end{align*}
+```
+
+This means $V_1$ remains a equivalent class in  $G-e$.
+In this case,  $\omega(G-e) = \omega(G)$.
+
+(Case 2) We now consider the case where
+$u$ is disconnected from  $v$ in $G-e$.
+For any vertex $x \in V_1$,
+if $x$ is disconnected from $u$ in  $G-e$,
+then $x$ must be originally connected to $u$ in $G$
+by a path containing edge $e$.
+Applying a similar argument as before,
+we conclude that $x \sim v$ in $G-e$.
+Therefore, for every  $x \in V_1$,
+in graph $G-e$, we have either
+- ➀ $x \sim u$, or
+- ➁ $x \sim v$
+
+
+But $x$ cannot be connected to both  $u$ and  $v$
+since  $u$ and  $v$ are
+assumed disconnected from each other.
+It then follows that  $V_1$ can be partitioned into
+two equivalent classed, $[u]$ and  $[v]$, that is,
+
+```{math}
+\begin{align*}
+V_1 = [u]\uplus[v]\end{align*}
+```
+
+Therefore, $G-e$ has one more component than that of $G$,
+and hence  $\omega(G-e) = \omega(G) + 1$.
 
 ````

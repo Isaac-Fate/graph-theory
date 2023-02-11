@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>1.3. Paths and Connection &#8212; Graph Theory</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -374,7 +375,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="paths-and-connection">
+  <section class="tex2jax_ignore mathjax_ignore" id="paths-and-connection">
 <span id="index-0"></span><h1><span class="section-number">1.3. </span>Paths and Connection<a class="headerlink" href="#paths-and-connection" title="Permalink to this headline">#</a></h1>
 <p>A <strong>walk</strong> in a graph is a sequence of edges <span class="math notranslate nohighlight">\(e_1 \cdots e_k\)</span> joining a <em>nonempty</em> sequence of vertices <span class="math notranslate nohighlight">\(v_0 v_1 \cdots v_k\)</span>, which is denoted by</p>
 <div class="math notranslate nohighlight" id="equation-eq-3">
@@ -396,26 +397,113 @@ v_0 e_1 v_1 \cdots e_k v_k
 v_0 v_1 \cdots v_k
 \end{align*}\]</div>
 <p>with edges dropped.</p>
-<div class="proof proposition admonition" id="pro:1">
+<div class="proof proposition admonition" id="pro:7">
 <p class="admonition-title"><span class="caption-number">Proposition 1.3 </span></p>
-<div class="proposition-content section" id="proof-content">
+<section class="proposition-content" id="proof-content">
 <p>If there is a <span class="math notranslate nohighlight">\((u, v)\)</span>-walk in <span class="math notranslate nohighlight">\(G\)</span>, then there is also a <span class="math notranslate nohighlight">\((u, v)\)</span>-path in <span class="math notranslate nohighlight">\(G\)</span>.</p>
-</div>
+</section>
 </div><p>This can be proved easily using the following algorithm (<a class="reference internal" href="#alg:1">Algorithm 1.1</a>).</p>
 <div class="proof algorithm admonition" id="alg:1">
 <p class="admonition-title"><span class="caption-number">Algorithm 1.1 </span> (Extracting a Path From a Walk)</p>
-<div class="algorithm-content section" id="proof-content">
+<section class="algorithm-content" id="proof-content">
 <img alt="Extracting a Path From a Walk" class="align-center" src="../_images/4b83e256ea5d3d488c963b85de9f4ade16fd805175f2c46a009cc7e32000318d.png" />
-</div>
+</section>
 </div><div class="proof proposition admonition" id="proposition-2">
 <p class="admonition-title"><span class="caption-number">Proposition 1.4 </span></p>
-<div class="proposition-content section" id="proof-content">
+<section class="proposition-content" id="proof-content">
 <p>The number <span class="math notranslate nohighlight">\((v_i, v_j)\)</span>-walks of length <span class="math notranslate nohighlight">\(k\)</span> in <span class="math notranslate nohighlight">\(G\)</span> is the <span class="math notranslate nohighlight">\((i,j)\)</span>-th entry of the <span class="math notranslate nohighlight">\(k\)</span>-th power of the adjacency matrix <span class="math notranslate nohighlight">\(A\)</span>, i.e., <span class="math notranslate nohighlight">\(A^k\)</span>.</p>
-</div>
+</section>
 </div><div class="proof admonition" id="proof">
 <p>Proof. TODO</p>
 </div>
+<p>Imagine removing one edge from the original graph <span class="math notranslate nohighlight">\(G\)</span>.
+Then we can obtain at most one more component
+by cutting in half one of <span class="math notranslate nohighlight">\(G\)</span>’s components.
+See <a class="reference internal" href="#fig-5"><span class="std std-numref">Fig. 1.2</span></a>.</p>
+<figure class="align-default" id="fig-5">
+<img alt="../_images/g-005.png" src="../_images/g-005.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.2 </span><span class="caption-text">The graph <span class="math notranslate nohighlight">\(G\)</span> has 2 components.
+If we remove edge <span class="math notranslate nohighlight">\(56\)</span>,
+then <span class="math notranslate nohighlight">\(G-56\)</span> still has 2 components.
+But if we remove edge <span class="math notranslate nohighlight">\(24\)</span>, then
+the remaining graph <span class="math notranslate nohighlight">\(G-24\)</span> has 3 components.</span><a class="headerlink" href="#fig-5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="proof proposition admonition" id="pro:6">
+<p class="admonition-title"><span class="caption-number">Proposition 1.5 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\(e \in E\)</span>, then we have</p>
+<div class="math notranslate nohighlight" id="equation-eq-11">
+<span class="eqno">(1.4)<a class="headerlink" href="#equation-eq-11" title="Permalink to this equation">#</a></span>\[\begin{align}\omega(G) \leq\omega(G-e)
+\leq\omega(G) + 1
+\end{align}\]</div>
+</section>
+</div><p>Inequalities <a class="reference internal" href="#equation-eq-11">(1.4)</a> describe this idea in a compact way.
+The first inequality <span class="math notranslate nohighlight">\(\omega(G) \leq \omega(G-e)\)</span>
+says the number of components may increase by cutting an edge.
+While the second inequality says this number will be increased
+by at most one.</p>
+<div class="proof admonition" id="proof">
+<p>Proof. If <span class="math notranslate nohighlight">\(e\)</span> is a loop, then the conclusion is trivial.
+We assume <span class="math notranslate nohighlight">\(e = uv\)</span> is not a loop, i.e.,
+<span class="math notranslate nohighlight">\(u\)</span> and  <span class="math notranslate nohighlight">\(v\)</span> are distinct,
+in the rest of the proof.
+Suppose that the components of <span class="math notranslate nohighlight">\(G\)</span>
+are  <span class="math notranslate nohighlight">\(G[V_1], \ldots, G[V_\omega]\)</span>.
+Without loss of generality,
+we may also assume that <span class="math notranslate nohighlight">\(u, v \in V_1\)</span>.</p>
+<p>(Case 1) Suppose that there exists a <span class="math notranslate nohighlight">\((u,v)\)</span>-path in <span class="math notranslate nohighlight">\(G-e\)</span>,
+then <span class="math notranslate nohighlight">\(u\)</span> is still connected to <span class="math notranslate nohighlight">\(v\)</span> in <span class="math notranslate nohighlight">\(G-e\)</span>,
+i.e., <span class="math notranslate nohighlight">\(u \sim v\)</span> in <span class="math notranslate nohighlight">\(G-e\)</span>.
+Pick an arbitrary vertex <span class="math notranslate nohighlight">\(x \in V_1\)</span>.
+Suppose that <span class="math notranslate nohighlight">\(x\)</span> is originally connected to <span class="math notranslate nohighlight">\(u\)</span>
+by a path <span class="math notranslate nohighlight">\(P\)</span> containing <span class="math notranslate nohighlight">\(e\)</span>,
+then <span class="math notranslate nohighlight">\(P\)</span> is of the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+P = x \cdots v e u
+\end{align*}\]</div>
+<p>Hence, <span class="math notranslate nohighlight">\(x\)</span> must be connected to <span class="math notranslate nohighlight">\(v\)</span> in <span class="math notranslate nohighlight">\(G-e\)</span>,
+i.e., <span class="math notranslate nohighlight">\(x \sim v\)</span>,
+since the <span class="math notranslate nohighlight">\((x,v)\)</span>-section
+in <span class="math notranslate nohighlight">\(P\)</span> does not involve  <span class="math notranslate nohighlight">\(e\)</span>.
+But <span class="math notranslate nohighlight">\(x \sim v\)</span>.
+By the transitivity, we have <span class="math notranslate nohighlight">\(x \sim u\)</span>.
+Therefore,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+x \sim u
+\quad\forall x \in V_1
+\end{align*}\]</div>
+<p>This means <span class="math notranslate nohighlight">\(V_1\)</span> remains a equivalent class in  <span class="math notranslate nohighlight">\(G-e\)</span>.
+In this case,  <span class="math notranslate nohighlight">\(\omega(G-e) = \omega(G)\)</span>.</p>
+<p>(Case 2) We now consider the case where
+<span class="math notranslate nohighlight">\(u\)</span> is disconnected from  <span class="math notranslate nohighlight">\(v\)</span> in <span class="math notranslate nohighlight">\(G-e\)</span>.
+For any vertex <span class="math notranslate nohighlight">\(x \in V_1\)</span>,
+if <span class="math notranslate nohighlight">\(x\)</span> is disconnected from <span class="math notranslate nohighlight">\(u\)</span> in  <span class="math notranslate nohighlight">\(G-e\)</span>,
+then <span class="math notranslate nohighlight">\(x\)</span> must be originally connected to <span class="math notranslate nohighlight">\(u\)</span> in <span class="math notranslate nohighlight">\(G\)</span>
+by a path containing edge <span class="math notranslate nohighlight">\(e\)</span>.
+Applying a similar argument as before,
+we conclude that <span class="math notranslate nohighlight">\(x \sim v\)</span> in <span class="math notranslate nohighlight">\(G-e\)</span>.
+Therefore, for every  <span class="math notranslate nohighlight">\(x \in V_1\)</span>,
+in graph <span class="math notranslate nohighlight">\(G-e\)</span>, we have either</p>
+<ul class="simple">
+<li><p>➀ <span class="math notranslate nohighlight">\(x \sim u\)</span>, or</p></li>
+<li><p>➁ <span class="math notranslate nohighlight">\(x \sim v\)</span></p></li>
+</ul>
+<p>But <span class="math notranslate nohighlight">\(x\)</span> cannot be connected to both  <span class="math notranslate nohighlight">\(u\)</span> and  <span class="math notranslate nohighlight">\(v\)</span>
+since  <span class="math notranslate nohighlight">\(u\)</span> and  <span class="math notranslate nohighlight">\(v\)</span> are
+assumed disconnected from each other.
+It then follows that  <span class="math notranslate nohighlight">\(V_1\)</span> can be partitioned into
+two equivalent classed, <span class="math notranslate nohighlight">\([u]\)</span> and  <span class="math notranslate nohighlight">\([v]\)</span>, that is,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+V_1 = [u]\uplus[v]\end{align*}\]</div>
+<p>Therefore, <span class="math notranslate nohighlight">\(G-e\)</span> has one more component than that of <span class="math notranslate nohighlight">\(G\)</span>,
+and hence  <span class="math notranslate nohighlight">\(\omega(G-e) = \omega(G) + 1\)</span>.</p>
 </div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -429,7 +517,7 @@ v_0 v_1 \cdots v_k
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./Basic Concepts of Graphs"
         },
         predefinedOutput: true

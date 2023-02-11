@@ -12,14 +12,49 @@ A **tree** is a connected acyclic graph.
 A tree is clearly a simple graph for there cannot be any loops (1-cycles)
 or parallel edges (2-cycles).
 
-If a tree is nontrivial, then the degree of every vertex
+If a tree $T$ is nontrivial, then the degree of every vertex
 must greater than or equal to 1 since a tree is connected.
-Moreover, there always exists at least one vertex with degree 1.
+Moreover, there always exists at least one vertex with degree 1,
+that is,
+
+```{math}
+\begin{align*}\delta(T) = 1
+\end{align*}
+```
+
 If this is not the case, then we end up with a graph with
+
+```{index} rooted tree
+```
+
+```{index} root of a tree
+```
+
+```{index} free tree
+```
+
+```{index} leaf
+```
 $\delta \geq 2$.
 But this further implies that there exists a cycle
 in the graph by {prf:ref}`pro:5`,
 contradicting the definition of a tree.
+
+If the reader has a background of computer science,
+then the tree data structure one might be familiar with
+is actually what we call a **rooted tree**
+with one vertex called the **root**
+with special treatment.
+However, the tree we defined here is an unrooted tree,
+or **free tree**,
+since we often do not specify the root vertex.
+
+A tree **leaf** is a vertex if degree 1.
+Note that it is possible that the degree of the tree root is 1
+if it is specified.
+But we often do not call it a leaf.
+Hence, in a rooted tree, a leaf is a non-root vertex of degree 1.
+Clearly, a nontrivial tree always has a leaf.
 
 
 
@@ -49,7 +84,7 @@ and a $(v,y)$-path in  $P_1$,
 and also a  $(u,v)$-path in $P_2$.
 By concatenating all these three paths,
 we will obtain a $(x,y)$-walk (not necessarily a path).
-But by {prf:ref}`pro:1`,
+But by {prf:ref}`pro:7`,
 we can always extract a $(x,y)$-path from it, say $P_3$.
 
 Now, we have two distinct paths from $x$ to $y$ in $T$.
@@ -123,7 +158,7 @@ and hence {eq}`eq:10` holds.
 **Inductive Step:** Assume this theorem
 holds for any trees with order $k$.
 Suppose now $\abs{V(T)} = k+1$.
-Pick a vertex $v$ with $\deg(v) = 1$, and then remove it from $T$.
+Pick a leaf $v$, and then remove it from $T$.
 This is always possible as we have noted.
 Observe that  $T - v$ remains a tree.
 And by removing $v$,

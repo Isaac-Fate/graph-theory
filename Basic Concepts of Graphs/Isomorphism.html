@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>1.1. Isomorphism &#8212; Graph Theory</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -374,19 +375,19 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="isomorphism">
+  <section class="tex2jax_ignore mathjax_ignore" id="isomorphism">
 <h1><span class="section-number">1.1. </span>Isomorphism<a class="headerlink" href="#isomorphism" title="Permalink to this headline">#</a></h1>
 <p>Two graphs <span class="math notranslate nohighlight">\(G\)</span> and <span class="math notranslate nohighlight">\(H\)</span> are identical, written as <span class="math notranslate nohighlight">\(G = H\)</span>, if all their components are the same, that is, <span class="math notranslate nohighlight">\(V(G) = V(H)\)</span>, <span class="math notranslate nohighlight">\(E(G) = E(H)\)</span> and <span class="math notranslate nohighlight">\(\psi_G = \psi_H\)</span>. Identical graphs of course share the same properties. However, a graph <span class="math notranslate nohighlight">\(H\)</span> does not necessarily have to be exactly <span class="math notranslate nohighlight">\(G\)</span> to preserve all its properties. The labels of the vertices and edges are immaterial.</p>
 <div class="proof definition admonition" id="definition-0">
 <p class="admonition-title"><span class="caption-number">Definition 1.1 </span></p>
-<div class="definition-content section" id="proof-content">
+<section class="definition-content" id="proof-content">
 <p>Two graphs <span class="math notranslate nohighlight">\(G\)</span> and <span class="math notranslate nohighlight">\(H\)</span> are said to be isomorphic, written as <span class="math notranslate nohighlight">\(G \cong H\)</span>, if there exist bijections <span class="math notranslate nohighlight">\(\theta: V(G) \to V(H)\)</span> and <span class="math notranslate nohighlight">\(\phi: E(G) \to E(H)\)</span> such that</p>
 <div class="math notranslate nohighlight" id="equation-eq-1">
 <span class="eqno">(1.1)<a class="headerlink" href="#equation-eq-1" title="Permalink to this equation">#</a></span>\[\begin{align}\psi_G(e) = u v
 \implies\psi_H(\phi(e)) = \theta(u) \theta(v)
 \end{align}\]</div>
 <p id="index-0">The ordered pair <span class="math notranslate nohighlight">\((\theta, \phi)\)</span> is called an <strong>isomorphism</strong> between <span class="math notranslate nohighlight">\(G\)</span> and <span class="math notranslate nohighlight">\(H\)</span>.</p>
-</div>
+</section>
 </div><p><span id="id1">[<a class="reference internal" href="../references.html#id3" title="J. A. Bondy and U. S. R. Murty. Graph Theory with Applications. North Holland, New York, 1976. ISBN 978-0-444-19451-0.">Bondy and Murty, 1976</a>]</span> includes the reverse direction of <a class="reference internal" href="#equation-eq-1">(1.1)</a> in the definition, that is,</p>
 <div class="math notranslate nohighlight">
 \[\begin{align*}\psi_G(e) = u v
@@ -396,14 +397,14 @@ title="Print to PDF"
 <p>For simple graphs, there is no need to find a bijection between edges once the bijection <span class="math notranslate nohighlight">\(\theta\)</span> between vertices is established.</p>
 <div class="proof proposition admonition" id="pro:1">
 <p class="admonition-title"><span class="caption-number">Proposition 1.1 </span></p>
-<div class="proposition-content section" id="proof-content">
+<section class="proposition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(G\)</span> and <span class="math notranslate nohighlight">\(H\)</span> be simple graphs. Then <span class="math notranslate nohighlight">\(G \cong H\)</span> if and only if there exists a bijection <span class="math notranslate nohighlight">\(\theta: V(G) \to V(H)\)</span> such that</p>
 <div class="math notranslate nohighlight" id="equation-eq-2">
 <span class="eqno">(1.2)<a class="headerlink" href="#equation-eq-2" title="Permalink to this equation">#</a></span>\[\begin{align}
 u v \in E(G)
 \implies\theta(u) \theta(v) \in E(H)
 \end{align}\]</div>
-</div>
+</section>
 </div><div class="proof admonition" id="proof">
 <p>Proof. (Necessity) Suppose that there exist <span class="math notranslate nohighlight">\(\theta\)</span> and <span class="math notranslate nohighlight">\(\phi\)</span> satisfying <a class="reference internal" href="#equation-eq-1">(1.1)</a>. If <span class="math notranslate nohighlight">\(e = u v \in E(G)\)</span>, then by <a class="reference internal" href="#equation-eq-1">(1.1)</a>, <span class="math notranslate nohighlight">\(\psi_H(\phi(e)) = \theta(u) \theta(v)\)</span>, which implies <span class="math notranslate nohighlight">\(\theta(u) \theta(v) \in E(H)\)</span>.</p>
 <p>(Sufficiency) Define <span class="math notranslate nohighlight">\(\phi: E(G) \to E(H)\)</span> by</p>
@@ -414,19 +415,21 @@ u v \in E(G)
 <p>If <span class="math notranslate nohighlight">\(\psi(e) = uv\)</span>, i.e., <span class="math notranslate nohighlight">\(e = uv \in E(G)\)</span>, then we have <span class="math notranslate nohighlight">\(\theta(u) \theta(v) \in E(H)\)</span> by <a class="reference internal" href="#equation-eq-2">(1.2)</a>. Equivalently, <span class="math notranslate nohighlight">\(\psi_H(\phi(e)) = \theta(u) \theta(v)\)</span>.</p>
 </div>
 <p id="index-1">A <strong>complete bipartite graph</strong> is a <em>simple</em> bipartite graph with bipartition <span class="math notranslate nohighlight">\((X, Y)\)</span> in which each vertex in <span class="math notranslate nohighlight">\(X\)</span> is incident with each vertex in <span class="math notranslate nohighlight">\(Y\)</span>. That is, if <span class="math notranslate nohighlight">\(x \in X\)</span> and <span class="math notranslate nohighlight">\(y \in Y\)</span>, then <span class="math notranslate nohighlight">\(xy \in E\)</span>. If <span class="math notranslate nohighlight">\(\abs{X} = m\)</span> and <span class="math notranslate nohighlight">\(\abs{Y} = n\)</span>, we often use the symbol <span class="math notranslate nohighlight">\(K_{m,n}\)</span> to denote this complete bipartite graph. (See <a class="reference internal" href="#fig-2"><span class="std std-numref">Fig. 1.1</span></a>.) Note that this implicitly implies that the complete bipartite graph is unique in some way since we can represent it with a common symbol. Indeed, it is unique up to isomorphism, as we will show in the next proposition.</p>
-<div class="figure align-default" id="fig-2">
+<figure class="align-default" id="fig-2">
 <img alt="../_images/g-002.png" src="../_images/g-002.png" />
-<p class="caption"><span class="caption-number">Fig. 1.1 </span><span class="caption-text">Both (a) and (b) are <span class="math notranslate nohighlight">\(K_{5,3}\)</span>.</span><a class="headerlink" href="#fig-2" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 1.1 </span><span class="caption-text">Both (a) and (b) are <span class="math notranslate nohighlight">\(K_{5,3}\)</span>.</span><a class="headerlink" href="#fig-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="proof proposition admonition" id="proposition-2">
 <p class="admonition-title"><span class="caption-number">Proposition 1.2 </span></p>
-<div class="proposition-content section" id="proof-content">
+<section class="proposition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(G[X, Y]\)</span> and <span class="math notranslate nohighlight">\(H[U, V]\)</span> be two complete bipartite graphs with <span class="math notranslate nohighlight">\(\abs{X} = \abs{U}\)</span> and <span class="math notranslate nohighlight">\(\abs{Y} = \abs{V}\)</span>. Then <span class="math notranslate nohighlight">\(G \cong H\)</span>. In other words, a complete bipartite graph is unique up to isomorphism if the sizes of its two vertex sets in bipartition are determined.</p>
-</div>
+</section>
 </div><div class="proof admonition" id="proof">
-<p>Proof. Since <span class="math notranslate nohighlight">\(\abs{X} = \abs{U}\)</span> and <span class="math notranslate nohighlight">\(\abs{Y} = \abs{V}\)</span>, we can find a bijection <span class="math notranslate nohighlight">\(\theta: V(G) \to V(H)\)</span> in such a way that <span class="math notranslate nohighlight">\(\theta\)</span> maps each point in <span class="math notranslate nohighlight">\(X\)</span> onto <span class="math notranslate nohighlight">\(U\)</span>, and each point in <span class="math notranslate nohighlight">\(Y\)</span> onto <span class="math notranslate nohighlight">\(V\)</span>. Then for an edge <span class="math notranslate nohighlight">\(xy \in E(G)\)</span>, we have <span class="math notranslate nohighlight">\(\theta(x)\theta(y) \in E(H)\)</span> since there has to be an edge connecting <span class="math notranslate nohighlight">\(\theta(x) \in U\)</span> and <span class="math notranslate nohighlight">\(\theta(y) \in V\)</span> by the definition of complete bipartite graphs. This proves <span class="math notranslate nohighlight">\(G \cong H\)</span> by <a class="reference internal" href="Paths%20and%20Connection.html#pro:1">Proposition 1.3</a>.</p>
+<p>Proof. Since <span class="math notranslate nohighlight">\(\abs{X} = \abs{U}\)</span> and <span class="math notranslate nohighlight">\(\abs{Y} = \abs{V}\)</span>, we can find a bijection <span class="math notranslate nohighlight">\(\theta: V(G) \to V(H)\)</span> in such a way that <span class="math notranslate nohighlight">\(\theta\)</span> maps each point in <span class="math notranslate nohighlight">\(X\)</span> onto <span class="math notranslate nohighlight">\(U\)</span>, and each point in <span class="math notranslate nohighlight">\(Y\)</span> onto <span class="math notranslate nohighlight">\(V\)</span>. Then for an edge <span class="math notranslate nohighlight">\(xy \in E(G)\)</span>, we have <span class="math notranslate nohighlight">\(\theta(x)\theta(y) \in E(H)\)</span> since there has to be an edge connecting <span class="math notranslate nohighlight">\(\theta(x) \in U\)</span> and <span class="math notranslate nohighlight">\(\theta(y) \in V\)</span> by the definition of complete bipartite graphs. This proves <span class="math notranslate nohighlight">\(G \cong H\)</span> by <a class="reference internal" href="#pro:1">Proposition 1.1</a>.</p>
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -440,7 +443,7 @@ u v \in E(G)
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./Basic Concepts of Graphs"
         },
         predefinedOutput: true

@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>1.4. Cycles &#8212; Graph Theory</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -374,7 +375,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="cycles">
+  <section class="tex2jax_ignore mathjax_ignore" id="cycles">
 <h1><span class="section-number">1.4. </span>Cycles<a class="headerlink" href="#cycles" title="Permalink to this headline">#</a></h1>
 <p>One simple yet useful observation of a particular longest path
 in a graph is that all the neighbors of the terminus must
@@ -385,20 +386,22 @@ To prove this, we assume <span class="math notranslate nohighlight">\(P\)</span>
 (Suppose <span class="math notranslate nohighlight">\(\psi(e_{k+1}) = v_k v_{k+1}\)</span>.)
 Then the path <span class="math notranslate nohighlight">\(P + e_{k+1}v_{k+1}\)</span> is clearly longer than <span class="math notranslate nohighlight">\(P\)</span>,
 which leads to a contradiction.
-<a class="reference internal" href="#fig-1"><span class="std std-numref">Fig. 1.2</span></a> depicts such an example.
+<a class="reference internal" href="#fig-1"><span class="std std-numref">Fig. 1.3</span></a> depicts such an example.
 Note that if <span class="math notranslate nohighlight">\(8\)</span> were a neighbor of <span class="math notranslate nohighlight">\(7\)</span>,
 then path <span class="math notranslate nohighlight">\(12345678\)</span> would be longer.</p>
-<div class="figure align-default" id="fig-1">
+<figure class="align-default" id="fig-1">
 <img alt="../_images/g-001.png" src="../_images/g-001.png" />
-<p class="caption"><span class="caption-number">Fig. 1.2 </span><span class="caption-text">Path <span class="math notranslate nohighlight">\(1234567\)</span> is one of the longest paths.</span><a class="headerlink" href="#fig-1" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 1.3 </span><span class="caption-text">Path <span class="math notranslate nohighlight">\(1234567\)</span> is one of the longest paths.</span><a class="headerlink" href="#fig-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="proof proposition admonition" id="pro:5">
-<p class="admonition-title"><span class="caption-number">Proposition 1.5 </span></p>
-<div class="proposition-content section" id="proof-content">
+<p class="admonition-title"><span class="caption-number">Proposition 1.6 </span></p>
+<section class="proposition-content" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(G\)</span> is a simple graph with <span class="math notranslate nohighlight">\(\delta(G) \geq 2\)</span>,
 then there exists a cycle of length
 at least <span class="math notranslate nohighlight">\(\delta(G)+1\)</span>.</p>
-</div>
+</section>
 </div><div class="proof admonition" id="proof">
 <p>Proof. Let <span class="math notranslate nohighlight">\(P = u \cdots v\)</span>
 be a longest path in <span class="math notranslate nohighlight">\(G\)</span>.
@@ -422,9 +425,9 @@ This completes the proof.</p>
 <p>In fact, we have an algorithm to find a cycle without knowing the longest path in <span class="math notranslate nohighlight">\(G\)</span>.</p>
 <div class="proof algorithm admonition" id="alg:2">
 <p class="admonition-title"><span class="caption-number">Algorithm 1.2 </span> (Finding a Cycle in <span class="math notranslate nohighlight">\(G\)</span> With <span class="math notranslate nohighlight">\(\delta(G) \geq 2\)</span>)</p>
-<div class="algorithm-content section" id="proof-content">
+<section class="algorithm-content" id="proof-content">
 <img alt="Finding a Cycle in $G$ With $\delta(G) \geq 2$" class="align-center" src="../_images/c3eb92b6e95997d4bd5c7ce2c81c1f26bc1b5b9ca6dc7292ab1eb575dc90b179.png" />
-</div>
+</section>
 </div><div class="proof admonition" id="proof">
 <p>Proof. We need to show that <a class="reference internal" href="#alg:2">Algorithm 1.2</a> works correctly.</p>
 <p><strong>Initialization:</strong> Firstly, note that line 7 is possible
@@ -452,9 +455,9 @@ we will obtain a cycle from <span class="math notranslate nohighlight">\(v\)</sp
 </div>
 <div class="proof theorem admonition" id="thm:1">
 <p class="admonition-title"><span class="caption-number">Theorem 1.1 </span></p>
-<div class="theorem-content section" id="proof-content">
+<section class="theorem-content" id="proof-content">
 <p>TODO</p>
-</div>
+</section>
 </div><p id="index-0">The <strong>girth</strong> of a graph is defined as
 the length of its shortest cycle.
 We say the girth of <span class="math notranslate nohighlight">\(G\)</span> is infinity if it contains no cycles.
@@ -464,21 +467,23 @@ But it has no loops.
 And if the girth of <span class="math notranslate nohighlight">\(G\)</span> is greater than or equal to 3,
 then it must be a simple graph.</p>
 <div class="proof proposition admonition" id="pro:3">
-<p class="admonition-title"><span class="caption-number">Proposition 1.6 </span></p>
-<div class="proposition-content section" id="proof-content">
+<p class="admonition-title"><span class="caption-number">Proposition 1.7 </span></p>
+<section class="proposition-content" id="proof-content">
 <p>A <span class="math notranslate nohighlight">\(k\)</span>-regular graph with girth 4 has at least <span class="math notranslate nohighlight">\(2k\)</span> vertices.
 Moreover, if it has exactly  <span class="math notranslate nohighlight">\(2k\)</span> vertices,
 then it must be <span class="math notranslate nohighlight">\(K_{k,k}\)</span>, i.e.,
 a complete bipartite graph with both sides of
 the bipartition having the same size <span class="math notranslate nohighlight">\(k\)</span>.
 Conversely, <span class="math notranslate nohighlight">\(K_{k,k}\)</span> is a <span class="math notranslate nohighlight">\(k\)</span>-regular graph with girth 4.</p>
-</div>
-</div><p><a class="reference internal" href="#fig-3"><span class="std std-numref">Fig. 1.3</span></a> depicts several <span class="math notranslate nohighlight">\(K_{k,k}\)</span> graphs.</p>
-<div class="figure align-default" id="fig-3">
+</section>
+</div><p><a class="reference internal" href="#fig-3"><span class="std std-numref">Fig. 1.4</span></a> depicts several <span class="math notranslate nohighlight">\(K_{k,k}\)</span> graphs.</p>
+<figure class="align-default" id="fig-3">
 <img alt="../_images/g-003.png" src="../_images/g-003.png" />
-<p class="caption"><span class="caption-number">Fig. 1.3 </span><span class="caption-text">(a) <span class="math notranslate nohighlight">\(K_{2,2}\)</span>. (b) <span class="math notranslate nohighlight">\(K_{3,3}\)</span>. (c)  <span class="math notranslate nohighlight">\(K_{5,5}\)</span>.
+<figcaption>
+<p><span class="caption-number">Fig. 1.4 </span><span class="caption-text">(a) <span class="math notranslate nohighlight">\(K_{2,2}\)</span>. (b) <span class="math notranslate nohighlight">\(K_{3,3}\)</span>. (c)  <span class="math notranslate nohighlight">\(K_{5,5}\)</span>.
 (d)  <span class="math notranslate nohighlight">\(K_{10,10}\)</span>.</span><a class="headerlink" href="#fig-3" title="Permalink to this image">#</a></p>
-</div>
+</figcaption>
+</figure>
 <div class="proof admonition" id="proof">
 <p>Proof. Take a pair of incident vertices <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span> in <span class="math notranslate nohighlight">\(G\)</span>.
 We have <span class="math notranslate nohighlight">\(N(u) \cap N(v) = \emptyset\)</span>.
@@ -513,7 +518,7 @@ For example, if we suppose
 form a bipartition of <span class="math notranslate nohighlight">\(K_{k,k}\)</span>, then
 <span class="math notranslate nohighlight">\(x_1 y_1 x_2 y_2 x_1\)</span> is a 4-cycle.</p>
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -527,7 +532,7 @@ form a bipartition of <span class="math notranslate nohighlight">\(K_{k,k}\)</sp
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./Basic Concepts of Graphs"
         },
         predefinedOutput: true

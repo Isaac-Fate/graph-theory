@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>2.1. Definition of Trees &#8212; Graph Theory</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -374,27 +375,45 @@ title="Print to PDF"
                 
               <div>
                 
-  <span class="target" id="index-0"></span><div class="tex2jax_ignore mathjax_ignore section" id="definition-of-trees">
+  <span class="target" id="index-0"></span><section class="tex2jax_ignore mathjax_ignore" id="definition-of-trees">
 <span id="index-1"></span><h1><span class="section-number">2.1. </span>Definition of Trees<a class="headerlink" href="#definition-of-trees" title="Permalink to this headline">#</a></h1>
 <p>We call a graph <strong>acyclic</strong>
 if it contains no cycles.
 A <strong>tree</strong> is a connected acyclic graph.
 A tree is clearly a simple graph for there cannot be any loops (1-cycles)
 or parallel edges (2-cycles).</p>
-<p>If a tree is nontrivial, then the degree of every vertex
+<p>If a tree <span class="math notranslate nohighlight">\(T\)</span> is nontrivial, then the degree of every vertex
 must greater than or equal to 1 since a tree is connected.
-Moreover, there always exists at least one vertex with degree 1.
-If this is not the case, then we end up with a graph with
-<span class="math notranslate nohighlight">\(\delta \geq 2\)</span>.
+Moreover, there always exists at least one vertex with degree 1,
+that is,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}\delta(T) = 1
+\end{align*}\]</div>
+<p>If this is not the case, then we end up with a graph with</p>
+<span class="target" id="index-2"></span><span class="target" id="index-3"></span><span class="target" id="index-4"></span><p id="index-5"><span class="math notranslate nohighlight">\(\delta \geq 2\)</span>.
 But this further implies that there exists a cycle
-in the graph by <a class="reference internal" href="../Basic%20Concepts%20of%20Graphs/Cycles.html#pro:5">Proposition 1.5</a>,
+in the graph by <a class="reference internal" href="../Basic%20Concepts%20of%20Graphs/Cycles.html#pro:5">Proposition 1.6</a>,
 contradicting the definition of a tree.</p>
+<p>If the reader has a background of computer science,
+then the tree data structure one might be familiar with
+is actually what we call a <strong>rooted tree</strong>
+with one vertex called the <strong>root</strong>
+with special treatment.
+However, the tree we defined here is an unrooted tree,
+or <strong>free tree</strong>,
+since we often do not specify the root vertex.</p>
+<p>A tree <strong>leaf</strong> is a vertex if degree 1.
+Note that it is possible that the degree of the tree root is 1
+if it is specified.
+But we often do not call it a leaf.
+Hence, in a rooted tree, a leaf is a non-root vertex of degree 1.
+Clearly, a nontrivial tree always has a leaf.</p>
 <div class="proof theorem admonition" id="thm:2">
 <p class="admonition-title"><span class="caption-number">Theorem 2.1 </span></p>
-<div class="theorem-content section" id="proof-content">
+<section class="theorem-content" id="proof-content">
 <p>In a tree <span class="math notranslate nohighlight">\(T\)</span>, any two distinct vertices are connected by
 a <strong>unique</strong> path.</p>
-</div>
+</section>
 </div><div class="proof admonition" id="proof">
 <p>Proof. Assume there are two distinct <span class="math notranslate nohighlight">\((u,v)\)</span>-paths,
 <span class="math notranslate nohighlight">\(P_1\)</span> and  <span class="math notranslate nohighlight">\(P_2\)</span>(regraded as path graphs).
@@ -409,7 +428,7 @@ and a <span class="math notranslate nohighlight">\((v,y)\)</span>-path in  <span
 and also a  <span class="math notranslate nohighlight">\((u,v)\)</span>-path in <span class="math notranslate nohighlight">\(P_2\)</span>.
 By concatenating all these three paths,
 we will obtain a <span class="math notranslate nohighlight">\((x,y)\)</span>-walk (not necessarily a path).
-But by <a class="reference internal" href="../Basic%20Concepts%20of%20Graphs/Paths%20and%20Connection.html#pro:1">Proposition 1.3</a>,
+But by <a class="reference internal" href="../Basic%20Concepts%20of%20Graphs/Paths%20and%20Connection.html#pro:7">Proposition 1.3</a>,
 we can always extract a <span class="math notranslate nohighlight">\((x,y)\)</span>-path from it, say <span class="math notranslate nohighlight">\(P_3\)</span>.</p>
 <p>Now, we have two distinct paths from <span class="math notranslate nohighlight">\(x\)</span> to <span class="math notranslate nohighlight">\(y\)</span> in <span class="math notranslate nohighlight">\(T\)</span>.
 One is <span class="math notranslate nohighlight">\(xy\)</span> and the other is  <span class="math notranslate nohighlight">\(P_3\)</span>,
@@ -420,18 +439,20 @@ But any two distinct vertices are indeed connected by
 a unique path.
 Therefore, for the converse of <a class="reference internal" href="#thm:2">Theorem 2.1</a> to hold,
 we need to exclude the cases where graphs contain loops.</p>
-<div class="figure align-default" id="fig-4">
+<figure class="align-default" id="fig-4">
 <img alt="../_images/g-004.png" src="../_images/g-004.png" />
-<p class="caption"><span class="caption-number">Fig. 2.1 </span><span class="caption-text">It will become a tree if the loops are removed.</span><a class="headerlink" href="#fig-4" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">It will become a tree if the loops are removed.</span><a class="headerlink" href="#fig-4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="proof theorem admonition" id="thm:3">
 <p class="admonition-title"><span class="caption-number">Theorem 2.2 </span></p>
-<div class="theorem-content section" id="proof-content">
+<section class="theorem-content" id="proof-content">
 <p>If graph <span class="math notranslate nohighlight">\(T\)</span> is loopless and
 there exists one and only one path
 connecting each pair of distinct vertices,
 then <span class="math notranslate nohighlight">\(T\)</span> is a tree.</p>
-</div>
+</section>
 </div><div class="proof admonition" id="proof">
 <p>Proof. First, note that <span class="math notranslate nohighlight">\(T\)</span> is connected.
 Assume, on the contrary,
@@ -446,12 +467,12 @@ This leads to a contradiction.</p>
 </div>
 <div class="proof theorem admonition" id="thm:4">
 <p class="admonition-title"><span class="caption-number">Theorem 2.3 </span></p>
-<div class="theorem-content section" id="proof-content">
+<section class="theorem-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(T\)</span> be a tree. Then we have</p>
 <div class="math notranslate nohighlight" id="equation-eq-10">
 <span class="eqno">(2.1)<a class="headerlink" href="#equation-eq-10" title="Permalink to this equation">#</a></span>\[\begin{align}\abs{E} = \abs{V} - 1
 \end{align}\]</div>
-</div>
+</section>
 </div><div class="proof admonition" id="proof">
 <p>Proof. We shall prove by induction on the order <span class="math notranslate nohighlight">\(\abs{V}\)</span>.</p>
 <p><strong>Base Case:</strong> If <span class="math notranslate nohighlight">\(\abs{V} = 1\)</span>,
@@ -460,7 +481,7 @@ and hence <a class="reference internal" href="#equation-eq-10">(2.1)</a> holds.<
 <p><strong>Inductive Step:</strong> Assume this theorem
 holds for any trees with order <span class="math notranslate nohighlight">\(k\)</span>.
 Suppose now <span class="math notranslate nohighlight">\(\abs{V(T)} = k+1\)</span>.
-Pick a vertex <span class="math notranslate nohighlight">\(v\)</span> with <span class="math notranslate nohighlight">\(\deg(v) = 1\)</span>, and then remove it from <span class="math notranslate nohighlight">\(T\)</span>.
+Pick a leaf <span class="math notranslate nohighlight">\(v\)</span>, and then remove it from <span class="math notranslate nohighlight">\(T\)</span>.
 This is always possible as we have noted.
 Observe that  <span class="math notranslate nohighlight">\(T - v\)</span> remains a tree.
 And by removing <span class="math notranslate nohighlight">\(v\)</span>,
@@ -477,7 +498,7 @@ It then follows that</p>
 \end{align*}\]</div>
 <p>This completes the proof.</p>
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -491,7 +512,7 @@ It then follows that</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./Trees"
         },
         predefinedOutput: true
