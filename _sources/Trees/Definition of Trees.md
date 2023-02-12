@@ -49,12 +49,14 @@ However, the tree we defined here is an unrooted tree,
 or **free tree**,
 since we often do not specify the root vertex.
 
-A tree **leaf** is a vertex if degree 1.
+A tree **leaf** is a vertex of degree 1.
 Note that it is possible that the degree of the tree root is 1
 if it is specified.
 But we often do not call it a leaf.
 Hence, in a rooted tree, a leaf is a non-root vertex of degree 1.
 Clearly, a nontrivial tree always has a leaf.
+In fact, it always has at least two leafs,
+as we shall see in {prf:ref}`cor:1`.
 
 
 
@@ -75,7 +77,6 @@ Then there exists at least one distinct edge
 in these two, say $e=xy$.
 Without loss of generality,
 we may assume  $e \in V(P_1)$.
-
 
 Consider the graph $P_1 \cup P_2 - e$.
 We claim that it contains a $(x,y)$-path.
@@ -177,5 +178,53 @@ It then follows that
 ```
 
 This completes the proof.
+
+````
+
+````{prf:corollary}
+:label: cor:1
+
+Every nontrivial tree has at least two leafs.
+
+````
+
+````{prf:proof}
+
+As we have noted,
+a nontrivial tree $T$ has at least one leaf.
+Assume $T$ only has one leaf.
+Then we have
+
+```{math}
+\begin{align*}\sum_{v \in V}\deg(v)
+\geq 1 + 2 (\abs{V} - 1)
+= 2 \abs{V} - 1
+\end{align*}
+```
+
+since all vertices, except one,
+are of degree at least 2.
+Combined with {prf:ref}`thm:5`, we know
+
+```{math}
+:label: eq:12
+\begin{align}
+2\abs{E} = \sum_{v \in V}\deg(v)
+= 2 \abs{V} - 1
+\end{align}
+```
+
+On the other hand, it follows from {prf:ref}`thm:4` that
+
+```{math}
+:label: eq:13
+\begin{align}
+2\abs{E} = 2 \abs{V} - 2
+\end{align}
+```
+
+Note that equations {eq}`eq:12` and {eq}`eq:13`
+contradict each other.
+Therefore, $T$ has at least two leafs.
 
 ````

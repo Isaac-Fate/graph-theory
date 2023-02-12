@@ -458,7 +458,7 @@ d(u_0, S^\complement) = d(u_0, u) + w(uv)
 \end{align}\]</div>
 <p>Equation <a class="reference internal" href="#equation-eq-9">(1.5)</a> motivates us to state the following proposition, which is the central idea of Dijkstra’s algorithm.</p>
 <div class="proof proposition admonition" id="pro:2">
-<p class="admonition-title"><span class="caption-number">Proposition 1.8 </span></p>
+<p class="admonition-title"><span class="caption-number">Proposition 1.9 </span></p>
 <section class="proposition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(G = (V, E)\)</span> be a simple graph. Let <span class="math notranslate nohighlight">\(S \subseteq V\)</span> be a subset of vertices and <span class="math notranslate nohighlight">\(u_0 \in S\)</span> a point in it. We have</p>
 <div class="math notranslate nohighlight" id="equation-eq-5">
@@ -536,7 +536,7 @@ d(u_0, u^{(j-1)}) + w(u^{(j-1)} v)
 <div class="math notranslate nohighlight">
 \[\begin{align*}
 d^\ast = \min_{v \in V \setminus S^{(j-1)}}\min_{u \in S^{(j-1)}}\{ d(u_0, u) + w(u v) \}\end{align*}\]</div>
-<p>By <a class="reference internal" href="#pro:2">Proposition 1.8</a>, we know <span class="math notranslate nohighlight">\(d^\ast\)</span> is the length of a shortest path from <span class="math notranslate nohighlight">\(u_0\)</span> to <span class="math notranslate nohighlight">\(V \setminus S^{(j-1)}\)</span>, that is,</p>
+<p>By <a class="reference internal" href="#pro:2">Proposition 1.9</a>, we know <span class="math notranslate nohighlight">\(d^\ast\)</span> is the length of a shortest path from <span class="math notranslate nohighlight">\(u_0\)</span> to <span class="math notranslate nohighlight">\(V \setminus S^{(j-1)}\)</span>, that is,</p>
 <div class="math notranslate nohighlight">
 \[\begin{align*}
 d^\ast = d(u_0, V \setminus S^{(j-1)})

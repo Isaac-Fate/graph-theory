@@ -201,3 +201,41 @@ Therefore, $G-e$ has one more component than that of $G$,
 and hence  $\omega(G-e) = \omega(G) + 1$.
 
 ````
+
+````{prf:proposition}
+:label: pro:7
+
+Let $G$ be a simple and connected graph
+with order greater than or equal to 3.
+If $G$ is not complete,
+then there exist three vertices $u$, $v$ and $w$ such that
+$uv, vw \in E$ but $uw \notin E$.
+
+````
+
+````{prf:proof}
+
+Because $G$ is not complete,
+there exist two vertices $u$ and $w$ that are not incident.
+Let $P$ be a shortest path from $u$ to $w$.
+
+If $P$ is of length 2, then we can write
+$P = u v w$.
+Edges $uv$ and $vw$ exist in $G$.
+But the edge $uw$ does not, which is as desired.
+
+If the length of $P$ is greater than or equal to $3$,
+then $P$ is of the form
+
+```{math}
+\begin{align*}
+P = u x v \cdots w
+\end{align*}
+```
+
+Note that $uv \notin E$.
+Otherwise, $u v \cdots w$ would be
+a shorter $(u,w)$-path than $P$.
+In this case the vertices $u$, $x$ and $v$ are as desired.
+
+````
