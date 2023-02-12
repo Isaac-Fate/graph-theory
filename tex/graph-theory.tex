@@ -114,8 +114,18 @@ A \textbf{complete bipartite graph}\index{complete bipartite graph} is a \textit
 
 %------------------------------
 
+\begin{theorem} \label{thm:5}
+	The sum of degrees of all vertices
+	is twice the number of edges in any graph.
+	That is, 
+	\begin{align*}
+		\sum_{v \in V} \deg(v) = 2 \abs{E}
+	\end{align*}
+\end{theorem}
 
-
+\begin{proof}
+	% TODO
+\end{proof}
 
 
 %------------------------------
@@ -276,6 +286,36 @@ by at most one.
 	and hence  $\omega(G-e) = \omega(G) + 1$.
 \end{proof}
 
+%------------------------------
+
+\begin{proposition} \label{pro:7}
+	Let $G$ be a simple and connected graph
+	with order greater than or equal to 3.
+	If $G$ is not complete,
+	then there exist three vertices $u$, $v$ and $w$ such that 
+	$uv, vw \in E$ but $uw \notin E$.
+\end{proposition}
+
+\begin{proof}
+	Because $G$ is not complete, 
+	there exist two vertices $u$ and $w$ that are not incident.
+	Let $P$ be a shortest path from $u$ to $w$.
+	
+	If $P$ is of length 2, then we can write 
+	$P = u v w$.
+	Edges $uv$ and $vw$ exist in $G$. 
+	But the edge $uw$ does not, which is as desired.
+
+	If the length of $P$ is greater than or equal to $3$, 
+	then $P$ is of the form 
+	\begin{align*}
+		P = u x v \cdots w 
+	\end{align*}
+	Note that $uv \notin E$. 
+	Otherwise, $u v \cdots w$ would be 
+	a shorter $(u,w)$-path than $P$.
+	In this case the vertices $u$, $x$ and $v$ are as desired.
+\end{proof}
 
 %------------------------------
 
@@ -715,12 +755,14 @@ However, the tree we defined here is an unrooted tree,
 or \textbf{free tree}\index{free tree},
 since we often do not specify the root vertex.
 
-A tree \textbf{leaf}\index{leaf} is a vertex if degree 1. 
+A tree \textbf{leaf}\index{leaf} is a vertex of degree 1. 
 Note that it is possible that the degree of the tree root is 1
 if it is specified.
 But we often do not call it a leaf.
 Hence, in a rooted tree, a leaf is a non-root vertex of degree 1.
 Clearly, a nontrivial tree always has a leaf.
+In fact, it always has at least two leafs,
+as we shall see in Corollary~\ref{cor:1}.
 
 %------------------------------
 
@@ -738,7 +780,6 @@ Clearly, a nontrivial tree always has a leaf.
 	Without loss of generality,
 	we may assume  $e \in V(P_1)$.
 	
-
 	Consider the graph $P_1 \cup P_2 - e$.
 	We claim that it contains a $(x,y)$-path.
 	To see this, we note that there exist a $(x,u)$-path 
@@ -826,6 +867,40 @@ we need to exclude the cases where graphs contain loops.
 		 = \abs{V(T)} - 1
 	\end{align*}
 	This completes the proof.
+\end{proof}
+
+%------------------------------
+
+\begin{corollary} \label{cor:1}
+	Every nontrivial tree has at least two leafs.
+\end{corollary}
+
+\begin{proof}
+	As we have noted, 
+	a nontrivial tree $T$ has at least one leaf.
+	Assume $T$ only has one leaf.
+	Then we have 
+	\begin{align*}
+		\sum_{v \in V} \deg(v)
+		\geq 1 + 2 (\abs{V} - 1)
+		= 2 \abs{V} - 1
+	\end{align*}
+	since all vertices, except one, 
+	are of degree at least 2.
+	Combined with Theorem~\ref{thm:5}, we know 
+	\begin{align}	
+		2\abs{E} = \sum_{v \in V} \deg(v)
+		= 2 \abs{V} - 1
+		\label{eq:12}
+	\end{align}
+	On the other hand, it follows from Theorem~\ref{thm:4} that 
+	\begin{align}
+		2\abs{E} = 2 \abs{V} - 2
+		\label{eq:13}
+	\end{align}
+	Note that equations \eqref{eq:12} and \eqref{eq:13}
+	contradict each other. 
+	Therefore, $T$ has at least two leafs.
 \end{proof}
 
 %==============================
