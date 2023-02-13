@@ -202,6 +202,105 @@ and hence  $\omega(G-e) = \omega(G) + 1$.
 
 ````
 
+Consider a path graph $P_n$ on $n$ vertices.
+It is connected and it has altogether $n-1$ edges.
+Apparently, if we remove any edge from it,
+then we will end up with a disconnected graph.
+This somehow tells us that
+for a graph to be connected,
+it cannot have too few edges,
+which leads to the question that
+what is the minimum number of edges
+of a connected graph of order $n$?
+
+
+````{prf:proposition}
+:label: pro:8
+
+The minimum number of edges of
+a connected graph on $n$ vertices
+is $n-1$.
+
+````
+
+````{prf:proof}
+
+We shall prove by induction on the order.
+The induction hypothesis is that
+if $G$ is a connected graph $G$ with minimum number of edges
+and its order is less than or equal to $n$,
+then it has exactly $n-1$ edges.
+
+**Base Case:**
+If $G$ is a trivial graph,
+then clearly it has no edges.
+
+**Inductive Step:**
+Assume the hypothesis holds for $n = k$.
+Note that we only need to show
+$G$ has $k$ edges under the case where
+$G$ is of order $k+1$.
+Because $G$ is a connected graph with minimum number
+of edges.
+By removing any edge, say $e$, from $G$
+will result in a disconnected graph $G-e$.
+And by {prf:ref}`pro:6`,
+we know $G-e$ has two components, say $G_1$ and $G_2$.
+Note that both $G_1$ and $G_2$ are of
+orders less than or equal to $k$,
+say $n_1$ and $n_2$, respectively.
+Moreover, both $G_1$ and $G_2$ are connected graphs
+with minimum number of edges.
+Hence, applying the induction hypothesis
+to both $G_1$ and $G_2$,
+we conclude that
+
+```{math}
+\begin{align*}\abs{E(G_1)} = n_1 - 1
+\quad\text{and}\quad\abs{E(G_2)} = n_2 - 1
+\end{align*}
+```
+
+Therefore, the total number of edges of $G$ is
+
+```{math}
+\begin{align*}\abs{E(G)} = \abs{E(G_1)} + \abs{E(G_2)} + 1
+= n_1 - 1 + n_2 - 1 + 1
+= n_1 + n_2 - 1
+= \abs{V(G)} - 1
+= k
+\end{align*}
+```
+
+The second last equality follows from the fact that
+the vertices of $G$ is partitioned into
+vertices of $G_1$ and $G_2$, respectively,
+since $G_1$ and $G_2$ are complements.
+This completes the proof.
+
+````
+
+Apart from the path graph $P_n$,
+{numref}`fig:6` also depicts several other
+connected graphs of order 6
+with minimum number of edges,
+in this case, 5 edges.
+Such graphs are called trees,
+as we will formally introduce in {doc}`/Trees/index`.
+
+
+```{figure} /figures/g-006.png
+---
+name: fig:6
+---
+
+Connected graphs on 6 vertices
+with minimum number of edges,
+i.e., 5 edges.
+
+
+```
+
 ````{prf:proposition}
 :label: pro:7
 
