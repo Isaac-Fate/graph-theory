@@ -98,6 +98,14 @@ we will obtain a cycle from $v$ to itself.
 ````{prf:theorem}
 :label: thm:1
 
+Graph $G$ is a bipartite graph
+if and only if
+it contains no odd cycles.
+
+````
+
+````{prf:proof}
+
 TODO
 
 ````
@@ -174,5 +182,30 @@ For example, if we suppose
 $X=\{x_1,\ldots,x_k\}$ and $Y=\{y_1,\ldots,y_k\}$
 form a bipartition of $K_{k,k}$, then
 $x_1 y_1 x_2 y_2 x_1$ is a 4-cycle.
+
+````
+
+```{index} acyclic graphs
+```
+
+We call a graph **acyclic**
+if it contains no cycles.
+
+
+````{prf:proposition}
+:label: pro:9
+
+The maximum number of edges of
+an acyclic graph $G$ on $n$ vertices
+is $n-1$.
+Furthermore,
+in this case,
+$G$ is also connected.
+
+````
+
+````{prf:proof}
+
+TODO
 
 ````

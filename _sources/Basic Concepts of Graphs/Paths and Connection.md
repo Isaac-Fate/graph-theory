@@ -93,6 +93,53 @@ Then we can obtain at most one more component
 by cutting in half one of $G$'s components.
 See {numref}`fig:5`.
 
+To prove this, we first consider
+the following useful lemma.
+
+
+````{prf:lemma}
+:label: lem:1
+
+Let $G$ be a connected graph,
+and $e$ be one of its edges.
+Suppose that the two ends of $e$ are $x$ and $y$.
+Then every vertex $v$ is either connected to $x$
+or $y$ in $G-e$.
+
+````
+
+````{prf:proof}
+
+First, suppose that $e$ is a loop.
+Since $G$ is connected,
+every two vertices are connected by a path.
+And they remain connected in $G-e$
+since a path cannot contain any loops.
+Hence, in this case, every vertex $v$
+is connected to both $x$ and $y$ in $G-e$.
+
+Assume $e$ is not a loop.
+If vertex $v$ is no longer connected to $x$ in $G-e$,
+then $v$ must be originally connected to $x$
+in $G$
+by a path $P$ containing the edge $e$.
+Note that $P$ is of the form
+
+```{math}
+\begin{align*}
+P = v \cdots y e x
+\end{align*}
+```
+
+Because the $(v,y)$-section of $P$ does not traverse $e$,
+$v$ is connected to $y$ in $G-e$ by this $(v,y)$-section.
+Hence, we have shown that,
+in subgraph $G-e$,
+$v$ must be connected to $y$
+if it is disconnected from $x$.
+This completes the proof.
+
+````
 
 ```{figure} /figures/g-005.png
 ---
@@ -100,10 +147,10 @@ name: fig:5
 ---
 
 The graph $G$ has 2 components.
-If we remove edge $56$,
-then $G-56$ still has 2 components.
-But if we remove edge $24$, then
-the remaining graph $G-24$ has 3 components.
+If we remove edge $f$,
+then $G-f$ still has 2 components.
+But if we remove edge $e$, then
+the remaining graph $G-e$ has 3 components.
 
 
 ```
@@ -122,7 +169,8 @@ If $e \in E$, then we have
 
 ````
 
-Inequalities {eq}`eq:11` describe this idea in a compact way.
+Inequalities {eq}`eq:11` describe the result
+of cutting an edge in a compact way.
 The first inequality $\omega(G) \leq \omega(G-e)$
 says the number of components may increase by cutting an edge.
 While the second inequality says this number will be increased
@@ -132,75 +180,92 @@ by at most one.
 ````{prf:proof}
 
 If $e$ is a loop, then the conclusion is trivial.
-We assume $e = uv$ is not a loop, i.e.,
-$u$ and  $v$ are distinct,
+We assume $e = xy$ is not a loop, i.e.,
+$x$ and  $y$ are distinct,
 in the rest of the proof.
 Suppose that the components of $G$
 are  $G[V_1], \ldots, G[V_\omega]$.
 Without loss of generality,
-we may also assume that $u, v \in V_1$.
+we may also assume that $x, y \in V_1$.
 
-(Case 1) Suppose that there exists a $(u,v)$-path in $G-e$,
-then $u$ is still connected to $v$ in $G-e$,
-i.e., $u \sim v$ in $G-e$.
-Pick an arbitrary vertex $x \in V_1$.
-Suppose that $x$ is originally connected to $u$
-by a path $P$ containing $e$,
-then $P$ is of the form
-
-```{math}
-\begin{align*}
-P = x \cdots v e u
-\end{align*}
-```
-
-Hence, $x$ must be connected to $v$ in $G-e$,
-i.e., $x \sim v$,
-since the $(x,v)$-section
-in $P$ does not involve  $e$.
-But $x \sim v$.
-By the transitivity, we have $x \sim u$.
+(Case 1) Suppose that there exists a $(x,y)$-path in $G-e$,
+then $x$ is still connected to $y$ in $G-e$,
+i.e., $x \sim y$ in $G-e$.
+Pick an arbitrary vertex $v \in V_1$.
+By {prf:ref}`lem:1`,
+we know either $v \sim x$ or $v \sim y$.
+Either way, by the transitivity, we have $v \sim x$
+since $x \sim y$.
 Therefore,
 
 ```{math}
 \begin{align*}
-x \sim u
-\quad\forall x \in V_1
+v \sim x
+\quad\forall v \in V_1
 \end{align*}
 ```
 
-This means $V_1$ remains a equivalent class in  $G-e$.
-In this case,  $\omega(G-e) = \omega(G)$.
+This means $V_1$ remains a equivalent class in $G-e$.
+In this case, $\omega(G-e) = \omega(G)$.
 
 (Case 2) We now consider the case where
-$u$ is disconnected from  $v$ in $G-e$.
-For any vertex $x \in V_1$,
-if $x$ is disconnected from $u$ in  $G-e$,
-then $x$ must be originally connected to $u$ in $G$
-by a path containing edge $e$.
-Applying a similar argument as before,
-we conclude that $x \sim v$ in $G-e$.
-Therefore, for every  $x \in V_1$,
-in graph $G-e$, we have either
-- ➀ $x \sim u$, or
-- ➁ $x \sim v$
-
-
-But $x$ cannot be connected to both  $u$ and  $v$
-since  $u$ and  $v$ are
+$x$ is disconnected from $y$ in $G-e$.
+For any vertex $v \in V_1$,
+by {prf:ref}`lem:1`,
+we have either $v \sim x$ or $v \sim y$.
+But $v$ cannot be connected to both $x$ and $y$
+since $x$ and $y$ are
 assumed disconnected from each other.
-It then follows that  $V_1$ can be partitioned into
-two equivalent classed, $[u]$ and  $[v]$, that is,
-
-```{math}
-\begin{align*}
-V_1 = [u]\uplus[v]\end{align*}
-```
-
+It then follows that $V_1$ can be partitioned into
+two equivalent classes, $[x]$ and $[y]$.
+In other words, $V_1$ is split into two components in $G-e$.
 Therefore, $G-e$ has one more component than that of $G$,
-and hence  $\omega(G-e) = \omega(G) + 1$.
+and hence $\omega(G-e) = \omega(G) + 1$.
 
 ````
+
+The idea of cutting an edge
+is quite helpful in many proofs
+since by doing so,
+we will probably divide the original graph
+into two smaller ones.
+
+The edge if removed will indeed results in
+one more component deserves a name,
+as we shall define in the following.
+
+
+````{prf:definition}
+:label: def:1
+
+The edge $e$ of $G$
+```{index} cut edge
+```
+is called a
+**cut edge**
+if
+
+```{math}
+:label: eq:14
+\begin{align}\omega(G-e) = \omega(G) + 1
+\end{align}
+```
+
+````
+
+In {numref}`fig:5`, $e$ is a cut edge of $G$ but $f$ is not.
+
+
+:::{note}
+
+Equation {eq}`eq:14`
+is replaced by
+$\omega(G-e) > \omega(G)$ in
+{cite}`bondyGraphTheoryApplications1976`.
+But since we have already proved {prf:ref}`pro:6`,
+we can be more specific.
+
+:::
 
 Consider a path graph $P_n$ on $n$ vertices.
 It is connected and it has altogether $n-1$ edges.

@@ -1,13 +1,8 @@
 
-```{index} acyclic graphs
-```
-
 ```{index} tree
 ```
 # Definition of Trees
 
-We call a graph **acyclic**
-if it contains no cycles.
 A **tree** is a connected acyclic graph.
 A tree is clearly a simple graph for there cannot be any loops (1-cycles)
 or parallel edges (2-cycles).

@@ -420,14 +420,51 @@ v_0 v_1 \cdots v_k
 Then we can obtain at most one more component
 by cutting in half one of <span class="math notranslate nohighlight">\(G\)</span>’s components.
 See <a class="reference internal" href="#fig-5"><span class="std std-numref">Fig. 1.2</span></a>.</p>
+<p>To prove this, we first consider
+the following useful lemma.</p>
+<div class="proof lemma admonition" id="lem:1">
+<p class="admonition-title"><span class="caption-number">Lemma 1.1 </span></p>
+<section class="lemma-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(G\)</span> be a connected graph,
+and <span class="math notranslate nohighlight">\(e\)</span> be one of its edges.
+Suppose that the two ends of <span class="math notranslate nohighlight">\(e\)</span> are <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.
+Then every vertex <span class="math notranslate nohighlight">\(v\)</span> is either connected to <span class="math notranslate nohighlight">\(x\)</span>
+or <span class="math notranslate nohighlight">\(y\)</span> in <span class="math notranslate nohighlight">\(G-e\)</span>.</p>
+</section>
+</div><div class="proof admonition" id="proof">
+<p>Proof. First, suppose that <span class="math notranslate nohighlight">\(e\)</span> is a loop.
+Since <span class="math notranslate nohighlight">\(G\)</span> is connected,
+every two vertices are connected by a path.
+And they remain connected in <span class="math notranslate nohighlight">\(G-e\)</span>
+since a path cannot contain any loops.
+Hence, in this case, every vertex <span class="math notranslate nohighlight">\(v\)</span>
+is connected to both <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> in <span class="math notranslate nohighlight">\(G-e\)</span>.</p>
+<p>Assume <span class="math notranslate nohighlight">\(e\)</span> is not a loop.
+If vertex <span class="math notranslate nohighlight">\(v\)</span> is no longer connected to <span class="math notranslate nohighlight">\(x\)</span> in <span class="math notranslate nohighlight">\(G-e\)</span>,
+then <span class="math notranslate nohighlight">\(v\)</span> must be originally connected to <span class="math notranslate nohighlight">\(x\)</span>
+in <span class="math notranslate nohighlight">\(G\)</span>
+by a path <span class="math notranslate nohighlight">\(P\)</span> containing the edge <span class="math notranslate nohighlight">\(e\)</span>.
+Note that <span class="math notranslate nohighlight">\(P\)</span> is of the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+P = v \cdots y e x
+\end{align*}\]</div>
+<p>Because the <span class="math notranslate nohighlight">\((v,y)\)</span>-section of <span class="math notranslate nohighlight">\(P\)</span> does not traverse <span class="math notranslate nohighlight">\(e\)</span>,
+<span class="math notranslate nohighlight">\(v\)</span> is connected to <span class="math notranslate nohighlight">\(y\)</span> in <span class="math notranslate nohighlight">\(G-e\)</span> by this <span class="math notranslate nohighlight">\((v,y)\)</span>-section.
+Hence, we have shown that,
+in subgraph <span class="math notranslate nohighlight">\(G-e\)</span>,
+<span class="math notranslate nohighlight">\(v\)</span> must be connected to <span class="math notranslate nohighlight">\(y\)</span>
+if it is disconnected from <span class="math notranslate nohighlight">\(x\)</span>.
+This completes the proof.</p>
+</div>
 <figure class="align-default" id="fig-5">
 <img alt="../_images/g-005.png" src="../_images/g-005.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.2 </span><span class="caption-text">The graph <span class="math notranslate nohighlight">\(G\)</span> has 2 components.
-If we remove edge <span class="math notranslate nohighlight">\(56\)</span>,
-then <span class="math notranslate nohighlight">\(G-56\)</span> still has 2 components.
-But if we remove edge <span class="math notranslate nohighlight">\(24\)</span>, then
-the remaining graph <span class="math notranslate nohighlight">\(G-24\)</span> has 3 components.</span><a class="headerlink" href="#fig-5" title="Permalink to this image">#</a></p>
+If we remove edge <span class="math notranslate nohighlight">\(f\)</span>,
+then <span class="math notranslate nohighlight">\(G-f\)</span> still has 2 components.
+But if we remove edge <span class="math notranslate nohighlight">\(e\)</span>, then
+the remaining graph <span class="math notranslate nohighlight">\(G-e\)</span> has 3 components.</span><a class="headerlink" href="#fig-5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="proof proposition admonition" id="pro:6">
@@ -439,69 +476,79 @@ the remaining graph <span class="math notranslate nohighlight">\(G-24\)</span> h
 \leq\omega(G) + 1
 \end{align}\]</div>
 </section>
-</div><p>Inequalities <a class="reference internal" href="#equation-eq-11">(1.4)</a> describe this idea in a compact way.
+</div><p>Inequalities <a class="reference internal" href="#equation-eq-11">(1.4)</a> describe the result
+of cutting an edge in a compact way.
 The first inequality <span class="math notranslate nohighlight">\(\omega(G) \leq \omega(G-e)\)</span>
 says the number of components may increase by cutting an edge.
 While the second inequality says this number will be increased
 by at most one.</p>
 <div class="proof admonition" id="proof">
 <p>Proof. If <span class="math notranslate nohighlight">\(e\)</span> is a loop, then the conclusion is trivial.
-We assume <span class="math notranslate nohighlight">\(e = uv\)</span> is not a loop, i.e.,
-<span class="math notranslate nohighlight">\(u\)</span> and  <span class="math notranslate nohighlight">\(v\)</span> are distinct,
+We assume <span class="math notranslate nohighlight">\(e = xy\)</span> is not a loop, i.e.,
+<span class="math notranslate nohighlight">\(x\)</span> and  <span class="math notranslate nohighlight">\(y\)</span> are distinct,
 in the rest of the proof.
 Suppose that the components of <span class="math notranslate nohighlight">\(G\)</span>
 are  <span class="math notranslate nohighlight">\(G[V_1], \ldots, G[V_\omega]\)</span>.
 Without loss of generality,
-we may also assume that <span class="math notranslate nohighlight">\(u, v \in V_1\)</span>.</p>
-<p>(Case 1) Suppose that there exists a <span class="math notranslate nohighlight">\((u,v)\)</span>-path in <span class="math notranslate nohighlight">\(G-e\)</span>,
-then <span class="math notranslate nohighlight">\(u\)</span> is still connected to <span class="math notranslate nohighlight">\(v\)</span> in <span class="math notranslate nohighlight">\(G-e\)</span>,
-i.e., <span class="math notranslate nohighlight">\(u \sim v\)</span> in <span class="math notranslate nohighlight">\(G-e\)</span>.
-Pick an arbitrary vertex <span class="math notranslate nohighlight">\(x \in V_1\)</span>.
-Suppose that <span class="math notranslate nohighlight">\(x\)</span> is originally connected to <span class="math notranslate nohighlight">\(u\)</span>
-by a path <span class="math notranslate nohighlight">\(P\)</span> containing <span class="math notranslate nohighlight">\(e\)</span>,
-then <span class="math notranslate nohighlight">\(P\)</span> is of the form</p>
-<div class="math notranslate nohighlight">
-\[\begin{align*}
-P = x \cdots v e u
-\end{align*}\]</div>
-<p>Hence, <span class="math notranslate nohighlight">\(x\)</span> must be connected to <span class="math notranslate nohighlight">\(v\)</span> in <span class="math notranslate nohighlight">\(G-e\)</span>,
-i.e., <span class="math notranslate nohighlight">\(x \sim v\)</span>,
-since the <span class="math notranslate nohighlight">\((x,v)\)</span>-section
-in <span class="math notranslate nohighlight">\(P\)</span> does not involve  <span class="math notranslate nohighlight">\(e\)</span>.
-But <span class="math notranslate nohighlight">\(x \sim v\)</span>.
-By the transitivity, we have <span class="math notranslate nohighlight">\(x \sim u\)</span>.
+we may also assume that <span class="math notranslate nohighlight">\(x, y \in V_1\)</span>.</p>
+<p>(Case 1) Suppose that there exists a <span class="math notranslate nohighlight">\((x,y)\)</span>-path in <span class="math notranslate nohighlight">\(G-e\)</span>,
+then <span class="math notranslate nohighlight">\(x\)</span> is still connected to <span class="math notranslate nohighlight">\(y\)</span> in <span class="math notranslate nohighlight">\(G-e\)</span>,
+i.e., <span class="math notranslate nohighlight">\(x \sim y\)</span> in <span class="math notranslate nohighlight">\(G-e\)</span>.
+Pick an arbitrary vertex <span class="math notranslate nohighlight">\(v \in V_1\)</span>.
+By <a class="reference internal" href="#lem:1">Lemma 1.1</a>,
+we know either <span class="math notranslate nohighlight">\(v \sim x\)</span> or <span class="math notranslate nohighlight">\(v \sim y\)</span>.
+Either way, by the transitivity, we have <span class="math notranslate nohighlight">\(v \sim x\)</span>
+since <span class="math notranslate nohighlight">\(x \sim y\)</span>.
 Therefore,</p>
 <div class="math notranslate nohighlight">
 \[\begin{align*}
-x \sim u
-\quad\forall x \in V_1
+v \sim x
+\quad\forall v \in V_1
 \end{align*}\]</div>
-<p>This means <span class="math notranslate nohighlight">\(V_1\)</span> remains a equivalent class in  <span class="math notranslate nohighlight">\(G-e\)</span>.
-In this case,  <span class="math notranslate nohighlight">\(\omega(G-e) = \omega(G)\)</span>.</p>
+<p>This means <span class="math notranslate nohighlight">\(V_1\)</span> remains a equivalent class in <span class="math notranslate nohighlight">\(G-e\)</span>.
+In this case, <span class="math notranslate nohighlight">\(\omega(G-e) = \omega(G)\)</span>.</p>
 <p>(Case 2) We now consider the case where
-<span class="math notranslate nohighlight">\(u\)</span> is disconnected from  <span class="math notranslate nohighlight">\(v\)</span> in <span class="math notranslate nohighlight">\(G-e\)</span>.
-For any vertex <span class="math notranslate nohighlight">\(x \in V_1\)</span>,
-if <span class="math notranslate nohighlight">\(x\)</span> is disconnected from <span class="math notranslate nohighlight">\(u\)</span> in  <span class="math notranslate nohighlight">\(G-e\)</span>,
-then <span class="math notranslate nohighlight">\(x\)</span> must be originally connected to <span class="math notranslate nohighlight">\(u\)</span> in <span class="math notranslate nohighlight">\(G\)</span>
-by a path containing edge <span class="math notranslate nohighlight">\(e\)</span>.
-Applying a similar argument as before,
-we conclude that <span class="math notranslate nohighlight">\(x \sim v\)</span> in <span class="math notranslate nohighlight">\(G-e\)</span>.
-Therefore, for every  <span class="math notranslate nohighlight">\(x \in V_1\)</span>,
-in graph <span class="math notranslate nohighlight">\(G-e\)</span>, we have either</p>
-<ul class="simple">
-<li><p>➀ <span class="math notranslate nohighlight">\(x \sim u\)</span>, or</p></li>
-<li><p>➁ <span class="math notranslate nohighlight">\(x \sim v\)</span></p></li>
-</ul>
-<p>But <span class="math notranslate nohighlight">\(x\)</span> cannot be connected to both  <span class="math notranslate nohighlight">\(u\)</span> and  <span class="math notranslate nohighlight">\(v\)</span>
-since  <span class="math notranslate nohighlight">\(u\)</span> and  <span class="math notranslate nohighlight">\(v\)</span> are
+<span class="math notranslate nohighlight">\(x\)</span> is disconnected from <span class="math notranslate nohighlight">\(y\)</span> in <span class="math notranslate nohighlight">\(G-e\)</span>.
+For any vertex <span class="math notranslate nohighlight">\(v \in V_1\)</span>,
+by <a class="reference internal" href="#lem:1">Lemma 1.1</a>,
+we have either <span class="math notranslate nohighlight">\(v \sim x\)</span> or <span class="math notranslate nohighlight">\(v \sim y\)</span>.
+But <span class="math notranslate nohighlight">\(v\)</span> cannot be connected to both <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>
+since <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are
 assumed disconnected from each other.
-It then follows that  <span class="math notranslate nohighlight">\(V_1\)</span> can be partitioned into
-two equivalent classed, <span class="math notranslate nohighlight">\([u]\)</span> and  <span class="math notranslate nohighlight">\([v]\)</span>, that is,</p>
-<div class="math notranslate nohighlight">
-\[\begin{align*}
-V_1 = [u]\uplus[v]\end{align*}\]</div>
-<p>Therefore, <span class="math notranslate nohighlight">\(G-e\)</span> has one more component than that of <span class="math notranslate nohighlight">\(G\)</span>,
-and hence  <span class="math notranslate nohighlight">\(\omega(G-e) = \omega(G) + 1\)</span>.</p>
+It then follows that <span class="math notranslate nohighlight">\(V_1\)</span> can be partitioned into
+two equivalent classes, <span class="math notranslate nohighlight">\([x]\)</span> and <span class="math notranslate nohighlight">\([y]\)</span>.
+In other words, <span class="math notranslate nohighlight">\(V_1\)</span> is split into two components in <span class="math notranslate nohighlight">\(G-e\)</span>.
+Therefore, <span class="math notranslate nohighlight">\(G-e\)</span> has one more component than that of <span class="math notranslate nohighlight">\(G\)</span>,
+and hence <span class="math notranslate nohighlight">\(\omega(G-e) = \omega(G) + 1\)</span>.</p>
+</div>
+<p>The idea of cutting an edge
+is quite helpful in many proofs
+since by doing so,
+we will probably divide the original graph
+into two smaller ones.</p>
+<p>The edge if removed will indeed results in
+one more component deserves a name,
+as we shall define in the following.</p>
+<div class="proof definition admonition" id="def:1">
+<p class="admonition-title"><span class="caption-number">Definition 1.2 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The edge <span class="math notranslate nohighlight">\(e\)</span> of <span class="math notranslate nohighlight">\(G\)</span></p>
+<p id="index-7">is called a
+<strong>cut edge</strong>
+if</p>
+<div class="math notranslate nohighlight" id="equation-eq-14">
+<span class="eqno">(1.5)<a class="headerlink" href="#equation-eq-14" title="Permalink to this equation">#</a></span>\[\begin{align}\omega(G-e) = \omega(G) + 1
+\end{align}\]</div>
+</section>
+</div><p>In <a class="reference internal" href="#fig-5"><span class="std std-numref">Fig. 1.2</span></a>, <span class="math notranslate nohighlight">\(e\)</span> is a cut edge of <span class="math notranslate nohighlight">\(G\)</span> but <span class="math notranslate nohighlight">\(f\)</span> is not.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Equation <a class="reference internal" href="#equation-eq-14">(1.5)</a>
+is replaced by
+<span class="math notranslate nohighlight">\(\omega(G-e) &gt; \omega(G)\)</span> in
+<span id="id1">[<a class="reference internal" href="../references.html#id3" title="J. A. Bondy and U. S. R. Murty. Graph Theory with Applications. North Holland, New York, 1976. ISBN 978-0-444-19451-0.">Bondy and Murty, 1976</a>]</span>.
+But since we have already proved <a class="reference internal" href="#pro:6">Proposition 1.5</a>,
+we can be more specific.</p>
 </div>
 <p>Consider a path graph <span class="math notranslate nohighlight">\(P_n\)</span> on <span class="math notranslate nohighlight">\(n\)</span> vertices.
 It is connected and it has altogether <span class="math notranslate nohighlight">\(n-1\)</span> edges.
