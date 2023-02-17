@@ -192,6 +192,54 @@ We call a graph **acyclic**
 if it contains no cycles.
 
 
+The next theorem is useful to determine
+whether an edge is a cut edge by checking
+that if it is contained in any cycles.
+
+
+````{prf:theorem}
+:label: thm:6
+
+An edge $e$ is an cut edge of $G$
+if and only if it is contained in no cycles of $G$.
+
+````
+
+````{prf:proof}
+
+In the following proof, we suppose that the two ends of $e$
+are $x$ and $y$ and that they are in the
+path equivalent class $V_1$.
+Then, by {prf:ref}`lem:1`,
+we know every vertex $v$ in $V_1$
+is either connected to $x$ or $y$ in subgraph $G-e$.
+
+($\implies$) We first exclude the case where $e$ is a loop.
+For the rest scenarios,
+we shall prove the contrapositive.
+Suppose $e$ is contained in some cycle $C$.
+Then $C-e$ is a path joining $x$ and $y$.
+This implies that $x$ and $y$ remain connected in $G-e$.
+Therefore, for each $v \in V_1$,
+$v$ is connected to both $x$ and $y$ in $G-e$.
+In other words, $(G-e)[V_1]$ is connected.
+Since no additional components will appear in $G-e$,
+$e$ is not an cut edge.
+
+($\impliedby$) If $e$ is contained in no cycles of $G$,
+then $x$ and $y$ are disconnected in $G-e$.
+Hence, $(G-e)[V_1]$ is then disconnected.
+Therefore, $\omega(G-e) > \omega(G)$,
+which further implies that $e$ is a cut edge.
+
+````
+
+As we can imagine, an acyclic graph cannot have too many edges.
+Interestingly, an acyclic graph with maximum number of
+edges is exactly a connected graph with minimum number of edges.
+Compare the following proposition with {prf:ref}`pro:8`.
+
+
 ````{prf:proposition}
 :label: pro:9
 
@@ -206,6 +254,29 @@ $G$ is also connected.
 
 ````{prf:proof}
 
-TODO
+Suppose $G$ is an acyclic graph with maximum number of edges.
+We are going to show that $G$ is in fact
+a connected graph with minimum number of edges.
+
+We first show that $G$ is connected.
+Assume $G$ is not connected.
+Then there exist two distinct vertices $u$ and $v$
+such that there are no paths between them.
+Of course, $uv \notin E$.
+By adding the edge $uv$,
+$G + uv$ remains acyclic.
+But then $G + uv$ has more edge than that of $G$,
+which contradicts the assumption that
+$G$ is an acyclic graph with maximum number of edges.
+Therefore, we see that $G$ must be connected.
+
+On the other hand, choose an edge $e$ and we will find
+that $e$ is contained in no cycles
+since $G$ is acyclic.
+By {prf:ref}`thm:6`, $e$ is a cut edge.
+Hence, $G-e$ is disconnected.
+This implies that $G$ is a connected graph
+with minimum number of edges.
+Therefore, $G$ has exactly $n-1$ edges by {prf:ref}`pro:8`.
 
 ````

@@ -238,12 +238,11 @@ as we shall define in the following.
 ````{prf:definition}
 :label: def:1
 
-The edge $e$ of $G$
 ```{index} cut edge
 ```
-is called a
-**cut edge**
-if
+
+The edge $e$ of $G$ is
+called a **cut edge** if
 
 ```{math}
 :label: eq:14
