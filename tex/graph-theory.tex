@@ -198,15 +198,53 @@ Then we can obtain at most one more component
 by cutting in half one of $G$'s components.
 See Figure~\ref{fig:5}.
 
+To prove this, we first consider
+the following useful lemma.
+
+\begin{lemma} \label{lem:1}
+	Let $G$ be a connected graph, 
+	and $e$ be one of its edges.
+	Suppose that the two ends of $e$ are $x$ and $y$.
+	Then every vertex $v$ is either connected to $x$
+	or $y$ in $G-e$.
+\end{lemma}
+
+\begin{proof}
+	First, suppose that $e$ is a loop.
+	Since $G$ is connected, 
+	every two vertices are connected by a path.
+	And they remain connected in $G-e$ 
+	since a path cannot contain any loops.
+	Hence, in this case, every vertex $v$ 
+	is connected to both $x$ and $y$ in $G-e$.
+
+	Assume $e$ is not a loop. 
+	If vertex $v$ is no longer connected to $x$ in $G-e$,
+	then $v$ must be originally connected to $x$
+	in $G$
+	by a path $P$ containing the edge $e$.
+	Note that $P$ is of the form 
+	\begin{align*}
+		P = v \cdots y e x
+	\end{align*}
+	Because the $(v,y)$-section of $P$ does not traverse $e$,
+	$v$ is connected to $y$ in $G-e$ by this $(v,y)$-section.
+	Hence, we have shown that, 
+	in subgraph $G-e$, 
+	$v$ must be connected to $y$ 
+	if it is disconnected from $x$.
+	This completes the proof.
+\end{proof}
+
 \begin{figure}[ht]
     \centering
     \includegraphics[scale=0.5]{figures/g-005.png}
     \caption{
 		The graph $G$ has 2 components.
-		If we remove edge $56$, 
-		then $G-56$ still has 2 components.
-		But if we remove edge $24$, then 
-		the remaining graph $G-24$ has 3 components.
+		If we remove edge $f$, 
+		then $G-f$ still has 2 components.
+		But if we remove edge $e$, then 
+		the remaining graph $G-e$ has 3 components.
 	}
     \label{fig:5}
 \end{figure}
@@ -220,7 +258,8 @@ See Figure~\ref{fig:5}.
 	\end{align}
 \end{proposition}
 
-Inequalities \eqref{eq:11} describe this idea in a compact way.
+Inequalities \eqref{eq:11} describe the result 
+of cutting an edge in a compact way.
 The first inequality $\omega(G) \leq \omega(G-e)$
 says the number of components may increase by cutting an edge.
 While the second inequality says this number will be increased 
@@ -228,63 +267,74 @@ by at most one.
 
 \begin{proof}
 	If $e$ is a loop, then the conclusion is trivial. 
-	We assume $e = uv$ is not a loop, i.e., 
-	$u$ and  $v$ are distinct,
+	We assume $e = xy$ is not a loop, i.e., 
+	$x$ and  $y$ are distinct,
 	in the rest of the proof. 
 	Suppose that the components of $G$
 	are  $G[V_1], \ldots, G[V_\omega]$.
 	Without loss of generality, 
-	we may also assume that $u, v \in V_1$.
+	we may also assume that $x, y \in V_1$.
 
-	(Case 1) Suppose that there exists a $(u,v)$-path in $G-e$,
-	then $u$ is still connected to $v$ in $G-e$,
-	i.e., $u \sim v$ in $G-e$.
-	Pick an arbitrary vertex $x \in V_1$.
-	Suppose that $x$ is originally connected to $u$ 
-	by a path $P$ containing $e$,
-	then $P$ is of the form 
-	\begin{align*}
-	    P = x \cdots v e u
-	\end{align*}
-	Hence, $x$ must be connected to $v$ in $G-e$,
-	i.e., $x \sim v$, 
-	since the $(x,v)$-section 
-	in $P$ does not involve  $e$.
-	But $x \sim v$. 
-	By the transitivity, we have $x \sim u$. 
+	(Case 1) Suppose that there exists a $(x,y)$-path in $G-e$,
+	then $x$ is still connected to $y$ in $G-e$,
+	i.e., $x \sim y$ in $G-e$.
+	Pick an arbitrary vertex $v \in V_1$.
+	By Lemma~\ref{lem:1}, 
+	we know either $v \sim x$ or $v \sim y$.
+	Either way, by the transitivity, we have $v \sim x$
+	since $x \sim y$. 
 	Therefore, 
 	\begin{align*}
-		x \sim u 
-		\quad \forall x \in V_1
+		v \sim x 
+		\quad \forall v \in V_1
 	\end{align*}
-	This means $V_1$ remains a equivalent class in  $G-e$.
-	In this case,  $\omega(G-e) = \omega(G)$.
+	This means $V_1$ remains a equivalent class in $G-e$.
+	In this case, $\omega(G-e) = \omega(G)$.
 
 	(Case 2) We now consider the case where 
-	$u$ is disconnected from  $v$ in $G-e$.
-	For any vertex $x \in V_1$,
-	if $x$ is disconnected from $u$ in  $G-e$, 
-	then $x$ must be originally connected to $u$ in $G$ 
-	by a path containing edge $e$.
-	Applying a similar argument as before,
-	we conclude that $x \sim v$ in $G-e$.
-	Therefore, for every  $x \in V_1$, 
-	in graph $G-e$, we have either 
-	\begin{enumerate}
-		\item $x \sim u$, or 
-		\item $x \sim v$
-	\end{enumerate}
-	But $x$ cannot be connected to both  $u$ and  $v$
-	since  $u$ and  $v$ are 
+	$x$ is disconnected from $y$ in $G-e$.
+	For any vertex $v \in V_1$,
+	by Lemma~\ref{lem:1},
+	we have either $v \sim x$ or $v \sim y$. 
+	But $v$ cannot be connected to both $x$ and $y$
+	since $x$ and $y$ are 
 	assumed disconnected from each other.
-	It then follows that  $V_1$ can be partitioned into
-	two equivalent classed, $[u]$ and  $[v]$, that is, 
-	\begin{align*}
-		V_1 = [u] \uplus [v]
-	\end{align*}
+	It then follows that $V_1$ can be partitioned into
+	two equivalent classes, $[x]$ and $[y]$. 
+	In other words, $V_1$ is split into two components in $G-e$.
 	Therefore, $G-e$ has one more component than that of $G$, 
-	and hence  $\omega(G-e) = \omega(G) + 1$.
+	and hence $\omega(G-e) = \omega(G) + 1$.
 \end{proof}
+
+The idea of cutting an edge 
+is quite helpful in many proofs
+since by doing so, 
+we will probably divide the original graph 
+into two smaller ones.
+
+The edge if removed will indeed results in 
+one more component deserves a name, 
+as we shall define in the following.
+
+\begin{definition} \label{def:1}
+	The edge $e$ of $G$ is 
+	called a \textbf{cut edge}\index{cut edge} if 
+	\begin{align}
+		\omega(G-e) = \omega(G) + 1
+		\label{eq:14}
+	\end{align}
+\end{definition}
+
+In Figure~\ref{fig:5}, $e$ is a cut edge of $G$ but $f$ is not.
+
+\begin{note}
+	Equation \eqref{eq:14}
+	is replaced by 
+	$\omega(G-e) > \omega(G)$ in
+	\parencite{bondyGraphTheoryApplications1976}.
+	But since we have already proved Proposition~\ref{pro:6}, 
+	we can be more specific.
+\end{note}
 
 %------------------------------
 
@@ -518,9 +568,19 @@ we will obtain a cycle from $v$ to itself.
 
 %------------------------------
 
+
+
+%------------------------------
+
 \begin{theorem} \label{thm:1}
-    % TODO
+	Graph $G$ is a bipartite graph 
+	if and only if 
+	it contains no odd cycles.
 \end{theorem}
+
+\begin{proof}
+	% TODO
+\end{proof}
 
 %------------------------------
 
@@ -587,6 +647,92 @@ Figure~\ref{fig:3} depicts several $K_{k,k}$ graphs.
 	$X=\{x_1,\ldots,x_k\}$ and $Y=\{y_1,\ldots,y_k\}$ 
 	form a bipartition of $K_{k,k}$, then 
 	$x_1 y_1 x_2 y_2 x_1$ is a 4-cycle.
+\end{proof}
+
+%------------------------------
+
+We call a graph \textbf{acyclic}\index{acyclic graphs}
+if it contains no cycles.
+
+%------------------------------
+
+The next theorem is useful to determine
+whether an edge is a cut edge by checking
+that if it is contained in any cycles.
+
+\begin{theorem} \label{thm:6}
+	An edge $e$ is an cut edge of $G$
+	if and only if it is contained in no cycles of $G$.
+\end{theorem}
+
+\begin{proof}
+	In the following proof, we suppose that the two ends of $e$
+	are $x$ and $y$ and that they are in the 
+	path equivalent class $V_1$.
+	Then, by Lemma~\ref{lem:1}, 
+	we know every vertex $v$ in $V_1$
+	is either connected to $x$ or $y$ in subgraph $G-e$.
+
+	($\implies$) We first exclude the case where $e$ is a loop.
+	For the rest scenarios, 
+	we shall prove the contrapositive.
+	Suppose $e$ is contained in some cycle $C$.
+	Then $C-e$ is a path joining $x$ and $y$.
+	This implies that $x$ and $y$ remain connected in $G-e$.
+	Therefore, for each $v \in V_1$, 
+	$v$ is connected to both $x$ and $y$ in $G-e$.
+	In other words, $(G-e)[V_1]$ is connected. 
+	Since no additional components will appear in $G-e$,
+	$e$ is not an cut edge.
+
+	($\impliedby$) If $e$ is contained in no cycles of $G$, 
+	then $x$ and $y$ are disconnected in $G-e$.
+	Hence, $(G-e)[V_1]$ is then disconnected.
+	Therefore, $\omega(G-e) > \omega(G)$, 
+	which further implies that $e$ is a cut edge.
+\end{proof}
+
+%------------------------------
+
+As we can imagine, an acyclic graph cannot have too many edges.
+Interestingly, an acyclic graph with maximum number of 
+edges is exactly a connected graph with minimum number of edges.
+Compare the following proposition with Proposition~\ref{pro:8}.
+
+\begin{proposition} \label{pro:9}
+	The maximum number of edges of 
+	an acyclic graph $G$ on $n$ vertices 
+	is $n-1$.
+	Furthermore,
+	in this case, 
+	$G$ is also connected.
+\end{proposition}
+
+\begin{proof}
+	Suppose $G$ is an acyclic graph with maximum number of edges.
+	We are going to show that $G$ is in fact
+	a connected graph with minimum number of edges.
+
+	We first show that $G$ is connected.
+	Assume $G$ is not connected.
+	Then there exist two distinct vertices $u$ and $v$
+	such that there are no paths between them.
+	Of course, $uv \notin E$. 
+	By adding the edge $uv$, 
+	$G + uv$ remains acyclic. 
+	But then $G + uv$ has more edge than that of $G$,
+	which contradicts the assumption that 
+	$G$ is an acyclic graph with maximum number of edges.
+	Therefore, we see that $G$ must be connected.
+
+	On the other hand, choose an edge $e$ and we will find
+	that $e$ is contained in no cycles 
+	since $G$ is acyclic.
+	By Theorem~\ref{thm:6}, $e$ is a cut edge.
+	Hence, $G-e$ is disconnected.
+	This implies that $G$ is a connected graph 
+	with minimum number of edges.
+	Therefore, $G$ has exactly $n-1$ edges by Proposition~\ref{pro:8}.
 \end{proof}
 
 %------------------------------
@@ -816,8 +962,6 @@ Given a vertex $v$, its predecessor is given by $\Pi[v]$. And the predecessor of
 
 \section{Definition of Trees}
 
-We call a graph \textbf{acyclic}\index{acyclic graphs}
-if it contains no cycles.
 A \textbf{tree}\index{tree} is a connected acyclic graph.
 A tree is clearly a simple graph for there cannot be any loops (1-cycles)
 or parallel edges (2-cycles).
