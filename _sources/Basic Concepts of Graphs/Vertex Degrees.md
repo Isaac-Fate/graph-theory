@@ -18,3 +18,11 @@ That is,
 TODO
 
 ````
+
+````{prf:corollary}
+:label: cor:2
+
+The number of vertices of odd degree is even
+in any graph.
+
+````

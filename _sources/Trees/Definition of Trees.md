@@ -223,3 +223,36 @@ contradict each other.
 Therefore, $T$ has at least two leafs.
 
 ````
+
+````{prf:theorem}
+:label: thm:7
+
+Let $T$ be a graph with $\abs{T}-1$ edges,
+then the following statements are equivalent:
+- ➀ $T$ is a tree.
+- ➁ $T$ is connected.
+- ➂ $T$ is acyclic.
+
+
+````
+
+````{prf:proof}
+
+Note that we only need to show 2 $\implies$ 3
+and 3 $\implies$ 2.
+
+(2 $\implies$ 3) By {prf:ref}`pro:8`, we know
+$T$ is a connected graph with minimum number of edges.
+We need to show $T$ is acyclic.
+Assume that, on the contrary, there exists a cycle $C$ in $T$.
+Pick an edge $e$ in $C$.
+Note that $e$ cannot be a cut edge by {prf:ref}`thm:6`.
+Therefore, $G-e$ remains connected.
+But clearly $G-e$ has one less edge than that of $G$,
+which leads to a contradiction.
+Therefore, $T$ is indeed acyclic.
+
+(3 $\implies$ 2) This direction follows directly
+from {prf:ref}`pro:9`.
+
+````

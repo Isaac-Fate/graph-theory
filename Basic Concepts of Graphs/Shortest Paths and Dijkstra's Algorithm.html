@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1.5. Shortest Paths and Dijkstra’s Algorithm &#8212; Graph Theory</title>
+    <title>1.6. Shortest Paths and Dijkstra’s Algorithm &#8212; Graph Theory</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -59,7 +59,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2. Trees" href="../Trees/index.html" />
-    <link rel="prev" title="1.4. Cycles" href="Cycles.html" />
+    <link rel="prev" title="1.5. Cycles" href="Cycles.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -146,18 +146,23 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="Graph%20Realization%20Problem.html">
+     1.3. Graph Realization Problem
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="Paths%20and%20Connection.html">
-     1.3. Paths and Connection
+     1.4. Paths and Connection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="Cycles.html">
-     1.4. Cycles
+     1.5. Cycles
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1.5. Shortest Paths and Dijkstra’s Algorithm
+     1.6. Shortest Paths and Dijkstra’s Algorithm
     </a>
    </li>
   </ul>
@@ -375,12 +380,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#a-first-attempt">
-   1.5.1. A First Attempt
+   1.6.1. A First Attempt
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dijkstra-s-algorithm">
-   1.5.2. Dijkstra’s Algorithm
+   1.6.2. Dijkstra’s Algorithm
   </a>
  </li>
 </ul>
@@ -404,12 +409,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#a-first-attempt">
-   1.5.1. A First Attempt
+   1.6.1. A First Attempt
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dijkstra-s-algorithm">
-   1.5.2. Dijkstra’s Algorithm
+   1.6.2. Dijkstra’s Algorithm
   </a>
  </li>
 </ul>
@@ -423,7 +428,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="shortest-paths-and-dijkstra-s-algorithm">
-<span id="index-0"></span><h1><span class="section-number">1.5. </span>Shortest Paths and Dijkstra’s Algorithm<a class="headerlink" href="#shortest-paths-and-dijkstra-s-algorithm" title="Permalink to this headline">#</a></h1>
+<span id="index-0"></span><h1><span class="section-number">1.6. </span>Shortest Paths and Dijkstra’s Algorithm<a class="headerlink" href="#shortest-paths-and-dijkstra-s-algorithm" title="Permalink to this headline">#</a></h1>
 <p>With every edge <span class="math notranslate nohighlight">\(e\)</span> in graph <span class="math notranslate nohighlight">\(G\)</span>, we can associate a real number <span class="math notranslate nohighlight">\(w(e)\)</span>, usually positive, which we shall call the <strong>weight</strong> of that edge. As we will see, to unify our notations for some special cases, it is convenient to define the weight of a nonexistent edge between two non-incident vertices as infinity <span class="math notranslate nohighlight">\(\infty\)</span>.</p>
 <p>We can now extend our former definition of the length of a path by</p>
 <div class="math notranslate nohighlight">
@@ -458,7 +463,7 @@ d(u_0, S^\complement) = d(u_0, u) + w(uv)
 \end{align}\]</div>
 <p>Equation <a class="reference internal" href="#equation-eq-9">(1.6)</a> motivates us to state the following proposition, which is the central idea of Dijkstra’s algorithm.</p>
 <div class="proof proposition admonition" id="pro:2">
-<p class="admonition-title"><span class="caption-number">Proposition 1.11 </span></p>
+<p class="admonition-title"><span class="caption-number">Proposition 1.12 </span></p>
 <section class="proposition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(G = (V, E)\)</span> be a simple graph. Let <span class="math notranslate nohighlight">\(S \subseteq V\)</span> be a subset of vertices and <span class="math notranslate nohighlight">\(u_0 \in S\)</span> a point in it. We have</p>
 <div class="math notranslate nohighlight" id="equation-eq-5">
@@ -492,7 +497,7 @@ d(u_0, S^\complement)
 <p>And <a class="reference internal" href="#equation-eq-5">(1.7)</a> is proved.</p>
 </div>
 <section id="a-first-attempt">
-<h2><span class="section-number">1.5.1. </span>A First Attempt<a class="headerlink" href="#a-first-attempt" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.6.1. </span>A First Attempt<a class="headerlink" href="#a-first-attempt" title="Permalink to this headline">#</a></h2>
 <p>Starting from an initial set <span class="math notranslate nohighlight">\(S^{(0)} = \{u_0\}\)</span> containing just the source, we want to enlarge this set in a way that a shortest path from <span class="math notranslate nohighlight">\(u_0\)</span> to any vertex within the set is known. Given <span class="math notranslate nohighlight">\(S^{(j-1)}\)</span>, in each iteration <span class="math notranslate nohighlight">\(j\)</span>, we find optimal vertices <span class="math notranslate nohighlight">\(u^\ast \in S^{(j-1)}\)</span> and <span class="math notranslate nohighlight">\(v^\ast \in V \setminus S^{(j-1)}\)</span> in the sense that equation <a class="reference internal" href="#equation-eq-5">(1.7)</a> is satisfied. In doing so, we are guaranteed to find a shortest path from <span class="math notranslate nohighlight">\(u_0\)</span> to <span class="math notranslate nohighlight">\(V \setminus S^{(j-1)}\)</span> with the terminus <span class="math notranslate nohighlight">\(v^\ast\)</span>. Then we extend the set <span class="math notranslate nohighlight">\(S^{(j-1)}\)</span> to <span class="math notranslate nohighlight">\(S^{(j)}\)</span> by adding <span class="math notranslate nohighlight">\(v^\ast\)</span>.</p>
 <p>Based on this idea, we propose our first attempt to find shortest paths in the following algorithm (<a class="reference internal" href="#alg:4">Algorithm 1.3</a>).</p>
 <div class="proof algorithm admonition" id="alg:4">
@@ -502,7 +507,7 @@ d(u_0, S^\complement)
 </section>
 </div></section>
 <section id="dijkstra-s-algorithm">
-<h2><span class="section-number">1.5.2. </span>Dijkstra’s Algorithm<a class="headerlink" href="#dijkstra-s-algorithm" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.6.2. </span>Dijkstra’s Algorithm<a class="headerlink" href="#dijkstra-s-algorithm" title="Permalink to this headline">#</a></h2>
 <div class="proof algorithm admonition" id="alg:3">
 <p class="admonition-title"><span class="caption-number">Algorithm 1.4 </span> (Dijkstra’s Algorithm)</p>
 <section class="algorithm-content" id="proof-content">
@@ -536,7 +541,7 @@ d(u_0, u^{(j-1)}) + w(u^{(j-1)} v)
 <div class="math notranslate nohighlight">
 \[\begin{align*}
 d^\ast = \min_{v \in V \setminus S^{(j-1)}}\min_{u \in S^{(j-1)}}\{ d(u_0, u) + w(u v) \}\end{align*}\]</div>
-<p>By <a class="reference internal" href="#pro:2">Proposition 1.11</a>, we know <span class="math notranslate nohighlight">\(d^\ast\)</span> is the length of a shortest path from <span class="math notranslate nohighlight">\(u_0\)</span> to <span class="math notranslate nohighlight">\(V \setminus S^{(j-1)}\)</span>, that is,</p>
+<p>By <a class="reference internal" href="#pro:2">Proposition 1.12</a>, we know <span class="math notranslate nohighlight">\(d^\ast\)</span> is the length of a shortest path from <span class="math notranslate nohighlight">\(u_0\)</span> to <span class="math notranslate nohighlight">\(V \setminus S^{(j-1)}\)</span>, that is,</p>
 <div class="math notranslate nohighlight">
 \[\begin{align*}
 d^\ast = d(u_0, V \setminus S^{(j-1)})
@@ -591,7 +596,7 @@ D[u^{(j)}] = d(u_0, u^{(j)})
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1.4. </span>Cycles</p>
+            <p class="prev-next-title"><span class="section-number">1.5. </span>Cycles</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../Trees/index.html" title="next page">

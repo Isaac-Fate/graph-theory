@@ -146,18 +146,23 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../Basic%20Concepts%20of%20Graphs/Graph%20Realization%20Problem.html">
+     1.3. Graph Realization Problem
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../Basic%20Concepts%20of%20Graphs/Paths%20and%20Connection.html">
-     1.3. Paths and Connection
+     1.4. Paths and Connection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Basic%20Concepts%20of%20Graphs/Cycles.html">
-     1.4. Cycles
+     1.5. Cycles
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Basic%20Concepts%20of%20Graphs/Shortest%20Paths%20and%20Dijkstra%27s%20Algorithm.html">
-     1.5. Shortest Paths and Dijkstra’s Algorithm
+     1.6. Shortest Paths and Dijkstra’s Algorithm
     </a>
    </li>
   </ul>
@@ -390,7 +395,7 @@ that is,</p>
 <p>If this is not the case, then we end up with a graph with</p>
 <span class="target" id="index-1"></span><span class="target" id="index-2"></span><span class="target" id="index-3"></span><p id="index-4"><span class="math notranslate nohighlight">\(\delta \geq 2\)</span>.
 But this further implies that there exists a cycle
-in the graph by <a class="reference internal" href="../Basic%20Concepts%20of%20Graphs/Cycles.html#pro:5">Proposition 1.8</a>,
+in the graph by <a class="reference internal" href="../Basic%20Concepts%20of%20Graphs/Cycles.html#pro:5">Proposition 1.9</a>,
 contradicting the definition of a tree.</p>
 <p>If the reader has a background of computer science,
 then the tree data structure one might be familiar with
@@ -428,7 +433,7 @@ and a <span class="math notranslate nohighlight">\((v,y)\)</span>-path in  <span
 and also a  <span class="math notranslate nohighlight">\((u,v)\)</span>-path in <span class="math notranslate nohighlight">\(P_2\)</span>.
 By concatenating all these three paths,
 we will obtain a <span class="math notranslate nohighlight">\((x,y)\)</span>-walk (not necessarily a path).
-But by <a class="reference internal" href="../Basic%20Concepts%20of%20Graphs/Paths%20and%20Connection.html#pro:7">Proposition 1.7</a>,
+But by <a class="reference internal" href="../Basic%20Concepts%20of%20Graphs/Paths%20and%20Connection.html#pro:7">Proposition 1.8</a>,
 we can always extract a <span class="math notranslate nohighlight">\((x,y)\)</span>-path from it, say <span class="math notranslate nohighlight">\(P_3\)</span>.</p>
 <p>Now, we have two distinct paths from <span class="math notranslate nohighlight">\(x\)</span> to <span class="math notranslate nohighlight">\(y\)</span> in <span class="math notranslate nohighlight">\(T\)</span>.
 One is <span class="math notranslate nohighlight">\(xy\)</span> and the other is  <span class="math notranslate nohighlight">\(P_3\)</span>,
@@ -529,6 +534,33 @@ Combined with <a class="reference internal" href="../Basic%20Concepts%20of%20Gra
 <p>Note that equations <a class="reference internal" href="#equation-eq-12">(2.2)</a> and <a class="reference internal" href="#equation-eq-13">(2.3)</a>
 contradict each other.
 Therefore, <span class="math notranslate nohighlight">\(T\)</span> has at least two leafs.</p>
+</div>
+<div class="proof theorem admonition" id="thm:7">
+<p class="admonition-title"><span class="caption-number">Theorem 2.4 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(T\)</span> be a graph with <span class="math notranslate nohighlight">\(\abs{T}-1\)</span> edges,
+then the following statements are equivalent:</p>
+<ul class="simple">
+<li><p>➀ <span class="math notranslate nohighlight">\(T\)</span> is a tree.</p></li>
+<li><p>➁ <span class="math notranslate nohighlight">\(T\)</span> is connected.</p></li>
+<li><p>➂ <span class="math notranslate nohighlight">\(T\)</span> is acyclic.</p></li>
+</ul>
+</section>
+</div><div class="proof admonition" id="proof">
+<p>Proof. Note that we only need to show 2 <span class="math notranslate nohighlight">\(\implies\)</span> 3
+and 3 <span class="math notranslate nohighlight">\(\implies\)</span> 2.</p>
+<p>(2 <span class="math notranslate nohighlight">\(\implies\)</span> 3) By <a class="reference internal" href="../Basic%20Concepts%20of%20Graphs/Paths%20and%20Connection.html#pro:8">Proposition 1.7</a>, we know
+<span class="math notranslate nohighlight">\(T\)</span> is a connected graph with minimum number of edges.
+We need to show <span class="math notranslate nohighlight">\(T\)</span> is acyclic.
+Assume that, on the contrary, there exists a cycle <span class="math notranslate nohighlight">\(C\)</span> in <span class="math notranslate nohighlight">\(T\)</span>.
+Pick an edge <span class="math notranslate nohighlight">\(e\)</span> in <span class="math notranslate nohighlight">\(C\)</span>.
+Note that <span class="math notranslate nohighlight">\(e\)</span> cannot be a cut edge by <a class="reference internal" href="../Basic%20Concepts%20of%20Graphs/Cycles.html#thm:6">Theorem 1.3</a>.
+Therefore, <span class="math notranslate nohighlight">\(G-e\)</span> remains connected.
+But clearly <span class="math notranslate nohighlight">\(G-e\)</span> has one less edge than that of <span class="math notranslate nohighlight">\(G\)</span>,
+which leads to a contradiction.
+Therefore, <span class="math notranslate nohighlight">\(T\)</span> is indeed acyclic.</p>
+<p>(3 <span class="math notranslate nohighlight">\(\implies\)</span> 2) This direction follows directly
+from <a class="reference internal" href="../Basic%20Concepts%20of%20Graphs/Cycles.html#pro:9">Proposition 1.11</a>.</p>
 </div>
 </section>
 
