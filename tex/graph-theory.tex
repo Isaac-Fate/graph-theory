@@ -127,6 +127,129 @@ A \textbf{complete bipartite graph}\index{complete bipartite graph} is a \textit
 	% TODO
 \end{proof}
 
+\begin{corollary} \label{cor:2}
+	The number of vertices of odd degree is even
+	in any graph.
+\end{corollary}
+
+%------------------------------
+
+\section{Graph Realization Problem}
+
+%------------------------------
+
+Let $G$ be a graph with vertices $v_1, \ldots, v_n$.
+The \textbf{degree sequence}\index{degree sequence} of $G$, 
+as the name suggests,
+is a list of integers consists of vertex degrees.
+It is denoted by 
+\begin{align*}
+	\mathbf{d} = (\deg(v_1), \ldots, \deg(v_n))
+\end{align*}
+And it is often written in non-increasing order.
+
+Given an arbitrary list of non-negative integers
+$\mathbf{d}^\prime = (d_1^\prime, \ldots, d_n^\prime)$,
+it is possible that 
+we cannot find any graphs whose degree sequence
+is $\mathbf{d}^\prime$.
+For example, no graphs have the following degree sequence:
+\begin{align*}
+	(2, 2, 1, 1, 1)
+\end{align*}
+Why? Note that $2+2+2+1+1+1 = 9$.
+Hence, by Theorem~\ref{thm:5}, we see that is is impossible to 
+find such a graph since the sum of degrees should be an even number.
+Alternatively, one may also argue by Corollary~\ref{cor:2}
+that the number of odd vertices (the last three vertices)
+is 3, which is an odd number.
+
+So, what conditions must a list of non-negative integers
+must satisfy so that it is a degree sequence?
+The answer is simple,
+as the next proposition will show,
+the provided list of integers only need to satisfy 
+condition given in Theorem~\ref{thm:5}, that is, 
+all the integers need to sum up to an even number. 
+
+\begin{proposition} \label{pro:10}
+	A sequence $(d_1, \ldots, d_n)$ of non-negative integers
+	is a degree sequence if and only if 
+	$\sum_{i=1}^n d_i$ is even.
+\end{proposition}
+
+\begin{proof}
+	% TODO
+\end{proof}
+
+From the above proof, we see that
+the graph we construct is a multigraph
+since we mainly increase the vertex degrees by adding loops.
+This invites us to think can we 
+construct a \textit{simple graph}
+out of the given sequence of integers?
+This question is much more complecated.
+And we say that a sequence of integers 
+is \textbf{graphical}\index{graphical degree sequence}
+if it is a degree sequence of some simple graph.
+The problem of finding such a simple graph
+is referred to as 
+the \textbf{graph realization problem}\index{graph realization problem}.
+
+%------------------------------
+
+\subsection{Havel-Hakimi Theorem}
+
+The algorithm \parencite{hakimiRealizabilitySetIntegers1962}
+constructs a simple graph 
+through a recursive procedure.
+The theorem it based on is referred to 
+as Havel-Hakimi theorem.
+Before proving this theorem, 
+we first introduce a lemma, 
+which will be helpful in the later proof.
+
+\begin{lemma} \label{lem:2}
+	Let $G$ be a simple graph.
+	If
+	\begin{enumerate}
+		\item $u_1 v_1, u_2 v_2 \in E$ and 
+		\item $u_1 v_2, u_2 v_1 \notin E$,
+	\end{enumerate}
+	then the graph
+	\begin{align*}
+		G^\prime = G - \{u_1 v_1, u_2 v_2\}
+		+ \{u_1 v_2, u_2 v_1\}
+	\end{align*}
+	has the same degree sequence as $G$.
+\end{lemma}
+
+This lemma mainly says we can move two 
+non-incident edges in $G$ in a way that 
+the degree sequence remains unchanged.
+Refer to Figure~\ref{fig:7} to get more insight.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.5]{figures/g-007.png}
+	\caption{
+		Dash lines are removed edges while
+		solid lines are newly added.
+	}
+	\label{fig:7}
+\end{figure}
+
+\begin{proof}
+	This result is evident. 
+	We note that the degrees of vertices 
+	$u_1$, $v_1$, $u_2$ and $v_2$ remain unchanged
+	in $G^\prime$ since from the perspective of 
+	each of these four vertices,
+	one incident edge is removed but a new one is added.
+	And the degrees of all the other vertices in $G^\prime$
+	are also the same as in $G$.
+	Hence, the degree sequence of $G^\prime$ is the same as $G$.
+\end{proof}
 
 %------------------------------
 
@@ -1134,6 +1257,37 @@ we need to exclude the cases where graphs contain loops.
 	Note that equations \eqref{eq:12} and \eqref{eq:13}
 	contradict each other. 
 	Therefore, $T$ has at least two leafs.
+\end{proof}
+
+%------------------------------
+
+\begin{theorem} \label{thm:7}
+	Let $T$ be a graph with $\abs{T}-1$ edges, 
+	then the following statements are equivalent:
+	\begin{enumerate}
+		\item $T$ is a tree.
+		\item $T$ is connected.
+		\item $T$ is acyclic.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Note that we only need to show 2 $\implies$ 3
+	and 3 $\implies$ 2.
+
+	(2 $\implies$ 3) By Proposition~\ref{pro:8}, we know
+	$T$ is a connected graph with minimum number of edges.
+	We need to show $T$ is acyclic.
+	Assume that, on the contrary, there exists a cycle $C$ in $T$.
+	Pick an edge $e$ in $C$.
+	Note that $e$ cannot be a cut edge by Theorem~\ref{thm:6}.
+	Therefore, $G-e$ remains connected.
+	But clearly $G-e$ has one less edge than that of $G$, 
+	which leads to a contradiction.
+	Therefore, $T$ is indeed acyclic.
+
+	(3 $\implies$ 2) This direction follows directly 
+	from Proposition~\ref{pro:9}.
 \end{proof}
 
 %==============================
