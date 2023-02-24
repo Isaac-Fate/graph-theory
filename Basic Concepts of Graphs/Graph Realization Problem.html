@@ -508,8 +508,7 @@ Refer to <a class="reference internal" href="#fig-7"><span class="std std-numref
 <figure class="align-default" id="fig-7">
 <img alt="../_images/g-007.png" src="../_images/g-007.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.2 </span><span class="caption-text">Dash lines are removed edges while
-solid lines are newly added.</span><a class="headerlink" href="#fig-7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.2 </span><span class="caption-text">Dash lines are removed edges while solid lines are newly added.</span><a class="headerlink" href="#fig-7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="proof admonition" id="proof">
@@ -539,12 +538,10 @@ d_2 - 1, \ldots, d_{d_1 + 1} - 1
 <p>Then <span class="math notranslate nohighlight">\(\mathbf{d}\)</span> is graphical
 if and only if <span class="math notranslate nohighlight">\(\mathbf{d}^\prime\)</span> is graphical.</p>
 </section>
-</div><div class="proof algorithm admonition" id="algorithm-3">
-<p class="admonition-title"><span class="caption-number">Algorithm 1.1 </span></p>
+</div><div class="proof algorithm admonition" id="alg:5">
+<p class="admonition-title"><span class="caption-number">Algorithm 1.1 </span> (Reconnecting Graph Edges in Proving Havel-Hakimi Theorem)</p>
 <section class="algorithm-content" id="proof-content">
-<p>Reconnecting Graph Edges in
-Proving Havel-Hakimi Theorem</p>
-<p>:label: alg:5</p>
+<img alt="Reconnecting Graph Edges in Proving Havel-Hakimi Theorem" class="align-center" src="../_images/e217a3593fc2dbe6fd3d17519501a4c3ee076a1b762f7c9471476646f011061a.png" />
 </section>
 </div><div class="proof admonition" id="proof">
 <p>Proof. (<span class="math notranslate nohighlight">\(\impliedby\)</span>)
@@ -576,10 +573,10 @@ So, we need to design an algorithm to
 alter the original graph without
 changing its degree sequence
 so that <span class="math notranslate nohighlight">\(v_1\)</span> is incident with <span class="math notranslate nohighlight">\(v_2, \ldots, v_{d_1 + 1}\)</span>.
-See <code class="xref prf prf-ref docutils literal notranslate"><span class="pre">alg:5</span></code>.</p>
+See <a class="reference internal" href="#alg:5">Algorithm 1.1</a>.</p>
 </div>
 <p>In the following, we prove the correctness
-of <code class="xref prf prf-ref docutils literal notranslate"><span class="pre">alg:5</span></code>.</p>
+of <a class="reference internal" href="#alg:5">Algorithm 1.1</a>.</p>
 <p><strong>Loop Invariants:</strong>
 Upon completion of iteration <span class="math notranslate nohighlight">\(j\)</span>, we have</p>
 <ul class="simple">

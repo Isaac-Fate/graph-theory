@@ -125,10 +125,7 @@ Refer to {numref}`fig:7` to get more insight.
 ---
 name: fig:7
 ---
-
-Dash lines are removed edges while
-solid lines are newly added.
-
+Dash lines are removed edges while solid lines are newly added.
 
 ```
 
@@ -172,16 +169,10 @@ if and only if $\mathbf{d}^\prime$ is graphical.
 
 ````
 
-````{prf:algorithm} 
-Reconnecting Graph Edges in
-Proving Havel-Hakimi Theorem
-
+````{prf:algorithm} Reconnecting Graph Edges in Proving Havel-Hakimi Theorem
 :label: alg:5
-```{image} /alg-snippets/2da8a913699a9e3efb1b541d16401c1bd071fd5460a05fef9fe67dc4541ba664.png
-:alt: 
-Reconnecting Graph Edges in
-Proving Havel-Hakimi Theorem
-
+```{image} /alg-snippets/e217a3593fc2dbe6fd3d17519501a4c3ee076a1b762f7c9471476646f011061a.png
+:alt: Reconnecting Graph Edges in Proving Havel-Hakimi Theorem
 :align: center
 ```
 ````
