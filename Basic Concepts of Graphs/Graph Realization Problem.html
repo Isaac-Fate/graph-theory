@@ -427,7 +427,7 @@ It is denoted by</p>
 <div class="math notranslate nohighlight">
 \[\begin{align*}\mathbf{d} = (\deg(v_1), \ldots, \deg(v_n))
 \end{align*}\]</div>
-<p>And it is often written in non-increasing order.</p>
+<p>And it is often written in decreasing order.</p>
 <p>Given an arbitrary list of non-negative integers
 <span class="math notranslate nohighlight">\(\mathbf{d}^\prime = (d_1^\prime, \ldots, d_n^\prime)\)</span>,
 it is possible that
@@ -492,12 +492,14 @@ If</p>
 <li><p>➀ <span class="math notranslate nohighlight">\(u_1 v_1, u_2 v_2 \in E\)</span> and</p></li>
 <li><p>➁ <span class="math notranslate nohighlight">\(u_1 v_2, u_2 v_1 \notin E\)</span>,</p></li>
 </ul>
-<p>then the graph</p>
+<p>then all vertex degrees in the graph</p>
 <div class="math notranslate nohighlight">
 \[\begin{align*}
 G^\prime = G - \{u_1 v_1, u_2 v_2\}
 + \{u_1 v_2, u_2 v_1\}\end{align*}\]</div>
-<p>has the same degree sequence as <span class="math notranslate nohighlight">\(G\)</span>.</p>
+<p>remain unchanged.
+Of course,
+<span class="math notranslate nohighlight">\(G^\prime\)</span> has the same degree sequence as <span class="math notranslate nohighlight">\(G\)</span>.</p>
 </section>
 </div><p>This lemma mainly says we can move two
 non-incident edges in <span class="math notranslate nohighlight">\(G\)</span> in a way that
@@ -518,8 +520,119 @@ in <span class="math notranslate nohighlight">\(G^\prime\)</span> since from the
 each of these four vertices,
 one incident edge is removed but a new one is added.
 And the degrees of all the other vertices in <span class="math notranslate nohighlight">\(G^\prime\)</span>
-are also the same as in <span class="math notranslate nohighlight">\(G\)</span>.
-Hence, the degree sequence of <span class="math notranslate nohighlight">\(G^\prime\)</span> is the same as <span class="math notranslate nohighlight">\(G\)</span>.</p>
+are also the same as in <span class="math notranslate nohighlight">\(G\)</span>.</p>
+</div>
+<p id="index-3">We now present
+the <strong>Havel-Hakimi theorem</strong>.</p>
+<div class="proof theorem admonition" id="thm:8">
+<p class="admonition-title"><span class="caption-number">Theorem 1.2 </span> (Havel-Hakimi)</p>
+<section class="theorem-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(\mathbf{d}=(d_1, \ldots, d_n)\)</span>
+be a decreasing sequence of non-negative integers.
+Define <span class="math notranslate nohighlight">\(\mathbf{d}^\prime\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}\mathbf{d}^\prime
+= ( \underbrace{
+d_2 - 1, \ldots, d_{d_1 + 1} - 1
+}_{\text{$d_1$ terms}}, d_{d_1 + 2}, \ldots, d_n )
+\end{align*}\]</div>
+<p>Then <span class="math notranslate nohighlight">\(\mathbf{d}\)</span> is graphical
+if and only if <span class="math notranslate nohighlight">\(\mathbf{d}^\prime\)</span> is graphical.</p>
+</section>
+</div><div class="proof algorithm admonition" id="algorithm-3">
+<p class="admonition-title"><span class="caption-number">Algorithm 1.1 </span></p>
+<section class="algorithm-content" id="proof-content">
+<p>Reconnecting Graph Edges in
+Proving Havel-Hakimi Theorem</p>
+<p>:label: alg:5</p>
+</section>
+</div><div class="proof admonition" id="proof">
+<p>Proof. (<span class="math notranslate nohighlight">\(\impliedby\)</span>)
+Let <span class="math notranslate nohighlight">\(G^\prime\)</span> be a simple graph with
+degree sequence <span class="math notranslate nohighlight">\(\mathbf{d}^\prime\)</span>.
+Suppose <span class="math notranslate nohighlight">\(V(G^\prime) = v_2, \ldots, v_n\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}\deg(v_2) = d_2 - 1, \;\ldots, \;\deg(v_{d_1 + 1}) = d_{d_1 + 1} - 1, \;\deg(v_{d_1 + 2}) = d_{d_1 + 2}, \;\ldots, \;\deg(v_n) = d_n
+\end{align*}\]</div>
+<p>Now, find a vertex, say <span class="math notranslate nohighlight">\(v_1\)</span>, that is distinct from
+the existing vertices of <span class="math notranslate nohighlight">\(G^\prime\)</span>,
+and then join <span class="math notranslate nohighlight">\(v_1\)</span> with <span class="math notranslate nohighlight">\(v_2, \ldots, v_{d_1 + 1}\)</span>.
+We call the resulting graph <span class="math notranslate nohighlight">\(G\)</span>.
+Observe that <span class="math notranslate nohighlight">\(\deg(v_1) = d_1\)</span> and
+the degrees of <span class="math notranslate nohighlight">\(v_2, \ldots, v_{d_1 + 1}\)</span> are all increased by one.
+Hence, the degree sequence of <span class="math notranslate nohighlight">\(G\)</span> is exactly <span class="math notranslate nohighlight">\(\mathbf{d}\)</span>.</p>
+<p>(<span class="math notranslate nohighlight">\(\implies\)</span>)
+Suppose that <span class="math notranslate nohighlight">\(G\)</span> is a graph with degree sequence <span class="math notranslate nohighlight">\(\mathbf{d}\)</span>
+and that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}\deg(v_1) = d_1, \;\ldots, \;\deg(v_n) = d_n
+\end{align*}\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The difficulty of proving this direction is
+that <span class="math notranslate nohighlight">\(v_1\)</span> is not necessarily
+to be incident with	<span class="math notranslate nohighlight">\(v_2, \ldots, v_{d_1 + 1}\)</span>.
+So, we need to design an algorithm to
+alter the original graph without
+changing its degree sequence
+so that <span class="math notranslate nohighlight">\(v_1\)</span> is incident with <span class="math notranslate nohighlight">\(v_2, \ldots, v_{d_1 + 1}\)</span>.
+See <code class="xref prf prf-ref docutils literal notranslate"><span class="pre">alg:5</span></code>.</p>
+</div>
+<p>In the following, we prove the correctness
+of <code class="xref prf prf-ref docutils literal notranslate"><span class="pre">alg:5</span></code>.</p>
+<p><strong>Loop Invariants:</strong>
+Upon completion of iteration <span class="math notranslate nohighlight">\(j\)</span>, we have</p>
+<ul class="simple">
+<li><p>➀ All vertex degrees remain the same, and</p></li>
+<li><p>➁ <span class="math notranslate nohighlight">\(v_1 v_2, \ldots, v_1 v_j \in E\)</span>.</p></li>
+</ul>
+<p>(Note that there is no need to prove the initialization part
+of this algorithm.)</p>
+<p><strong>Maintenance:</strong>
+If the condition in line 2 is satisfied,
+then the loop invariant holds.
+Now, suppose that <span class="math notranslate nohighlight">\(v_1 v_j \notin E\)</span>.</p>
+<p>We first show why line 5 works.
+Assume we cannot find such vertex <span class="math notranslate nohighlight">\(u\)</span>,
+which means <span class="math notranslate nohighlight">\(v_1\)</span> is not incident with any vertex
+other than <span class="math notranslate nohighlight">\(\{v_2, \ldots, v_{d_1 + 1}\}\)</span>.
+Because <span class="math notranslate nohighlight">\(v_1\)</span> is incident with <span class="math notranslate nohighlight">\(d_1\)</span> vertices,
+it must be incident with all vertices
+in <span class="math notranslate nohighlight">\(\{v_2, \ldots, v_{d_1 + 1}\}\)</span>,
+which leads to a contradiction since <span class="math notranslate nohighlight">\(v_1 v_j \notin E\)</span>.
+Hence, we can always find such a <span class="math notranslate nohighlight">\(u\)</span> specified by line 5.</p>
+<p>Let us now prove the correctness of line 6.
+Assume, on the contrary,
+there is no such vertex <span class="math notranslate nohighlight">\(w\)</span>.
+Then <span class="math notranslate nohighlight">\(u\)</span> is incident with every neighbor of <span class="math notranslate nohighlight">\(v_j\)</span>,
+which implies that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}\deg{u}\geq\deg(v_j)
+\end{align*}\]</div>
+<p>Moreover, <span class="math notranslate nohighlight">\(u\)</span> is also incident with <span class="math notranslate nohighlight">\(v_1\)</span> whereas <span class="math notranslate nohighlight">\(v_j\)</span> is not.
+Hence,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}\deg{u} &gt; \deg(v_j)
+\end{align*}\]</div>
+<p>But the degree of <span class="math notranslate nohighlight">\(u\)</span> should be less than or equal to
+that of <span class="math notranslate nohighlight">\(v_j\)</span> based on the given condition.
+Hence, this leads to a contradiction and
+line 6 also works.</p>
+<p>Since <span class="math notranslate nohighlight">\(v_1 u, w v_j \in E\)</span> and <span class="math notranslate nohighlight">\(v_1 v_j, w u \notin E\)</span>,
+by applying <a class="reference internal" href="#lem:2">Lemma 1.1</a>,
+we know that all vertex degrees remain unchanged
+after executing line 7 and line 8.
+(Note that now <span class="math notranslate nohighlight">\(v_1 v_j \in E\)</span>.)
+This proves the loop invariants.</p>
+<p><strong>Termination:</strong>
+Upon termination, the result is as desired
+due to the loop invariants.</p>
+<p>Now, by removing vertex <span class="math notranslate nohighlight">\(v_1\)</span>,
+we will reduce the degree of <span class="math notranslate nohighlight">\(v_2, \ldots, v_{d_1 + 1}\)</span> by one.
+Hence, <span class="math notranslate nohighlight">\(G^\prime = G - v_1\)</span> has the
+degree sequence <span class="math notranslate nohighlight">\(\mathbf{d}^\prime\)</span>, and
+it is of course simple.
+Therefore, <span class="math notranslate nohighlight">\(\mathbf{d}^\prime\)</span> is graphical.</p>
 </div>
 </section>
 </section>

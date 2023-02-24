@@ -499,9 +499,9 @@ d(u_0, S^\complement)
 <section id="a-first-attempt">
 <h2><span class="section-number">1.6.1. </span>A First Attempt<a class="headerlink" href="#a-first-attempt" title="Permalink to this headline">#</a></h2>
 <p>Starting from an initial set <span class="math notranslate nohighlight">\(S^{(0)} = \{u_0\}\)</span> containing just the source, we want to enlarge this set in a way that a shortest path from <span class="math notranslate nohighlight">\(u_0\)</span> to any vertex within the set is known. Given <span class="math notranslate nohighlight">\(S^{(j-1)}\)</span>, in each iteration <span class="math notranslate nohighlight">\(j\)</span>, we find optimal vertices <span class="math notranslate nohighlight">\(u^\ast \in S^{(j-1)}\)</span> and <span class="math notranslate nohighlight">\(v^\ast \in V \setminus S^{(j-1)}\)</span> in the sense that equation <a class="reference internal" href="#equation-eq-5">(1.7)</a> is satisfied. In doing so, we are guaranteed to find a shortest path from <span class="math notranslate nohighlight">\(u_0\)</span> to <span class="math notranslate nohighlight">\(V \setminus S^{(j-1)}\)</span> with the terminus <span class="math notranslate nohighlight">\(v^\ast\)</span>. Then we extend the set <span class="math notranslate nohighlight">\(S^{(j-1)}\)</span> to <span class="math notranslate nohighlight">\(S^{(j)}\)</span> by adding <span class="math notranslate nohighlight">\(v^\ast\)</span>.</p>
-<p>Based on this idea, we propose our first attempt to find shortest paths in the following algorithm (<a class="reference internal" href="#alg:4">Algorithm 1.3</a>).</p>
+<p>Based on this idea, we propose our first attempt to find shortest paths in the following algorithm (<a class="reference internal" href="#alg:4">Algorithm 1.4</a>).</p>
 <div class="proof algorithm admonition" id="alg:4">
-<p class="admonition-title"><span class="caption-number">Algorithm 1.3 </span> (A First Attempt to Find the Shortest Paths)</p>
+<p class="admonition-title"><span class="caption-number">Algorithm 1.4 </span> (A First Attempt to Find the Shortest Paths)</p>
 <section class="algorithm-content" id="proof-content">
 <img alt="A First Attempt to Find the Shortest Paths" class="align-center" src="../_images/2e3cd4c67a48aeadecc12d65ea64e787d2747149aadb76a7649eaaf12011d5ea.png" />
 </section>
@@ -509,7 +509,7 @@ d(u_0, S^\complement)
 <section id="dijkstra-s-algorithm">
 <h2><span class="section-number">1.6.2. </span>Dijkstra’s Algorithm<a class="headerlink" href="#dijkstra-s-algorithm" title="Permalink to this headline">#</a></h2>
 <div class="proof algorithm admonition" id="alg:3">
-<p class="admonition-title"><span class="caption-number">Algorithm 1.4 </span> (Dijkstra’s Algorithm)</p>
+<p class="admonition-title"><span class="caption-number">Algorithm 1.5 </span> (Dijkstra’s Algorithm)</p>
 <section class="algorithm-content" id="proof-content">
 <img alt="Dijkstra's Algorithm" class="align-center" src="../_images/8a334f74f59c4cb150182d8a0c1761c13287f02a3575febcbe6fe8db9e35cca4.png" />
 </section>
